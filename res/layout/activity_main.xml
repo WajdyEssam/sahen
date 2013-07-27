@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
+            android:paddingRight="20dp"
             android:gravity="center_horizontal"
             android:onClick="chargeButtonClicked"
             android:background="@drawable/charge_button"/>
@@ -51,6 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
+            android:paddingRight="10dp"
             android:gravity="center_horizontal"
             android:onClick="currentButtonClicked"
             android:background="@drawable/balance_button"/>
@@ -81,6 +83,7 @@
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
             android:gravity="center_horizontal"
+            android:paddingRight="10dp"
             android:onClick="settingsButtonClicked"
             android:background="@drawable/type_button"/>
 
