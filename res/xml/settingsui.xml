@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="Settings" >       
+         <ListPreference
+            android:key="companyName"
+            android:entries="@array/companies"
+            android:summary="من فضلك اختر  الشركة"
+            android:entryValues="@array/companiesValue"
+            android:title="نوع شركة الاتصالات" />
+         
+         <EditTextPreference
+            android:defaultValue="0000"
+            android:key="simNo"
+            android:summary="ادخل رقم الشريحة اذا كنت تود ذلك"
+            android:title="رقم الشريحة" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Main Activity -->
+    <string name="app_name">الشاحن الذكي</string>
+    <string name="menu_settings">خصائص البرنامج</string>
+
+    <!-- Titles -->
+    <string name="title_activity_charge">شحن الرصيد</string>
+    <string name="title_activity_convert">تحويل الرصيد</string>
+    <string name="title_activity_current">الرصيد الحالي</string>
+
+    <!-- Convert Activity -->
+    <string name="convertBalanceLbl">حول لى</string>
+    <string name="otherNumberLbl">أدخل الرقم</string>
+    <string name="balanceLbl">أدخل المبلغ</string>
+    <string name="balanceEditTextHint">ادخل عدد الجنيهات المراد تحويلها</string>
+
+    <!-- Charge Activity -->
+    <string name="ocrButtonLbl">قرائه الأرقام</string>
+    <string name="chargeButtonLbl">شحن الرصيد</string>
+    <string name="numberEditTextLbl">الأرقام التي تم التعرف عليها سيتم كتابتها هنا</string>
+    <string name="picture">الصورة الملتقطة</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_callme">CallmeActivity</string>
+
+    <!--  Callme Activity -->
+     <string name="callmeNumberLbl">أدخل الرقم</string>
+    <string name="sendCallmeLbl">ارسل كول مي</string>
+</resources>
