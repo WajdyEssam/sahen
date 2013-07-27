@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- SIM Values -->
     <string-array name="companies">
-        <item name="0">MTN</item>
-        <item name="1">SUDANI</item>
-        <item name="2">ZAIN</item>
-        <item name="3">Nothing</item>
+        <item name="0">MTN ام تي ان</item>
+        <item name="1">SUDANI سوداني</item>
+        <item name="2">ZAIN زين</item>
+        <item name="3">غير معرف</item>
     </string-array>
     <string-array name="companiesValue">
         <item name="0">0</item>
@@ -13,4 +14,14 @@
         <item name="3">3</item>
     </string-array>
      
+    <!-- Language Values -->
+       <string-array name="languages">
+        <item name="0">العربية</item>
+        <item name="1">English</item>
+    </string-array>
+    <string-array name="languagesValue">
+        <item name="0">ar</item>
+        <item name="1">en</item>
+    </string-array>
+    
 </resources>

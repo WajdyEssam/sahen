@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Splash Screen Activity -->
+    <string name="splashLabel">Wajdy Essam Ahmed</string>
+    
+    <!-- Main Activity -->
+    <string name="app_name">SahenZaki</string>
+    <string name="menu_settings">Settings</string>
+
+    <!-- Titles -->
+    <string name="title_activity_charge">Charge</string>
+    <string name="title_activity_convert">Send Balance</string>
+    <string name="title_activity_current">Current Balance</string>
+    <string name="title_activity_callme">CallMe</string>
+    
+    <!-- Convert Activity -->
+    <string name="convertBalanceLbl">Send</string>
+    <string name="otherNumberLbl">Number</string>
+    <string name="balanceLbl">Balance</string>
+    <string name="balanceEditTextHint">Enter the SD price</string>
+
+    <!-- Charge Activity -->
+    <string name="ocrButtonLbl">Scan Number</string>
+    <string name="chargeButtonLbl">Charge Now</string>
+    <string name="numberEditTextLbl">Card Number Here</string>
+    <string name="picture">Scanned Image</string>
+    
+    <!--  Callme Activity -->
+    <string name="callmeNumberLbl">Number</string>
+    <string name="sendCallmeLbl">Send CallMe</string>
+    
+    <!-- Preference Activity -->
+    <string name="settings">Settings</string>
+     
+    <string name="languageSettingLbl">Language</string>
+    <string name="simTypeLbl">Choose the company</string>
+    <string name="simNoLbl">SIM No</string>
+    
+    <string name="languageSettingSummary">Choose application language</string>
+    <string name="simTypeSummary">Please select the company</string>
+    <string name="simNoSummary">Enter your SIM No. if you wish</string>
+    
+</resources>

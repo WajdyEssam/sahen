@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- SIM Values -->
+    <string-array name="companies">
+        <item name="0">MTN</item>
+        <item name="1">SUDANI</item>
+        <item name="2">ZAIN</item>
+        <item name="3">Nothing</item>
+    </string-array>
+</resources>

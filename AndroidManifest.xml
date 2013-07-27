@@ -61,7 +61,7 @@
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:label="@string/app_name">
             <intent-filter>
-                <action android:name="com.malaz.app..ApplicationPreferenceActivity"></action>
+                <action android:name="com.malaz.app.ApplicationPreferenceActivity"></action>
                 <category android:name="android.intent.category.DEFAULT"/>                    
             </intent-filter>
             

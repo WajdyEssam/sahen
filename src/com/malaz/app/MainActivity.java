@@ -11,8 +11,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.Menu;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -76,7 +74,7 @@ public class MainActivity extends Activity {
 	}
 	
 	public void settingsButtonClicked(View view) {
-		Intent i = new Intent("com.malaz.app..ApplicationPreferenceActivity");
+		Intent i = new Intent("com.malaz.app.ApplicationPreferenceActivity");
 		startActivity(i);
 	}
 	

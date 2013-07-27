@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Splash Screen Activity -->
+    <string name="splashLabel">وجدي عصام عبدالرحيم</string>
+    
     <!-- Main Activity -->
     <string name="app_name">الشاحن الذكي</string>
     <string name="menu_settings">خصائص البرنامج</string>
@@ -9,7 +12,8 @@
     <string name="title_activity_charge">شحن الرصيد</string>
     <string name="title_activity_convert">تحويل الرصيد</string>
     <string name="title_activity_current">الرصيد الحالي</string>
-
+    <string name="title_activity_callme">خدمة كلمني</string>
+    
     <!-- Convert Activity -->
     <string name="convertBalanceLbl">حول لى</string>
     <string name="otherNumberLbl">أدخل الرقم</string>
@@ -21,10 +25,21 @@
     <string name="chargeButtonLbl">شحن الرصيد</string>
     <string name="numberEditTextLbl">الأرقام التي تم التعرف عليها سيتم كتابتها هنا</string>
     <string name="picture">الصورة الملتقطة</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_callme">CallmeActivity</string>
-
+    
     <!--  Callme Activity -->
-     <string name="callmeNumberLbl">أدخل الرقم</string>
+    <string name="callmeNumberLbl">أدخل الرقم</string>
     <string name="sendCallmeLbl">ارسل كول مي</string>
+    
+    <!-- Preference Activity -->
+    <string name="settings">اعدادات البرنامج</string>
+    
+    <string name="languageSettingLbl">اللغه</string>
+    <string name="languageSettingSummary">لغه البرنامج</string>
+    
+    <string name="simTypeLbl">اختر الشركة</string>
+    <string name="simTypeSummary">من فضلك اختر  الشركة</string>
+    
+    <string name="simNoLbl">رقم الشريحة</string>
+    <string name="simNoSummary">ادخل رقم الشريحة اذا كنت تود ذلك</string>
+    
 </resources>
