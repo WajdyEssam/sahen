@@ -6,13 +6,11 @@ import com.malaz.util.AlertUtil;
 import com.malaz.util.CallUtil;
 
 import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class CallmeActivity extends Activity {
+public class CallmeActivity extends BaseActivity {
 
 	private EditText numberEditText;
 	
@@ -20,15 +18,9 @@ public class CallmeActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_callme);
+		this.initializingActionBar();
 		
 		numberEditText = (EditText) findViewById(R.id.otherNumberEditText);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_callme, menu);
-		return true;
 	}
 
 	public void sendCallmeButtonClicked(View view) {

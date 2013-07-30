@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.res.AssetManager;
@@ -28,7 +27,7 @@ import com.malaz.services.ServiceFactory;
 import com.malaz.util.AlertUtil;
 import com.malaz.util.CallUtil;
 
-public class ChargeActivity extends Activity {
+public class ChargeActivity extends BaseActivity {
 
 	private static final String DATA_PATH = Environment.getExternalStorageDirectory().toString() + "/SimpleAndroidOCR/";
 	private static final String lang = "eng";
@@ -49,6 +48,7 @@ public class ChargeActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_charge);
+		this.initializingActionBar();
 		
 		createImageAndInstallEngineFile();
 		

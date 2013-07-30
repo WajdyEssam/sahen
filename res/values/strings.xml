@@ -13,6 +13,7 @@
     <string name="title_activity_convert">تحويل الرصيد</string>
     <string name="title_activity_current">الرصيد الحالي</string>
     <string name="title_activity_callme">خدمة كلمني</string>
+    <string name="title_activity_history">أخر العمليات</string>
     
     <!-- Convert Activity -->
     <string name="convertBalanceLbl">حول لى</string>

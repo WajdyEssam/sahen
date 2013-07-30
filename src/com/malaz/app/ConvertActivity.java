@@ -6,13 +6,11 @@ import com.malaz.util.AlertUtil;
 import com.malaz.util.CallUtil;
 
 import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class ConvertActivity extends Activity {
+public class ConvertActivity extends BaseActivity {
 
 	private EditText numberEditText;
 	private EditText balanceEditText;
@@ -21,16 +19,10 @@ public class ConvertActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_convert);
+		this.initializingActionBar();
 		
 		numberEditText = (EditText) findViewById(R.id.otherNumberEditText);
 		balanceEditText = (EditText) findViewById(R.id.balanceEditText);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_convert, menu);
-		return true;
 	}
 	
 	public void convertBalanceButtonClicked(View view) {

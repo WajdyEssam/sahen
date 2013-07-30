@@ -87,7 +87,12 @@ public class ApplicationPreferenceActivity extends PreferenceActivity implements
 		Configuration conf = res.getConfiguration();
 		conf.locale = myLocale;
 		res.updateConfiguration(conf, dm);
-		Intent refresh = new Intent(this, ApplicationPreferenceActivity.class);
-		startActivity(refresh);
+		
+//		Intent refresh = new Intent(this, ApplicationPreferenceActivity.class);
+//		startActivity(refresh);
+		
+		Intent intent = new Intent(this, MainActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
 	}
 }

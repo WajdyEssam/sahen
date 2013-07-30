@@ -13,6 +13,7 @@
     <string name="title_activity_convert">Send Balance</string>
     <string name="title_activity_current">Current Balance</string>
     <string name="title_activity_callme">CallMe</string>
+    <string name="title_activity_history">Last Operations</string>
     
     <!-- Convert Activity -->
     <string name="convertBalanceLbl">Send</string>
