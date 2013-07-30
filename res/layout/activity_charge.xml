@@ -9,7 +9,6 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="50dp"
         android:text="@string/ocrButtonLbl" />
 
     <EditText
@@ -20,7 +19,7 @@
 
     <ImageView 
 	    android:id="@+id/picture"
-	    android:layout_width="wrap_content"
+	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:contentDescription="@string/picture"
 	    android:layout_margin="5dp"
