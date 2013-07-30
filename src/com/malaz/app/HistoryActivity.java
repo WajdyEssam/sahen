@@ -1,16 +1,27 @@
 package com.malaz.app;
 
+import com.malaz.database.DBAdapter;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.res.Resources;
+import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class HistoryActivity extends Activity {
 
+	private DBAdapter database;
+	private SimpleCursorAdapter cursorAdapter;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,10 +38,43 @@ public class HistoryActivity extends Activity {
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
 		
+		this.database = new DBAdapter(this);
+		this.database.open();
+		this.database.addTestData();
 		
+		displayListView();
 		setTheTitle(actionBar, 10);
 	}
 
+	private void displayListView() {
+		Cursor cursor = this.database.getAllRecords();
+		
+		if ( cursor == null ) 
+			return;
+		
+		String[] columns = new String[] {
+				DBAdapter.KEY_DESCRIPTION_ENGLISH	
+		};
+		
+		int[] to = new int[] {
+			R.id.desc
+		};
+		
+		this.cursorAdapter = new SimpleCursorAdapter(this, R.layout.history_list , cursor, columns, to, 0);
+		
+		ListView listView = (ListView) findViewById(R.id.listView1);
+		listView.setAdapter(cursorAdapter);
+		
+		listView.setOnItemClickListener(new OnItemClickListener() {
+		   @Override
+		   public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
+			   Cursor cursor = (Cursor) listView.getItemAtPosition(position);
+			   String countryCode = cursor.getString(cursor.getColumnIndexOrThrow(DBAdapter.KEY_DESCRIPTION_ARABIC));
+			   Toast.makeText(getApplicationContext(),countryCode, Toast.LENGTH_SHORT).show();		 
+		   }
+		});
+	}
+	
 	private void setTheTitle(ActionBar bar, int count) {
 		bar.setTitle("Application Logs " + "(" + count + ")");
 	}
