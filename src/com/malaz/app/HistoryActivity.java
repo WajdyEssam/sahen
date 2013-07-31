@@ -40,10 +40,10 @@ public class HistoryActivity extends Activity {
 		
 		this.database = new DBAdapter(this);
 		this.database.open();
-		this.database.addTestData();
+		//this.database.addTestData();
 		
 		displayListView();
-		setTheTitle(actionBar, 10);
+		setTheTitle(actionBar, (int)this.database.getNumberOfRecords());
 	}
 
 	private void displayListView() {
@@ -53,11 +53,15 @@ public class HistoryActivity extends Activity {
 			return;
 		
 		String[] columns = new String[] {
-				DBAdapter.KEY_DESCRIPTION_ENGLISH	
+				DBAdapter.KEY_TYPE,
+				DBAdapter.KEY_DESCRIPTION_ENGLISH,
+				DBAdapter.KEY_TIME
 		};
 		
 		int[] to = new int[] {
-			R.id.desc
+			R.id.type,
+			R.id.desc,
+			R.id.time
 		};
 		
 		this.cursorAdapter = new SimpleCursorAdapter(this, R.layout.history_list , cursor, columns, to, 0);
@@ -94,9 +98,10 @@ public class HistoryActivity extends Activity {
 			return true;
 			
 		case R.id.remove:
-			Toast.makeText(this, "Clear All Logs", Toast.LENGTH_SHORT)
-				.show();
-			setTheTitle(getActionBar(), 0);
+			this.database.clearDB();
+			this.cursorAdapter.notifyDataSetChanged();
+			Toast.makeText(this, "Clear All Logs", Toast.LENGTH_SHORT).show();
+			setTheTitle(getActionBar(), (int)this.database.getNumberOfRecords());
 			return true;
 		}
 		

@@ -5,6 +5,7 @@ import java.util.Date;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -52,6 +53,21 @@ public class DBAdapter {
 		insertRecord("Wajdy", "Essam", new Date(), 1);
 		insertRecord("Malaz", "Mustafa", new Date(), 2);
 		insertRecord("Ahmed", "Ali", new Date(), 3);
+	}
+	
+	public void clearDB() {
+		Cursor cursor = getAllRecords();
+		if ( cursor.moveToFirst() ) {
+			do {
+				deleteRecord(Integer.valueOf(cursor.getString(0)));
+			}while(cursor.moveToNext());
+		}
+		
+		cursor.close();
+	}
+	
+	public long getNumberOfRecords() {
+		return DatabaseUtils.queryNumEntries(this.db, DATABASE_TABLE);
 	}
 	
 	public long insertRecord(String arabicDecs, String englishDesc, Date time, int type) {
