@@ -36,15 +36,13 @@ public class HistoryDB {
 	};
 	
 	private DBHelper dbHelper;
-	private OperationDB operationDB;
 	
 	public static HistoryDB getInstance(Context context) {
 		return new HistoryDB(context);
 	}
 	
 	private HistoryDB(Context context) {
-		this.dbHelper = DBHelper.getInstance(context);
-		this.operationDB = OperationDB.getInstance(context);	
+		this.dbHelper = DBHelper.getInstance(context);		
 	}
 	
 	public SQLiteDatabase open() {
@@ -107,8 +105,7 @@ public class HistoryDB {
 		if ( amount == null ) 
 			amount = "0";
 				
-		Operation operation = operationDB.getOperation(operationId);
-		
+		Operation operation = OperationDB.getOperation(this.open(), operationId);		
 		return History.getInstance(id, operation, time, Integer.parseInt(amount), detials);
 	}
 	

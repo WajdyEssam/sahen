@@ -43,7 +43,7 @@ public class ServiceFactory {
 	public SIMService getChargeService(String number) {
 		SIMService service = null;
 		
-		if ( companyName.isEmpty() ) {
+		if ( !companyName.isEmpty() ) {
 			
 			switch ( companyId ) {
 			case 0:
@@ -67,7 +67,7 @@ public class ServiceFactory {
 	public SIMService getCallMeService(String number) {
 		SIMService service = null;
 		
-		if ( companyName.isEmpty() ) {
+		if ( !companyName.isEmpty() ) {
 			
 			switch ( companyId ) {
 			case 0:
@@ -90,7 +90,7 @@ public class ServiceFactory {
 	public SIMService getSendBalanceService(String balance, String number) {
 		SIMService service = null;
 		
-		if ( companyName.isEmpty() ) {
+		if ( !companyName.isEmpty() ) {
 			
 			switch ( companyId ) {
 			case 0:

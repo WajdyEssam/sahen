@@ -9,8 +9,10 @@ final class DBHelper extends SQLiteOpenHelper {
 	
 	private final static String TAG = "DBAdapter";
 	private final static String DATABASE_NAME = "SahenDB";	
-	private final static int DATABASE_VERSION = 1;
+	private final static int DATABASE_VERSION = 2;
 	private static DBHelper instance = null;
+	
+	private Context context;
 	
 	public static DBHelper getInstance(Context context) {
 		if ( instance == null ) {
@@ -22,12 +24,14 @@ final class DBHelper extends SQLiteOpenHelper {
 	
 	private DBHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		this.context = context;
 	}
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(HistoryDB.DATABASE_CREATE);
-		db.execSQL(OperationDB.DATABASE_CREATE);
+		db.execSQL(OperationDB.DATABASE_CREATE);		
+		OperationDB.addInitialData(db);
 	}
 
 	@Override

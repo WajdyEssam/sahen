@@ -79,7 +79,20 @@ public class OperationDB {
 		return operation;
 	}
 	
-	private Operation getObject(Cursor cursor) {
+	public static Operation getOperation(SQLiteDatabase db, String rowId) throws SQLException {
+		String where = String.format("%s = %s", ID, rowId);
+		Cursor cursor = db.query(true, DATABASE_TABLE, COLUMNS_NAMES, where, null, null, null, null, null);
+		Operation operation = null;
+		
+		if ( cursor.moveToFirst() ) {
+			operation = getObject(cursor);
+		}
+		
+		cursor.close();		
+		return operation;
+	}
+	
+	private static Operation getObject(Cursor cursor) {
 		String id = cursor.getString(cursor.getColumnIndex(ID));
 		String englishName = cursor.getString(cursor.getColumnIndex(ENGLISH_DESCRIPTION));
 		String arabicName = cursor.getString(cursor.getColumnIndex(ARABIC_DESCRIPTION));
@@ -97,9 +110,18 @@ public class OperationDB {
 		return this.open().update(DATABASE_TABLE, args,  where, null) > 0;
 	}
 	
-	public void addInitialData() {
-		insertOperation(Operation.getInstance("1", "Charging", "شحن"));
-		insertOperation(Operation.getInstance("2", "Transfere", "تحويل"));
-		insertOperation(Operation.getInstance("3", "CallMe", "كول مي"));
+	public static void addInitialData(SQLiteDatabase db) {
+		insertOperation(db, Operation.getInstance("1", "Charging", "شحن"));
+		insertOperation(db, Operation.getInstance("2", "Transfere", "تحويل"));
+		insertOperation(db, Operation.getInstance("3", "CallMe", "كول مي"));
+	}
+	
+	private static long insertOperation(SQLiteDatabase db, Operation operation) {
+		ContentValues initialValues = new ContentValues();
+		initialValues.put(ID, operation.getId());
+		initialValues.put(ENGLISH_DESCRIPTION, operation.getEnglishDescription());
+		initialValues.put(ARABIC_DESCRIPTION, operation.getArabicDescription());
+		
+		return db.insert(DATABASE_TABLE, null, initialValues);				
 	}
 }
