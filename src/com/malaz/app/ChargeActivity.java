@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Date;
+
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.res.AssetManager;
@@ -20,12 +22,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.malaz.database.Database;
+import com.malaz.database.HistoryDB;
+import com.malaz.database.OperationDB;
+import com.malaz.model.History;
+import com.malaz.model.Operation;
 //import com.googlecode.tesseract.android.TessBaseAPI;
 //import com.malaz.image.ImageUtil;
 import com.malaz.services.SIMService;
 import com.malaz.services.ServiceFactory;
 import com.malaz.util.AlertUtil;
 import com.malaz.util.CallUtil;
+import com.malaz.util.Constants;
 
 public class ChargeActivity extends BaseActivity {
 
@@ -72,6 +80,10 @@ public class ChargeActivity extends BaseActivity {
 		boolean state = CallUtil.charge(this, service);
 		
 		if ( state ) {
+			// ask first for amount
+			int amount = 0;
+			Database.saveChargingBalance(this, number, amount);
+			
 			Toast.makeText(this, "Charging Balance Done!", Toast.LENGTH_LONG).show();
 		}
 		else {

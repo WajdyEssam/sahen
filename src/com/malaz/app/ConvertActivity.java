@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.malaz.database.Database;
 import com.malaz.database.HistoryDB;
 import com.malaz.database.OperationDB;
 import com.malaz.model.History;
@@ -46,11 +47,7 @@ public class ConvertActivity extends BaseActivity {
 		boolean state = CallUtil.convert(this, service);
 		
 		if ( state ) {
-			HistoryDB db = HistoryDB.getInstance(this);
-			Operation operation = OperationDB.getInstance(this).getOperation(Constants.SENDING_BALANCE_OPERATION);
-			History history = History.getInstance(0, operation, new Date().toString(), Integer.valueOf(balance), number);
-			db.insertHistory(history);
-			
+			Database.saveSendingBalance(this, number, balance);			
 			Toast.makeText(this, "Convert Balance Done!", Toast.LENGTH_LONG).show();
 		}
 		else {

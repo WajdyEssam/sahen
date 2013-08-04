@@ -1,9 +1,17 @@
 package com.malaz.app;
 
+import java.util.Date;
+
+import com.malaz.database.Database;
+import com.malaz.database.HistoryDB;
+import com.malaz.database.OperationDB;
+import com.malaz.model.History;
+import com.malaz.model.Operation;
 import com.malaz.services.SIMService;
 import com.malaz.services.ServiceFactory;
 import com.malaz.util.AlertUtil;
 import com.malaz.util.CallUtil;
+import com.malaz.util.Constants;
 
 import android.os.Bundle;
 import android.view.View;
@@ -36,6 +44,7 @@ public class CallmeActivity extends BaseActivity {
 		boolean state = CallUtil.callme(this, service);
 
 		if ( state ) {
+			Database.saveSendingCallMe(this, number);
 			Toast.makeText(this, "Callme is sending successfully!", Toast.LENGTH_LONG).show();
 		}
 		else {

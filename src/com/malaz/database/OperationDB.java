@@ -79,19 +79,6 @@ public class OperationDB {
 		return operation;
 	}
 	
-	public static Operation getOperation(SQLiteDatabase db, String rowId) throws SQLException {
-		String where = String.format("%s = %s", ID, rowId);
-		Cursor cursor = db.query(true, DATABASE_TABLE, COLUMNS_NAMES, where, null, null, null, null, null);
-		Operation operation = null;
-		
-		if ( cursor.moveToFirst() ) {
-			operation = getObject(cursor);
-		}
-		
-		cursor.close();		
-		return operation;
-	}
-	
 	private static Operation getObject(Cursor cursor) {
 		String id = cursor.getString(cursor.getColumnIndex(ID));
 		String englishName = cursor.getString(cursor.getColumnIndex(ENGLISH_DESCRIPTION));
@@ -110,6 +97,7 @@ public class OperationDB {
 		return this.open().update(DATABASE_TABLE, args,  where, null) > 0;
 	}
 	
+	// this is called when creating database from onCreate method
 	public static void addInitialData(SQLiteDatabase db) {
 		insertOperation(db, Operation.getInstance("1", "Charging", "شحن"));
 		insertOperation(db, Operation.getInstance("2", "Transfere", "تحويل"));
@@ -123,5 +111,19 @@ public class OperationDB {
 		initialValues.put(ARABIC_DESCRIPTION, operation.getArabicDescription());
 		
 		return db.insert(DATABASE_TABLE, null, initialValues);				
+	}
+	
+	// this called from HistoryDB when getting operation information 
+	public static Operation getOperation(SQLiteDatabase db, String rowId) throws SQLException {
+		String where = String.format("%s = %s", ID, rowId);
+		Cursor cursor = db.query(true, DATABASE_TABLE, COLUMNS_NAMES, where, null, null, null, null, null);
+		Operation operation = null;
+		
+		if ( cursor.moveToFirst() ) {
+			operation = getObject(cursor);
+		}
+		
+		cursor.close();		
+		return operation;
 	}
 }
