@@ -1,16 +1,17 @@
 package com.malaz.model;
 
 public final class History {
-	private final String id;
+	private final int id;
 	private final Operation operation;
 	private final String time;
 	private final int amount;
+	private final String detials;
 	
-	public static History getInstance(String id, Operation operation, String time, int amount) {
-		return new History(id, operation, time, amount);
+	public static History getInstance(int id, Operation operation, String time, int amount, String detials) {
+		return new History(id, operation, time, amount, detials);
 	}
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -26,11 +27,16 @@ public final class History {
 		return amount;
 	}
 	
-	private History(String id, Operation operation, String time, int amount) {
+	public String getDetials() {
+		return detials;
+	}
+	
+	private History(int id, Operation operation, String time, int amount, String detials) {
 		this.id = id;
 		this.operation = operation;
 		this.time = time;
 		this.amount = amount;
+		this.detials = detials;
 	}
 }
 

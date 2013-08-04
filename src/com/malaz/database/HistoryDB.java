@@ -1,11 +1,7 @@
 package com.malaz.database;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-import com.malaz.model.History;
-import com.malaz.model.Operation;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -14,22 +10,29 @@ import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.malaz.model.History;
+import com.malaz.model.Operation;
+
 public class HistoryDB {
 	public final static String ID = "_id";
 	public final static String OPERATION_ID = "OpeationID";
 	public final static String OPEARTION_TIME = "OperationTime";
 	public final static String OPEARTION_AMOUNT = "OperationAmount";
+	public final static String DETIALS = "Detials";
 	
-	public final static String DATABASE_TABLE = "histories";
-	
+	public final static String DATABASE_TABLE = "histories";	
 	public final static String DATABASE_CREATE = "create table " + DATABASE_TABLE +
-			" (" + ID + " integer primary key autoincrement, "
-			+ OPERATION_ID + " text not null, " 
-			+ OPEARTION_TIME + " text not null, "
-			+ OPEARTION_AMOUNT + " integer);";
+			" (" 
+				+ ID + " integer primary key autoincrement, "
+				+ OPERATION_ID + " text not null, " 
+				+ OPEARTION_TIME + " text not null, "
+				+ OPEARTION_AMOUNT + " integer, "
+				+ DETIALS + " text, "
+				+ "FOREIGN KEY (" + OPERATION_ID + ") REFERENCES "+ OperationDB.DATABASE_TABLE + " (" + OperationDB.ID + ") "
+			+ ");";
 	
 	private final static String[] COLUMNS_NAMES = {
-		ID, OPERATION_ID, OPEARTION_TIME, OPEARTION_AMOUNT
+		ID, OPERATION_ID, OPEARTION_TIME, OPEARTION_AMOUNT, DETIALS
 	};
 	
 	private DBHelper dbHelper;
@@ -58,11 +61,12 @@ public class HistoryDB {
 		initialValues.put(OPERATION_ID, history.getOperation().getId());
 		initialValues.put(OPEARTION_TIME, history.getTime());
 		initialValues.put(OPEARTION_AMOUNT, history.getAmount());
+		initialValues.put(DETIALS, history.getDetials());
 		
 		return this.open().insert(DATABASE_TABLE, null, initialValues);				
 	}
 	
-	public boolean deleteHistory(String rowId) {
+	public boolean deleteHistory(int rowId) {
 		String where = String.format("%s = %s", ID, rowId);
 		return this.open().delete(DATABASE_TABLE, where, null) > 0;
 	}
@@ -94,17 +98,18 @@ public class HistoryDB {
 	}
 	
 	private History getObject(Cursor cursor) {
-		String id = cursor.getString(cursor.getColumnIndex(ID));
+		int id = cursor.getInt(cursor.getColumnIndex(ID));
 		String operationId = cursor.getString(cursor.getColumnIndex(OPERATION_ID));
 		String time = cursor.getString(cursor.getColumnIndex(OPEARTION_TIME));
 		String amount = cursor.getString(cursor.getColumnIndex(OPEARTION_AMOUNT));
+		String detials = cursor.getString(cursor.getColumnIndex(DETIALS));
 		
 		if ( amount == null ) 
 			amount = "0";
 				
 		Operation operation = operationDB.getOperation(operationId);
 		
-		return History.getInstance(id, operation, time, Integer.parseInt(amount));
+		return History.getInstance(id, operation, time, Integer.parseInt(amount), detials);
 	}
 	
 	public History getHistory(long rowId) throws SQLException {
@@ -125,6 +130,7 @@ public class HistoryDB {
 		args.put(OPERATION_ID, history.getOperation().getId());
 		args.put(OPEARTION_TIME, history.getTime());
 		args.put(OPEARTION_AMOUNT, history.getAmount());
+		args.put(DETIALS, history.getDetials());
 		
 		String where = String.format("%s = %s", ID, rowID);
 		return this.open().update(DATABASE_TABLE, args,  where, null) > 0;

@@ -1,21 +1,19 @@
 package com.malaz.database;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-import com.malaz.model.Operation;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.malaz.model.Operation;
+
 public class OperationDB {
 
-	private final static String ID = "ID";	
+	public final static String ID = "ID";	
 	private final static String ENGLISH_DESCRIPTION = "EnglishDescription";
 	private final static String ARABIC_DESCRIPTION = "ArabicDescription";
 	
@@ -45,10 +43,6 @@ public class OperationDB {
 		return db;
 	}
 	
-	public long getNumberOfRecords() {
-		return DatabaseUtils.queryNumEntries(this.open(), DATABASE_TABLE);
-	}
-	
 	public long insertOperation(Operation operation) {
 		ContentValues initialValues = new ContentValues();
 		initialValues.put(ID, operation.getId());
@@ -56,11 +50,6 @@ public class OperationDB {
 		initialValues.put(ARABIC_DESCRIPTION, operation.getArabicDescription());
 		
 		return this.open().insert(DATABASE_TABLE, null, initialValues);				
-	}
-	
-	public boolean deleteOperation(String rowId) {
-		String where = String.format("%s = %s", ID, rowId);
-		return this.open().delete(DATABASE_TABLE, where, null) > 0;
 	}
 	
 	public List<Operation> getAllOperations() {
@@ -112,12 +101,5 @@ public class OperationDB {
 		insertOperation(Operation.getInstance("1", "Charging", "شحن"));
 		insertOperation(Operation.getInstance("2", "Transfere", "تحويل"));
 		insertOperation(Operation.getInstance("3", "CallMe", "كول مي"));
-	}
-	
-	public void clearOperations() {
-		List<Operation> operations = getAllOperations();
-		for(Operation opration: operations) {
-			deleteOperation(opration.getId());
-		}
 	}
 }

@@ -2,17 +2,20 @@ package com.malaz.app;
 
 import java.util.Date;
 
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
 import com.malaz.database.HistoryDB;
+import com.malaz.database.OperationDB;
+import com.malaz.model.History;
+import com.malaz.model.Operation;
 import com.malaz.services.SIMService;
 import com.malaz.services.ServiceFactory;
 import com.malaz.util.AlertUtil;
 import com.malaz.util.CallUtil;
 import com.malaz.util.Constants;
-
-import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
 
 public class ConvertActivity extends BaseActivity {
 
@@ -44,9 +47,9 @@ public class ConvertActivity extends BaseActivity {
 		
 		if ( state ) {
 			HistoryDB db = HistoryDB.getInstance(this);
-//			db.insertRecord(Constants.SENDING_BALANCE_OPERATION_ARABIC_MSG,
-//					Constants.SENDING_BALANCE_OPERATION_ENGLISH_MSG, 
-//					new Date(), Constants.SENDING_BALANCE_OPERATION);
+			Operation operation = OperationDB.getInstance(this).getOperation(Constants.SENDING_BALANCE_OPERATION);
+			History history = History.getInstance(0, operation, new Date().toString(), Integer.valueOf(balance), number);
+			db.insertHistory(history);
 			
 			Toast.makeText(this, "Convert Balance Done!", Toast.LENGTH_LONG).show();
 		}
