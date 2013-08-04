@@ -1,6 +1,6 @@
 package com.malaz.app;
 
-import com.malaz.database.DBAdapter;
+import com.malaz.database.HistoryDB;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 public class HistoryActivity extends Activity {
 
-	private DBAdapter database;
+	private HistoryDB database;
 	private SimpleCursorAdapter cursorAdapter;
 	
 	@Override
@@ -38,24 +38,23 @@ public class HistoryActivity extends Activity {
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
 		
-		this.database = new DBAdapter(this);
-		this.database.open();
+		this.database = HistoryDB.getInstance(this);
 		//this.database.addTestData();
 		
 		displayListView();
-		setTheTitle(actionBar, (int)this.database.getNumberOfRecords());
+		setTheTitle(actionBar, (int)this.database.getNumberOfHistories());
 	}
 
 	private void displayListView() {
-		Cursor cursor = this.database.getAllRecords();
+		Cursor cursor = this.database.getHistoriesCursor();
 		
 		if ( cursor == null ) 
 			return;
 		
 		String[] columns = new String[] {
-				DBAdapter.KEY_TYPE,
-				DBAdapter.KEY_DESCRIPTION_ENGLISH,
-				DBAdapter.KEY_TIME
+				HistoryDB.ID,
+				HistoryDB.OPERATION_ID,
+				HistoryDB.OPEARTION_TIME
 		};
 		
 		int[] to = new int[] {
@@ -73,7 +72,7 @@ public class HistoryActivity extends Activity {
 		   @Override
 		   public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
 			   Cursor cursor = (Cursor) listView.getItemAtPosition(position);
-			   String countryCode = cursor.getString(cursor.getColumnIndexOrThrow(DBAdapter.KEY_DESCRIPTION_ARABIC));
+			   String countryCode = cursor.getString(cursor.getColumnIndexOrThrow(HistoryDB.OPEARTION_AMOUNT));
 			   Toast.makeText(getApplicationContext(),countryCode, Toast.LENGTH_SHORT).show();		 
 		   }
 		});
@@ -98,10 +97,10 @@ public class HistoryActivity extends Activity {
 			return true;
 			
 		case R.id.remove:
-			this.database.clearDB();
+			this.database.clearHistories();	
 			this.cursorAdapter.notifyDataSetChanged();
 			Toast.makeText(this, "Clear All Logs", Toast.LENGTH_SHORT).show();
-			setTheTitle(getActionBar(), (int)this.database.getNumberOfRecords());
+			setTheTitle(getActionBar(), (int)this.database.getNumberOfHistories());
 			return true;
 		}
 		
