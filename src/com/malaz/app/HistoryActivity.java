@@ -1,11 +1,10 @@
 package com.malaz.app;
 
-import com.malaz.database.HistoryDB;
+import java.util.List;
 
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.res.Resources;
-import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;
@@ -17,10 +16,13 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.malaz.adapters.HistoryAdapter;
+import com.malaz.database.HistoryDB;
+import com.malaz.model.History;
+
 public class HistoryActivity extends Activity {
 
 	private HistoryDB database;
-	private SimpleCursorAdapter cursorAdapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,41 +41,23 @@ public class HistoryActivity extends Activity {
 		actionBar.setHomeButtonEnabled(true);
 		
 		this.database = HistoryDB.getInstance(this);
-		//this.database.addTestData();
-		
-		displayListView();
 		setTheTitle(actionBar, (int)this.database.getNumberOfHistories());
+		
+		displayListView();		
 	}
 
 	private void displayListView() {
-		Cursor cursor = this.database.getHistoriesCursor();
-		
-		if ( cursor == null ) 
-			return;
-		
-		String[] columns = new String[] {
-				HistoryDB.ID,
-				HistoryDB.OPERATION_ID,
-				HistoryDB.OPEARTION_TIME
-		};
-		
-		int[] to = new int[] {
-			R.id.type,
-			R.id.desc,
-			R.id.time
-		};
-		
-		this.cursorAdapter = new SimpleCursorAdapter(this, R.layout.history_list , cursor, columns, to, 0);
+		final List<History> histories = this.database.getAllHistories();
+		HistoryAdapter adapter = new HistoryAdapter(this, histories);	
 		
 		ListView listView = (ListView) findViewById(R.id.listView1);
-		listView.setAdapter(cursorAdapter);
+		listView.setAdapter(adapter);
 		
 		listView.setOnItemClickListener(new OnItemClickListener() {
 		   @Override
 		   public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
-			   Cursor cursor = (Cursor) listView.getItemAtPosition(position);
-			   String countryCode = cursor.getString(cursor.getColumnIndexOrThrow(HistoryDB.OPEARTION_AMOUNT));
-			   Toast.makeText(getApplicationContext(),countryCode, Toast.LENGTH_SHORT).show();		 
+			   History history = histories.get(position);
+			   Toast.makeText(getApplicationContext(), Integer.toString(history.getId()), Toast.LENGTH_SHORT).show();		 
 		   }
 		});
 	}
@@ -84,7 +68,6 @@ public class HistoryActivity extends Activity {
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_history, menu);
 		return true;
 	}
@@ -97,8 +80,7 @@ public class HistoryActivity extends Activity {
 			return true;
 			
 		case R.id.remove:
-			this.database.clearHistories();	
-			this.cursorAdapter.notifyDataSetChanged();
+			this.database.clearHistories();				
 			Toast.makeText(this, "Clear All Logs", Toast.LENGTH_SHORT).show();
 			setTheTitle(getActionBar(), (int)this.database.getNumberOfHistories());
 			return true;
