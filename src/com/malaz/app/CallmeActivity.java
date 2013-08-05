@@ -12,6 +12,7 @@ import com.malaz.services.ServiceFactory;
 import com.malaz.util.AlertUtil;
 import com.malaz.util.CallUtil;
 import com.malaz.util.Constants;
+import com.malaz.util.LangUtil;
 
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,8 @@ public class CallmeActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		LangUtil.setLocale(this);
+		
 		setContentView(R.layout.activity_callme);
 		this.initializingActionBar();
 		

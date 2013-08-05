@@ -1,11 +1,9 @@
 package com.malaz.util;
 
 import android.R;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 
 public class AlertUtil {
 	private static CharSequence[] items = {"MTN", "Sudani", "Zain", "Nothing"};
@@ -36,10 +34,7 @@ public class AlertUtil {
 						
 						@Override
 						public void onClick(DialogInterface dialog, int which) {						
-							SharedPreferences appPrefs = context.getSharedPreferences("sahen_sudani", Activity.MODE_PRIVATE);
-							SharedPreferences.Editor prefsEditor = appPrefs.edit();
-							prefsEditor.putString("companyName", String.valueOf(which));
-							prefsEditor.commit();								
+							Preferences.setValue(context, Constants.COMPANY_NAME, String.valueOf(which));
 															
 						}
 					})

@@ -1,12 +1,8 @@
 package com.malaz.app;
 
-import java.util.Locale;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
@@ -14,21 +10,23 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
-import android.util.DisplayMetrics;
+
+import com.malaz.util.Constants;
+import com.malaz.util.LangUtil;
 
 public class ApplicationPreferenceActivity extends PreferenceActivity implements
 		OnSharedPreferenceChangeListener {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		LangUtil.setLocale(this);
+		
 		// set file name
-		getPreferenceManager().setSharedPreferencesName("sahen_sudani");
+		getPreferenceManager().setSharedPreferencesName(Constants.FILE_NAME);
 
 		// load preference from XML file
 		addPreferencesFromResource(R.xml.settingsui);
-		PreferenceManager.setDefaultValues(ApplicationPreferenceActivity.this,
-				R.xml.settingsui, false);
+		PreferenceManager.setDefaultValues(ApplicationPreferenceActivity.this,R.xml.settingsui, false);
 
 		for (int i = 0; i < getPreferenceScreen().getPreferenceCount(); i++) {
 			initSummary(getPreferenceScreen().getPreference(i));
@@ -38,23 +36,22 @@ public class ApplicationPreferenceActivity extends PreferenceActivity implements
 	@Override
 	protected void onResume() {
 		super.onResume();
-		getPreferenceScreen().getSharedPreferences()
-				.registerOnSharedPreferenceChangeListener(this);
+		getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		getPreferenceScreen().getSharedPreferences()
-				.unregisterOnSharedPreferenceChangeListener(this);
+		getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
 	}
 
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 		updatePrefSummary(findPreference(key));
 		
-		if ( key.equals("applicationlanguage") ) {
-			SharedPreferences appPrefs = getSharedPreferences("sahen_sudani", MODE_PRIVATE);
-			setLocale(appPrefs.getString("applicationlanguage", ""));
+		if ( key.equals(Constants.APPLICATION_LANGUAGE) ) {
+			Intent intent = new Intent(this, MainActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
 		}
 	}
 
@@ -78,21 +75,5 @@ public class ApplicationPreferenceActivity extends PreferenceActivity implements
 			EditTextPreference editTextPref = (EditTextPreference) p;
 			p.setSummary(editTextPref.getText());
 		}
-	}
-
-	private void setLocale(String lang) {
-		Locale myLocale = new Locale(lang);
-		Resources res = getResources();
-		DisplayMetrics dm = res.getDisplayMetrics();
-		Configuration conf = res.getConfiguration();
-		conf.locale = myLocale;
-		res.updateConfiguration(conf, dm);
-		
-//		Intent refresh = new Intent(this, ApplicationPreferenceActivity.class);
-//		startActivity(refresh);
-		
-		Intent intent = new Intent(this, MainActivity.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		startActivity(intent);
 	}
 }

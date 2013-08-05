@@ -1,22 +1,16 @@
 package com.malaz.app;
 
-import java.util.Date;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.malaz.database.Database;
-import com.malaz.database.HistoryDB;
-import com.malaz.database.OperationDB;
-import com.malaz.model.History;
-import com.malaz.model.Operation;
 import com.malaz.services.SIMService;
 import com.malaz.services.ServiceFactory;
 import com.malaz.util.AlertUtil;
 import com.malaz.util.CallUtil;
-import com.malaz.util.Constants;
+import com.malaz.util.LangUtil;
 
 public class ConvertActivity extends BaseActivity {
 
@@ -26,6 +20,8 @@ public class ConvertActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		LangUtil.setLocale(this);
+		
 		setContentView(R.layout.activity_convert);
 		this.initializingActionBar();
 		

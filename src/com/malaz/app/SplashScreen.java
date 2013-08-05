@@ -1,5 +1,7 @@
 package com.malaz.app;
 
+import com.malaz.util.LangUtil;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +13,8 @@ public class SplashScreen extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LangUtil.setLocale(this);
+        
         setContentView(R.layout.activity_splashscreen);
  
         new Handler().postDelayed(new Runnable() {

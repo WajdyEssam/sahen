@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Date;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -23,23 +22,19 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.malaz.database.Database;
-import com.malaz.database.HistoryDB;
-import com.malaz.database.OperationDB;
-import com.malaz.model.History;
-import com.malaz.model.Operation;
-//import com.googlecode.tesseract.android.TessBaseAPI;
-//import com.malaz.image.ImageUtil;
 import com.malaz.services.SIMService;
 import com.malaz.services.ServiceFactory;
 import com.malaz.util.AlertUtil;
 import com.malaz.util.CallUtil;
-import com.malaz.util.Constants;
+//import com.googlecode.tesseract.android.TessBaseAPI;
+//import com.malaz.image.ImageUtil;
+import com.malaz.util.LangUtil;
 
 public class ChargeActivity extends BaseActivity {
 
 	private static final String DATA_PATH = Environment.getExternalStorageDirectory().toString() + "/SimpleAndroidOCR/";
 	private static final String lang = "eng";
-	private static final String TAG = "SimpleAndroidOCR.java";
+	private static final String TAG = "ChargeActivity";
 
 	private static final int CAMERA_CAPTURE = 1;
 	private static final int PIC_CROP = 2;
@@ -55,6 +50,8 @@ public class ChargeActivity extends BaseActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		LangUtil.setLocale(this);
+		
 		setContentView(R.layout.activity_charge);
 		this.initializingActionBar();
 		

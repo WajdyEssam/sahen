@@ -7,4 +7,16 @@
         <item name="2">ZAIN</item>
         <item name="3">Nothing</item>
     </string-array>
+    
+    <!-- Language Values -->
+       <string-array name="languages">
+        <item>System Default Language</item>
+        <item>العربية</item>
+        <item>English</item>
+    </string-array>
+    <string-array name="languagesValue">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
 </resources>

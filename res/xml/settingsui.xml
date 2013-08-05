@@ -7,7 +7,7 @@
             android:title="@string/languageSettingLbl" 
             android:summary="@string/languageSettingSummary"
             android:entries="@array/languages"            
-            android:defaultValue="ar"
+            android:defaultValue="2"
             android:entryValues="@array/languagesValue"/>
                        
          <ListPreference

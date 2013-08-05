@@ -7,7 +7,6 @@ import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +18,7 @@ import android.widget.Toast;
 import com.malaz.adapters.HistoryAdapter;
 import com.malaz.database.HistoryDB;
 import com.malaz.model.History;
+import com.malaz.util.LangUtil;
 
 public class HistoryActivity extends Activity {
 
@@ -27,6 +27,8 @@ public class HistoryActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		LangUtil.setLocale(this);
+		
 		setContentView(R.layout.activity_history);
 		
 		ActionBar actionBar = getActionBar();
