@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.malaz.app.R;
 import com.malaz.model.History;
+import com.malaz.util.LangUtil;
 
 import android.app.Activity;
 import android.content.Context;
@@ -62,9 +63,41 @@ public class HistoryAdapter extends BaseAdapter {
 		}
 		
 		History history = (History) getItem(position);
-		holder.operationView.setText(history.getOperation().getArabicDescription());
-		holder.descriptionView.setText(history.getDetials());
-		holder.timeView.setText(history.getTime());
+		
+		if ( LangUtil.getCurrentLanguage(this.context) == LangUtil.Languages.Arabic ) {
+			if ( history.getOperation().getId() == "1" ) {
+				holder.operationView.setText(history.getOperation().getArabicDescription() + " بملغ " + history.getAmount());
+				holder.descriptionView.setText("رقم البطاقة" + history.getDetials());
+				holder.timeView.setText("تاريخ العملية" +history.getTime());
+			}
+			else if ( history.getOperation().getId() == "2") {
+				holder.operationView.setText(history.getOperation().getArabicDescription() + " بملغ " + history.getAmount());
+				holder.descriptionView.setText("الى الرقم" + history.getDetials());
+				holder.timeView.setText("تاريخ العملية" +history.getTime());
+			}
+			else {
+				holder.operationView.setText(history.getOperation().getArabicDescription());
+				holder.descriptionView.setText("الى الرقم " + history.getDetials());
+				holder.timeView.setText("تاريخ العملية" +history.getTime());
+			}			
+		}
+		else {
+			if ( history.getOperation().getId() == "1" ) {
+				holder.operationView.setText(history.getOperation().getEnglishDescription() + " Amount " + history.getAmount());
+				holder.descriptionView.setText("Card Number" + history.getDetials());
+				holder.timeView.setText("Time" +history.getTime());
+			}
+			else if ( history.getOperation().getId() == "2") {
+				holder.operationView.setText(history.getOperation().getEnglishDescription() + " Amount " + history.getAmount());
+				holder.descriptionView.setText("To Number " + history.getDetials());
+				holder.timeView.setText("Time" +history.getTime());
+			}
+			else {
+				holder.operationView.setText(history.getOperation().getEnglishDescription());
+				holder.descriptionView.setText("To Number " + history.getDetials());
+				holder.timeView.setText("Time" +history.getTime());
+			}
+		}
 		
 		return convertView;
 	}
