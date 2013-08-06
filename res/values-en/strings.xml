@@ -44,4 +44,8 @@
     <string name="simTypeSummary">Please select the company</string>
     <string name="simNoSummary">Enter your SIM No. if you wish</string>
     
+    <!-- History Activity -->
+    <string name="application_logs">Application Logs</string>
+    <string name="clear_logs">Clear all logs done succesffully</string>
+    
 </resources>

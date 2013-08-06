@@ -45,4 +45,8 @@
     <string name="simNoLbl">رقم الشريحة</string>
     <string name="simNoSummary">ادخل رقم الشريحة اذا كنت تود ذلك</string>
     
+    <!-- History Activity -->
+    <string name="application_logs">أخر العمليات</string>
+    <string name="clear_logs">تم مسح اخر العمليات بنجاح</string>
+    
 </resources>

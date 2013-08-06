@@ -66,7 +66,7 @@ public class HistoryActivity extends Activity {
 	}
 	
 	private void setTheTitle(ActionBar bar, int count) {
-		bar.setTitle("Application Logs " + "(" + count + ")");
+		bar.setTitle(R.string.application_logs + "(" + count + ")");
 	}
 	
 	@Override
@@ -84,7 +84,7 @@ public class HistoryActivity extends Activity {
 			
 		case R.id.remove:
 			this.database.clearHistories();				
-			Toast.makeText(this, "Clear All Logs", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this,  R.string.clear_logs , Toast.LENGTH_SHORT).show();
 			refreshList();
 			setTheTitle(getActionBar(), (int)this.database.getNumberOfHistories());
 			return true;
