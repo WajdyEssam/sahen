@@ -60,7 +60,7 @@ public class HistoryActivity extends Activity {
 		   @Override
 		   public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
 			   History history = histories.get(position);
-			   Toast.makeText(getApplicationContext(), Integer.toString(history.getId()), Toast.LENGTH_SHORT).show();		 
+			   Toast.makeText(getApplicationContext(), "Amount: " + Integer.toString(history.getAmount()), Toast.LENGTH_SHORT).show();		 
 		   }
 		});
 	}

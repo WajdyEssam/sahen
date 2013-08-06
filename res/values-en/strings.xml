@@ -26,6 +26,8 @@
     <string name="chargeButtonLbl">Charge Now</string>
     <string name="numberEditTextLbl">Card Number Here</string>
     <string name="picture">Scanned Image</string>
+    <string name="title_charge_dialog">Charing Amount?</string>
+    <string name="body_charge_dialog">Please Specify the amount of charing so the application will record it for later statistics about how much you spend on charging per period</string>
     
     <!--  Callme Activity -->
     <string name="callmeNumberLbl">Number</string>

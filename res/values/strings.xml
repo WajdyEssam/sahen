@@ -26,6 +26,8 @@
     <string name="chargeButtonLbl">شحن الرصيد</string>
     <string name="numberEditTextLbl">الأرقام التي تم التعرف عليها سيتم كتابتها هنا</string>
     <string name="picture">الصورة الملتقطة</string>
+    <string name="title_charge_dialog">كم مقدار الشحن</string>
+    <string name="body_charge_dialog">من فضلك أدخل مقدار الشحن حتى يتم اخراج تقارير لك فيما بعد عن عمليات الشحن ومقدارها في كل فترة</string>
     
     <!--  Callme Activity -->
     <string name="callmeNumberLbl">أدخل الرقم</string>

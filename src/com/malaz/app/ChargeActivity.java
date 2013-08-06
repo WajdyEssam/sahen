@@ -6,7 +6,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
@@ -19,6 +22,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.Toast;
 
 import com.malaz.database.Database;
@@ -26,9 +30,9 @@ import com.malaz.services.SIMService;
 import com.malaz.services.ServiceFactory;
 import com.malaz.util.AlertUtil;
 import com.malaz.util.CallUtil;
+import com.malaz.util.LangUtil;
 //import com.googlecode.tesseract.android.TessBaseAPI;
 //import com.malaz.image.ImageUtil;
-import com.malaz.util.LangUtil;
 
 public class ChargeActivity extends BaseActivity {
 
@@ -65,7 +69,7 @@ public class ChargeActivity extends BaseActivity {
 	}
 	
 	public void chargeButtonClicked(View view) {
-		String number = numberEditText.getText().toString();	
+		final String number = numberEditText.getText().toString();	
 		
 		SIMService service = new ServiceFactory(this).getChargeService(number);
 		
@@ -77,15 +81,57 @@ public class ChargeActivity extends BaseActivity {
 		boolean state = CallUtil.charge(this, service);
 		
 		if ( state ) {
-			// ask first for amount
-			int amount = 0;
-			Database.saveChargingBalance(this, number, amount);
-			
-			Toast.makeText(this, "Charging Balance Done!", Toast.LENGTH_LONG).show();
+			askForCharingAmount(number, this);			
 		}
 		else {
 			Toast.makeText(this, "Error in Charging Balance", Toast.LENGTH_LONG).show();
 		}
+	}
+	
+	private void saveCharging(String number, int amount) {
+		Database.saveChargingBalance(this, number, amount);
+	}
+	
+	public void askForCharingAmount(final String number, final Context context) {
+		final NumberPicker np = new NumberPicker(ChargeActivity.this);
+		
+		String[] nums = new String[1001];
+        for(int i=0; i<nums.length; i++)
+        	nums[i] = Integer.toString(i);
+
+        np.setMinValue(1);
+        np.setMaxValue(nums.length-1);
+        np.setWrapSelectorWheel(false);
+        np.setDisplayedValues(nums);
+        np.setValue(5);
+        
+		AlertDialog.Builder alert = new AlertDialog.Builder(ChargeActivity.this);
+		
+		String title = this.getString(R.string.title_charge_dialog);
+		String body = this.getString(R.string.body_charge_dialog);
+
+		alert.setTitle(title);
+		alert.setMessage(body);
+
+		alert.setView(np);
+
+		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+				int amount = np.getValue();
+				saveCharging(number, amount);	
+				Toast.makeText(ChargeActivity.this, "Charging Balance Done!", Toast.LENGTH_LONG).show();
+			}
+		});
+
+		alert.setNegativeButton("Cancel",
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						Toast.makeText(ChargeActivity.this, "Charging Balance Done!", Toast.LENGTH_LONG).show();
+						dialog.dismiss();
+					}
+				});
+
+		alert.show();
 	}
 	
 	public class ButtonClickHandler implements View.OnClickListener {
