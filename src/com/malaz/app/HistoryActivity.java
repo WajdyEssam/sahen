@@ -23,6 +23,7 @@ import com.malaz.util.LangUtil;
 public class HistoryActivity extends Activity {
 
 	private HistoryDB database;
+	private List<History> histories;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class HistoryActivity extends Activity {
 	}
 
 	private void displayListView() {
-		final List<History> histories = this.database.getAllHistories();
+		histories = this.database.getAllHistories();
 		HistoryAdapter adapter = new HistoryAdapter(this, histories);	
 		
 		ListView listView = (ListView) findViewById(R.id.listView1);
@@ -84,10 +85,28 @@ public class HistoryActivity extends Activity {
 		case R.id.remove:
 			this.database.clearHistories();				
 			Toast.makeText(this, "Clear All Logs", Toast.LENGTH_SHORT).show();
+			refreshList();
 			setTheTitle(getActionBar(), (int)this.database.getNumberOfHistories());
 			return true;
 		}
 		
 		return super.onOptionsItemSelected(item);
+	}
+	
+	private void refreshList() {
+		ListView listView = (ListView) findViewById(R.id.listView1);
+		final HistoryAdapter adapter = (HistoryAdapter) listView.getAdapter();
+
+		if ( this.histories == null ) 
+			return;
+		
+		this.histories.clear();
+		
+		runOnUiThread(new Runnable() {
+	        @Override
+	        public void run() {
+	        	adapter.notifyDataSetChanged();
+	        }
+	    });
 	}
 }
