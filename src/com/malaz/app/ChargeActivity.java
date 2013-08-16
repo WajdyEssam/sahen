@@ -26,13 +26,14 @@ import android.widget.NumberPicker;
 import android.widget.Toast;
 
 import com.malaz.database.Database;
+import com.malaz.image.ImageUtil;
 import com.malaz.services.SIMService;
 import com.malaz.services.ServiceFactory;
 import com.malaz.util.AlertUtil;
 import com.malaz.util.CallUtil;
 import com.malaz.util.LangUtil;
-//import com.googlecode.tesseract.android.TessBaseAPI;
-//import com.malaz.image.ImageUtil;
+import com.googlecode.tesseract.android.TessBaseAPI;
+
 
 public class ChargeActivity extends BaseActivity {
 
@@ -45,7 +46,7 @@ public class ChargeActivity extends BaseActivity {
 	
 	protected Button ocrButton;
 	protected EditText numberEditText;
-	protected String _path;
+	//protected String _path;
 	protected boolean _taken;
 
 	private Uri picUri;
@@ -65,7 +66,7 @@ public class ChargeActivity extends BaseActivity {
 		ocrButton = (Button) findViewById(R.id.button);
 		
 		ocrButton.setOnClickListener(new ButtonClickHandler());
-		_path = DATA_PATH + "/ocr.jpg";
+		//_path = DATA_PATH + "/ocr.jpg";
 	}
 	
 	public void chargeButtonClicked(View view) {
@@ -181,6 +182,8 @@ public class ChargeActivity extends BaseActivity {
     			String recognizedText = "";
     			try {
     				
+    				recognizedText = runTessract(thePic);
+    				
     				if ( recognizedText.length() != 0 ) {
     					numberEditText.setText(numberEditText.getText().toString().length() == 0 ? recognizedText : numberEditText.getText() + " " + recognizedText);
     					numberEditText.setSelection(numberEditText.getText().toString().length());
@@ -196,6 +199,35 @@ public class ChargeActivity extends BaseActivity {
     	}
 	}
 
+	private String runTessract(Bitmap bitmap) throws IOException {
+		//bitmap = rotateImage(bitmap);
+		bitmap = ImageUtil.toGrayscale(bitmap);
+		bitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+		
+		TessBaseAPI baseApi = new TessBaseAPI();		
+		//baseApi.setDebug(true);
+		baseApi.init(DATA_PATH, lang);
+		baseApi.setPageSegMode(TessBaseAPI.PageSegMode.PSM_SINGLE_LINE );
+		baseApi.setImage(bitmap);
+		
+		String recognizedText = baseApi.getUTF8Text();
+		
+		baseApi.end();
+		bitmap.recycle();
+		Runtime.getRuntime().gc();		
+		
+		Log.v(TAG, "OCRED TEXT: " + recognizedText);
+
+		Toast.makeText(this, "TEXT OCRED: " + recognizedText, Toast.LENGTH_LONG).show();
+		
+		if ( lang.equalsIgnoreCase("eng") ) {
+			recognizedText = recognizedText.replaceAll("[^a-zA-Z0-9]+", "");
+		}
+		
+		recognizedText = recognizedText.trim();
+		return recognizedText;
+	}
+	
 	 /**
      * Helper method to carry out crop operation
      */
