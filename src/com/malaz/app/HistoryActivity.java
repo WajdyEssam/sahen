@@ -66,7 +66,7 @@ public class HistoryActivity extends Activity {
 	}
 	
 	private void setTheTitle(ActionBar bar, int count) {
-		bar.setTitle(String.valueOf(R.string.application_logs) + "(" + count + ")");
+		bar.setTitle(this.getResources().getString((R.string.application_logs)) + "(" + count + ")");
 	}
 	
 	@Override

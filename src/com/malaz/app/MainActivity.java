@@ -53,10 +53,13 @@ public class MainActivity extends BaseActivity {
 	}
 	
 	public void aboutButtonClicked(View view) {
-		Toast.makeText(this, "Malaz Mustafa, Android Developer (malazwajdy@hotmail.com)", Toast.LENGTH_LONG).show();
+		Intent intent = new Intent(this, ReportActivity.class);
+		startActivity(intent);
 		
-		DisplayText(Preferences.getValue(this, Constants.COMPANY_NAME, ""));
-		DisplayText(Preferences.getValue(this, Constants.SIM_NUMBER, ""));
+//		Toast.makeText(this, "Malaz Mustafa, Android Developer (malazwajdy@hotmail.com)", Toast.LENGTH_LONG).show();
+//		
+//		DisplayText(Preferences.getValue(this, Constants.COMPANY_NAME, ""));
+//		DisplayText(Preferences.getValue(this, Constants.SIM_NUMBER, ""));
 	}
 	
 	public void callMeButtonClicked(View view) {

@@ -7,6 +7,8 @@
     <!-- Main Activity -->
     <string name="app_name">الشاحن الذكي</string>
     <string name="menu_settings">خصائص البرنامج</string>
+    <string name="sim_name">نوع الشريحة</string>
+    <string name="title_activity_report">التقارير</string>
 
     <!-- Titles -->
     <string name="title_activity_charge">شحن الرصيد</string>

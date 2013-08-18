@@ -1,5 +1,8 @@
 package com.malaz.app;
 
+import com.malaz.util.Constants;
+import com.malaz.util.Preferences;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
@@ -34,7 +37,7 @@ public class BaseActivity extends Activity{
 		}
 		
 		return super.onOptionsItemSelected(item);
-	}
+	} 
 	
 	protected void initializingActionBar() {
 		ActionBar actionBar = getActionBar();
@@ -45,9 +48,10 @@ public class BaseActivity extends Activity{
 		actionBar.setBackgroundDrawable(drawable);
 		
 		actionBar.setDisplayUseLogoEnabled(false);
-		//actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
-		actionBar.setTitle("SIM Type");
+		actionBar.setTitle(this.getResources().getString(R.string.app_name));
+		actionBar.setSubtitle(this.getResources().getString(R.string.sim_name) + " : " + Preferences.getValue(this, Constants.COMPANY_NAME, ""));
+		
 	}
 
 }
