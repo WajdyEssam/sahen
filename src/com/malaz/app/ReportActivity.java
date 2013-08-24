@@ -21,7 +21,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ReportActivity extends BaseActivity {
+public class ReportActivity extends Activity {
 	
 	private LinearLayout lay;
 	HorizontalListView listview;
@@ -40,7 +40,7 @@ public class ReportActivity extends BaseActivity {
         LangUtil.setLocale(this);
         
         setContentView(R.layout.activity_report); 
-        this.initializingActionBar();
+        //this.initializingActionBar();
         
         addData();  
         initData();

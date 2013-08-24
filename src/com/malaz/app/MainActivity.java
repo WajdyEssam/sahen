@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.malaz.reports.ReportsMainActivity;
 import com.malaz.services.SIMService;
 import com.malaz.services.ServiceFactory;
 import com.malaz.util.AlertUtil;
@@ -53,7 +54,7 @@ public class MainActivity extends BaseActivity {
 	}
 	
 	public void aboutButtonClicked(View view) {
-		Intent intent = new Intent(this, ReportActivity.class);
+		Intent intent = new Intent(this, ReportsMainActivity.class);
 		startActivity(intent);
 		
 //		Toast.makeText(this, "Malaz Mustafa, Android Developer (malazwajdy@hotmail.com)", Toast.LENGTH_LONG).show();
