@@ -3,7 +3,7 @@
 
     <!-- Splash Screen Activity -->
     <string name="splashLabel">وجدي عصام عبدالرحيم</string>
-    
+
     <!-- Main Activity -->
     <string name="app_name">الشاحن الذكي</string>
     <string name="menu_settings">خصائص البرنامج</string>
@@ -16,7 +16,7 @@
     <string name="title_activity_current">الرصيد الحالي</string>
     <string name="title_activity_callme">خدمة كلمني</string>
     <string name="title_activity_history">أخر العمليات</string>
-    
+
     <!-- Convert Activity -->
     <string name="convertBalanceLbl">حول لى</string>
     <string name="otherNumberLbl">أدخل الرقم</string>
@@ -30,25 +30,25 @@
     <string name="picture">الصورة الملتقطة</string>
     <string name="title_charge_dialog">كم مقدار الشحن</string>
     <string name="body_charge_dialog">من فضلك أدخل مقدار الشحن حتى يتم اخراج تقارير لك فيما بعد عن عمليات الشحن ومقدارها في كل فترة</string>
-    
-    <!--  Callme Activity -->
+
+    <!-- Callme Activity -->
     <string name="callmeNumberLbl">أدخل الرقم</string>
     <string name="sendCallmeLbl">ارسل كول مي</string>
-    
+
     <!-- Preference Activity -->
     <string name="settings">اعدادات البرنامج</string>
-    
     <string name="languageSettingLbl">اللغه</string>
     <string name="languageSettingSummary">لغه البرنامج</string>
-    
     <string name="simTypeLbl">اختر الشركة</string>
     <string name="simTypeSummary">من فضلك اختر  الشركة</string>
-    
     <string name="simNoLbl">رقم الشريحة</string>
     <string name="simNoSummary">ادخل رقم الشريحة اذا كنت تود ذلك</string>
-    
+
     <!-- History Activity -->
     <string name="application_logs">أخر العمليات</string>
     <string name="clear_logs">تم مسح اخر العمليات بنجاح</string>
-    
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_monthly_report">MonthlyReportActivity</string>
+    <string name="title_activity_yearly_report">YearlyReportActivity</string>
+
 </resources>

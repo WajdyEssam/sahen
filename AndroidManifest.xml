@@ -22,23 +22,20 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:theme="@style/AppTheme" >
-        
         <activity
             android:name="com.malaz.app.SplashScreen"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <activity
             android:name="com.malaz.app.MainActivity"
             android:label="@string/app_name" >
         </activity>
-        
         <activity
             android:name="com.malaz.app.ChargeActivity"
             android:label="@string/title_activity_charge" >
@@ -51,30 +48,35 @@
             android:name="com.malaz.app.CallmeActivity"
             android:label="@string/title_activity_callme" >
         </activity>
-        
         <activity
             android:name="com.malaz.app.HistoryActivity"
             android:label="@string/title_activity_history" >
         </activity>
-        
-         <activity
+        <activity
             android:name="com.malaz.app.ReportActivity"
             android:label="@string/title_activity_report" >
         </activity>
-        
         <activity
             android:name="com.malaz.reports.ReportsMainActivity"
             android:label="@string/title_activity_report" >
         </activity>
-        
-        <activity 
-            android:name=".ApplicationPreferenceActivity"
-            android:label="@string/app_name">
+        <activity
+            android:name="com.malaz.app.ApplicationPreferenceActivity"
+            android:label="@string/app_name" >
             <intent-filter>
-                <action android:name="com.malaz.app.ApplicationPreferenceActivity"></action>
-                <category android:name="android.intent.category.DEFAULT"/>                    
+                <action android:name="com.malaz.app.ApplicationPreferenceActivity" >
+                </action>
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            
+        </activity>
+        <activity
+            android:name="com.malaz.app.MonthlyReportActivity"
+            android:label="@string/title_activity_monthly_report" >
+        </activity>
+        <activity
+            android:name="com.malaz.app.YearlyReportActivity"
+            android:label="@string/title_activity_yearly_report" >
         </activity>
     </application>
 

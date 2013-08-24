@@ -1,8 +1,10 @@
 package com.malaz.reports;
 
 import com.malaz.app.BaseActivity;
+import com.malaz.app.MonthlyReportActivity;
 import com.malaz.app.R;
 import com.malaz.app.ReportActivity;
+import com.malaz.app.YearlyReportActivity;
 
 import android.app.TabActivity;
 import android.content.Intent;
@@ -28,13 +30,13 @@ public class ReportsMainActivity extends TabActivity {
 				.newTabSpec("tab2")
 				.setIndicator("Monthly",
 						getResources().getDrawable(R.drawable.invoice))
-				.setContent(new Intent(this, ReportActivity.class)));
+				.setContent(new Intent(this, MonthlyReportActivity.class)));
 
 		tabHost.addTab(tabHost
 				.newTabSpec("tab2")
 				.setIndicator("Yearly",
 						getResources().getDrawable(R.drawable.products))
-				.setContent(new Intent(this, ReportActivity.class)));
+				.setContent(new Intent(this, YearlyReportActivity.class)));
 		tabHost.setCurrentTab(0);
 	}
 }

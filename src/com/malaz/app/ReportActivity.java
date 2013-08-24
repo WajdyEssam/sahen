@@ -37,10 +37,10 @@ public class ReportActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LangUtil.setLocale(this);
         
-        setContentView(R.layout.activity_report); 
-        //this.initializingActionBar();
+        LangUtil.setLocale(this);		
+        setContentView(R.layout.activity_report);
+		//this.initializingActionBar();
         
         addData();  
         initData();
