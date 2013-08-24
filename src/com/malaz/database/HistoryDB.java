@@ -109,6 +109,24 @@ public class HistoryDB {
 		return History.getInstance(id, operation, time, Integer.parseInt(amount), detials);
 	}
 	
+	// data format is YYYY-MM-dd HH:MM:ss for example '2013-08-24 23:59:59'	
+	public List<History> getHistoriesBetween(String fromDate, String toDate) {
+		List<History> histories = new ArrayList<History>();
+		
+		String where = String.format("%s BETWEEN '%s' AND '%s'", OPEARTION_TIME, fromDate, toDate);
+		Cursor cursor =  this.open().query(DATABASE_TABLE, COLUMNS_NAMES,  where, null, null, null, null);
+		
+		if ( cursor.moveToFirst()) {
+			do {
+				histories.add(getObject(cursor));
+            } while (cursor.moveToNext());
+		}
+		
+		cursor.close();
+		
+		return histories;
+	}
+	
 	public History getHistory(long rowId) throws SQLException {
 		String where = String.format("%s = %s", ID, rowId);
 		Cursor cursor = this.open().query(true, DATABASE_TABLE, COLUMNS_NAMES, where, null, null, null, null, null);

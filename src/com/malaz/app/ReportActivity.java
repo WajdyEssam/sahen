@@ -6,7 +6,11 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import com.malaz.database.HistoryDB;
+import com.malaz.model.History;
+import com.malaz.util.DateUtil;
 import com.malaz.util.LangUtil;
+import com.malaz.util.DateUtil.WeekRangeGenerator;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -25,13 +29,20 @@ public class ReportActivity extends Activity {
 	
 	private LinearLayout lay;
 	HorizontalListView listview;
+	
 	private double highest;
+	
 	private int[] grossheight; 
 	private int[] netheight;
-	private Double[] grossSal= {15000.0,15000.0,15000.25,15000.1,15000.0,15000.0,15000.0,15000.0,15000.25,15000.1,15000.0,15000.0};
-	private Double[] netSal = {12000.0,13000.0,14000.25,10000.1,10000.0,9000.0,12000.0,13000.0,14000.25,10000.1,10000.0,9000.0};
-	private String[] datelabel = {"Jan 12","Feb 12","Mar 12","Apr 12","May 12","Jun 12","Jul 12","Aug 12","Sep 12","Oct 12","Nov 12","Dec 12"};
 	
+//	private Double[] chargeAmounts = {80000.0,15000.0,15000.25,15000.1,15000.0,15000.0,15000.0,15000.0,15000.25,19000.1,15000.0,25000.0};
+//	private Double[] transfereAmounts = {12000.0,13000.0,14000.25,10000.1,10000.0,9000.0,12000.0,13000.0,14000.25,10000.1,10000.0,9000.0};	
+//	private String[] datelabel = {"Jan 12","Feb 12","Mar 12","Apr 12","May 12","Jun 12","Jul 12","Aug 12","Sep 12","Oct 12","Nov 12","Dec 12"};
+	
+	
+	private String[] datelabel = {"Sun","Mon","Tue", "Wed","Thu","Fri","Sat"};
+	private Double[] chargeAmounts = new Double[datelabel.length];
+	private Double[] transfereAmounts  = new Double[datelabel.length];
 	
     /** Called when the activity is first created. */
     @Override
@@ -42,8 +53,19 @@ public class ReportActivity extends Activity {
         setContentView(R.layout.activity_report);
 		//this.initializingActionBar();
         
+        fillChartLables();
         addData();  
         initData();
+    }
+    
+    private void fillChartLables() {
+    	HistoryDB db = HistoryDB.getInstance(this);
+    	WeekRangeGenerator weekRange = DateUtil.WeekRangeGenerator.generate();
+    	
+    	String fromDate = weekRange.getFirstDate();
+    	String lastDate = weekRange.getLastDate();
+    	
+    	List<History> histories = db.getHistoriesBetween(fromDate, lastDate);
     }
             
     private void addData() {
@@ -70,8 +92,7 @@ public class ReportActivity extends Activity {
     	view1.setText(cell1);
 
     	TextView view2 = (TextView) getLayoutInflater().inflate(R.layout.partial_text_view, null);
-    	view2.setText(cell2);   
-    	//view2.setLayoutParams(new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 1f));
+    	view2.setText(cell2);    	
     	
     	TextView view3 = (TextView) getLayoutInflater().inflate(R.layout.partial_text_view, null);
     	view3.setText(cell3);
@@ -90,11 +111,11 @@ public class ReportActivity extends Activity {
     	lay = (LinearLayout)findViewById(R.id.linearlay);
 		listview = (HorizontalListView) findViewById(R.id.listview);
         
-		List<Double> b = Arrays.asList(grossSal);
+		List<Double> b = Arrays.asList(chargeAmounts);
         highest = (Collections.max(b));
 
-        netheight = new int[netSal.length];
-        grossheight= new int[grossSal.length];
+        netheight = new int[transfereAmounts.length];
+        grossheight= new int[chargeAmounts.length];
     }
     
     public class bsAdapter extends BaseAdapter
@@ -145,20 +166,20 @@ public class ReportActivity extends Activity {
             tvcol2.setHeight(netheight[position]);
             title.setText(datelabel[position]);
             
-            gt.setText(df.format(grossSal[position]/1000)+" k");
-            nt.setText(df.format(netSal[position]/1000)+" k");
+            gt.setText(df.format(chargeAmounts[position]/1000)+" k");
+            nt.setText(df.format(transfereAmounts[position]/1000)+" k");
             
             tvcol1.setOnClickListener(new OnClickListener() {
 				
 				public void onClick(View v) {
-					Toast.makeText(ReportActivity.this, "Month/Year: "+title.getText().toString()+"\nGross Sal: "+grossSal[position], Toast.LENGTH_SHORT).show();
+					Toast.makeText(ReportActivity.this, "Month/Year: "+title.getText().toString()+"\nGross Sal: "+chargeAmounts[position], Toast.LENGTH_SHORT).show();
 				}
 			});
             
             tvcol2.setOnClickListener(new OnClickListener() {
 				
 				public void onClick(View v) {
-					Toast.makeText(ReportActivity.this, "Month/Year: "+title.getText().toString()+"\nNet Sal: "+netSal[position], Toast.LENGTH_SHORT).show();
+					Toast.makeText(ReportActivity.this, "Month/Year: "+title.getText().toString()+"\nNet Sal: "+transfereAmounts[position], Toast.LENGTH_SHORT).show();
 				}
 			});
             
@@ -196,10 +217,10 @@ public class ReportActivity extends Activity {
 				h = 130;
 			}
 		}
-		for(int i=0;i<netSal.length;i++) 
+		for(int i=0;i<transfereAmounts.length;i++) 
     	{
-			netheight[i] = (int)((h*netSal[i])/highest);
-    		grossheight[i] = (int)((h*grossSal[i])/highest);
+			netheight[i] = (int)((h*transfereAmounts[i])/highest);
+    		grossheight[i] = (int)((h*chargeAmounts[i])/highest);
     		System.out.println("net width[i] "+netheight[i]+"gross width[i] "+grossheight[i]);
     	}
     	listview.setAdapter(new bsAdapter(this,datelabel));

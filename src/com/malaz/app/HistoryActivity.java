@@ -51,6 +51,7 @@ public class HistoryActivity extends Activity {
 
 	private void displayListView() {
 		histories = this.database.getAllHistories();
+
 		HistoryAdapter adapter = new HistoryAdapter(this, histories);	
 		
 		ListView listView = (ListView) findViewById(R.id.listView1);
