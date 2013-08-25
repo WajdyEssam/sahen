@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import com.malaz.database.HistoryDB;
 import com.malaz.model.History;
@@ -39,7 +40,6 @@ public class ReportActivity extends Activity {
 //	private Double[] transfereAmounts = {12000.0,13000.0,14000.25,10000.1,10000.0,9000.0,12000.0,13000.0,14000.25,10000.1,10000.0,9000.0};	
 //	private String[] datelabel = {"Jan 12","Feb 12","Mar 12","Apr 12","May 12","Jun 12","Jul 12","Aug 12","Sep 12","Oct 12","Nov 12","Dec 12"};
 	
-	
 	private String[] datelabel = {"Sun","Mon","Tue", "Wed","Thu","Fri","Sat"};
 	private Double[] chargeAmounts = new Double[datelabel.length];
 	private Double[] transfereAmounts  = new Double[datelabel.length];
@@ -52,9 +52,14 @@ public class ReportActivity extends Activity {
         LangUtil.setLocale(this);		
         setContentView(R.layout.activity_report);
 		//this.initializingActionBar();
+  
+        Random random = new Random();
+        for(int i=0; i<datelabel.length; i++) {
+        	chargeAmounts[i] = (double) random.nextInt(5000);
+        	transfereAmounts[i] = (double) random.nextInt(6000);
+        }
         
         fillChartLables();
-        addData();  
         initData();
     }
     
@@ -66,23 +71,25 @@ public class ReportActivity extends Activity {
     	String lastDate = weekRange.getLastDate();
     	
     	List<History> histories = db.getHistoriesBetween(fromDate, lastDate);
-    }
-            
-    private void addData() {
-    	addRow("Wajdy Essam", "عملية سحب", new Date().toGMTString());
-    	addRow("Ahmed Essam", "Charge", "2013/8/24");
-    	addRow("Wajdy Essam", "عملية سحب", new Date().toGMTString());
-    	addRow("Ahmed Essam", "Charge", "2013/8/24");
-    	addRow("Wajdy Essam", "عملية سحب", new Date().toGMTString());
-    	addRow("Ahmed Essam", "Charge", "2013/8/24");
-    	addRow("Wajdy Essam", "عملية سحب", new Date().toGMTString());
-    	addRow("Ahmed Essam", "Charge", "2013/8/24");
-    	addRow("Wajdy Essam", "عملية سحب", new Date().toGMTString());
-    	addRow("Ahmed Essam", "Charge", "2013/8/24");
-    	addRow("Wajdy Essam", "عملية سحب", new Date().toGMTString());
-    	addRow("Ahmed Essam", "Charge", "2013/8/24");
+    	for(History history: histories) {
+    		addRow(String.valueOf(history.getAmount()), history.getOperation().getEnglishDescription(), 
+    			history.getTime());
+    	}
+    	
+    	for(int i=0; i<datelabel.length; i++) {
+        	chargeAmounts[i] = getChargeForDay(i, histories);
+        	transfereAmounts[i] = getTransfereForDay(i, histories);
+        }    	
     }
     
+    private double getChargeForDay(int dayIndex, List<History> histories) {
+    	return 0;
+    }
+    
+    private double getTransfereForDay(int dayIndex, List<History> histories) {
+    	return 0;
+    }
+
     private void addRow(String cell1, String cell2, String cell3) {
     	TableLayout table = (TableLayout) findViewById(R.id.table);
     	

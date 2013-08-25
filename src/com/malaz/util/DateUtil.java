@@ -9,7 +9,7 @@ import java.util.List;
 
 public class DateUtil {
 	private final static int START_OF_WEEK = Calendar.SUNDAY;
-	private final static SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-dd HH:MM:ss");
+	private final static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	public static class WeekRangeGenerator {
 		private String firstDate;
