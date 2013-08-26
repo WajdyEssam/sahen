@@ -35,16 +35,12 @@ import android.widget.Toast;
 public class WeeklyReportActivity extends Activity {
 	
 	private LinearLayout lay;
-	HorizontalListView listview;
+	private HorizontalListView listview;
 	
 	private double highest;
 	
 	private int[] chargingHight; 
 	private int[] transfereHight;
-	
-//	private Double[] chargeAmounts = {80000.0,15000.0,15000.25,15000.1,15000.0,15000.0,15000.0,15000.0,15000.25,19000.1,15000.0,25000.0};
-//	private Double[] transfereAmounts = {12000.0,13000.0,14000.25,10000.1,10000.0,9000.0,12000.0,13000.0,14000.25,10000.1,10000.0,9000.0};	
-//	private String[] datelabel = {"Jan 12","Feb 12","Mar 12","Apr 12","May 12","Jun 12","Jul 12","Aug 12","Sep 12","Oct 12","Nov 12","Dec 12"};
 	
 	private String[] datelabel = {"Sun","Mon","Tue", "Wed","Thu","Fri","Sat"};
 	
@@ -152,8 +148,7 @@ public class WeeklyReportActivity extends Activity {
     	row.addView(view3);
     	
     	table.addView(row, new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));    	
-    }
-    
+    }    
     
     private void initData() {
     	lay = (LinearLayout)findViewById(R.id.weeklylinearlayout);
@@ -169,11 +164,11 @@ public class WeeklyReportActivity extends Activity {
         chargingHight= new int[chargeAmounts.length];
     }
     
-    public class bsAdapter extends BaseAdapter {
+    private class WeeklyBaseAdapter extends BaseAdapter {
         Activity context;
         String[] array;
         
-        public bsAdapter(Activity context,String[] arr) {
+        public WeeklyBaseAdapter(Activity context,String[] arr) {
             this.context=context;
             this.array = arr;
         }
@@ -259,6 +254,6 @@ public class WeeklyReportActivity extends Activity {
     		System.out.println("Transfere Value [i] "+ transfereHight[i] +  "Charging Value[i] " + chargingHight[i]);
     	}		
 		
-    	listview.setAdapter(new bsAdapter(this,datelabel));
+    	listview.setAdapter(new WeeklyBaseAdapter(this,datelabel));
 	}
 }

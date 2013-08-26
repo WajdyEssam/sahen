@@ -8,31 +8,27 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import com.malaz.app.R;
-import com.malaz.app.R.id;
-import com.malaz.app.R.layout;
-import com.malaz.app.R.menu;
-import com.malaz.database.HistoryDB;
-import com.malaz.model.History;
-import com.malaz.reports.WeeklyReportActivity.bsAdapter;
-import com.malaz.util.Constants;
-import com.malaz.util.DateUtil;
-import com.malaz.util.LangUtil;
-import com.malaz.util.DateUtil.WeekRangeGenerator;
-
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.malaz.app.R;
+import com.malaz.database.HistoryDB;
+import com.malaz.model.History;
+import com.malaz.util.Constants;
+import com.malaz.util.DateUtil;
+import com.malaz.util.DateUtil.WeekRangeGenerator;
+import com.malaz.util.LangUtil;
 
 public class YearlyReportActivity extends Activity {
 
@@ -178,11 +174,11 @@ public class YearlyReportActivity extends Activity {
         chargingHight= new int[chargeAmounts.length];
     }
     
-    public class bsAdapter extends BaseAdapter {
+    private class YearlyBaseAdapter extends BaseAdapter {
         Activity context;
         String[] array;
         
-        public bsAdapter(Activity context,String[] arr) {
+        public YearlyBaseAdapter(Activity context,String[] arr) {
             this.context=context;
             this.array = arr;
         }
@@ -268,6 +264,6 @@ public class YearlyReportActivity extends Activity {
     		System.out.println("Transfere Value [i] "+ transfereHight[i] +  "Charging Value[i] " + chargingHight[i]);
     	}		
 		
-    	listview.setAdapter(new bsAdapter(this,datelabel));
+    	listview.setAdapter(new YearlyBaseAdapter(this,datelabel));
 	}
 }

@@ -34,6 +34,7 @@ public class ReportsMainActivity extends TabActivity {
 				.setIndicator("Yearly",
 						getResources().getDrawable(R.drawable.products))
 				.setContent(new Intent(this, YearlyReportActivity.class)));
+		
 		tabHost.setCurrentTab(0);
 	}
 }
