@@ -58,10 +58,10 @@
             <intent-filter>
                 <action android:name="com.malaz.app.ApplicationPreferenceActivity" >
                 </action>
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
         <activity
             android:name="com.malaz.reports.WeeklyReportActivity"
             android:label="@string/title_activity_report" >
@@ -70,7 +70,6 @@
             android:name="com.malaz.reports.ReportsMainActivity"
             android:label="@string/title_activity_report" >
         </activity>
-        
         <activity
             android:name="com.malaz.reports.MonthlyReportActivity"
             android:label="@string/title_activity_monthly_report" >
@@ -78,6 +77,10 @@
         <activity
             android:name="com.malaz.reports.YearlyReportActivity"
             android:label="@string/title_activity_yearly_report" >
+        </activity>
+        <activity
+            android:name="com.malaz.app.SpeachRecognitionActivity"
+            android:label="@string/title_activity_speach_recognition" >
         </activity>
     </application>
 

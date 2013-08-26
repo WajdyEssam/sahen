@@ -47,8 +47,12 @@
     <!-- History Activity -->
     <string name="application_logs">أخر العمليات</string>
     <string name="clear_logs">تم مسح اخر العمليات بنجاح</string>
+    
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_monthly_report">MonthlyReportActivity</string>
     <string name="title_activity_yearly_report">YearlyReportActivity</string>
+    <string name="title_activity_speach_recognition">SpeachRecognitionActivity</string>
 
+    <!-- Speach Recognition Activity -->
+    <string name="voice_ask">من فضلك أدخل رقم البطاقة</string>
 </resources>

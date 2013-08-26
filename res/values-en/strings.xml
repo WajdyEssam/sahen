@@ -50,4 +50,7 @@
     <string name="application_logs">Application Logs</string>
     <string name="clear_logs">Clear all logs done succesffully</string>
     
+    <!-- Speach Recognition Activity -->
+    <string name="voice_ask">Enter the Card Number</string>
+    
 </resources>
