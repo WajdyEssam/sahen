@@ -1,5 +1,7 @@
 package com.malaz.util;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -32,6 +34,21 @@ public class DateUtil {
 		public String getLastDate() {
 			return this.lastDate;
 		}
+	}
+	
+	public static Date formatStringDate(String stringDate) throws ParseException {
+        Date formattedDate = format.parse(stringDate);        
+        return formattedDate;
+	}
+	
+	public static String formatDate(Date date) {
+		return format.format(date);
+	}
+	
+	public static int getDayIndex(Date date) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);		
+		return calendar.get(Calendar.DAY_OF_WEEK);
 	}
 	
 	private static Date[] genearteSevenDays(Date currentDate) {
