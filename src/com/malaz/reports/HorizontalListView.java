@@ -25,7 +25,7 @@
  *
  */
 
-package com.malaz.app;
+package com.malaz.reports;
 
 import java.util.LinkedList;
 import java.util.Queue;

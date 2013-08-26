@@ -6,7 +6,7 @@
     android:orientation="vertical" >
 
      <LinearLayout
-        android:id="@+id/linearlay"
+        android:id="@+id/weeklylinearlayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#fff"
@@ -20,7 +20,7 @@
             android:padding="15dp" >
 
             <TextView
-                android:id="@+id/a1"
+                android:id="@+id/weekly_a1"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
                 android:layout_centerVertical="true"
@@ -32,47 +32,47 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/a2"
+                android:id="@+id/weekly_a2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/a1"
+                android:layout_toRightOf="@+id/weekly_a1"
                 android:gravity="center_horizontal"
-                android:text="Gross sal"
+                android:text="Charging"
                 android:textColor="#000"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/a3"
+                android:id="@+id/weekly_a3"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/a2"
+                android:layout_toRightOf="@+id/weekly_a2"
                 android:background="#FF9A39"
                 android:gravity="center_horizontal"
                 android:text=""
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/a4"
+                android:id="@+id/weekly_a4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/a3"
+                android:layout_toRightOf="@+id/weekly_a3"
                 android:gravity="center_horizontal"
-                android:text="Net sal"
+                android:text="Transfere"
                 android:textColor="#000"
                 android:textSize="16sp" />
         </RelativeLayout>
 
-        <com.malaz.app.HorizontalListView
-            android:id="@+id/listview"
+        <com.malaz.reports.HorizontalListView
+            android:id="@+id/weekly_listview"
             android:layout_width="wrap_content"
             android:layout_height="180dp"
             android:background="#ddd" />
@@ -120,12 +120,10 @@
         android:layout_height="150dp" >
 
         <TableLayout
-            android:id="@+id/table"
+            android:id="@+id/weekly_table"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
         </TableLayout>
     </ScrollView>
     
-
-
 </LinearLayout>

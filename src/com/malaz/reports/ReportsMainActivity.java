@@ -1,10 +1,7 @@
 package com.malaz.reports;
 
 import com.malaz.app.BaseActivity;
-import com.malaz.app.MonthlyReportActivity;
 import com.malaz.app.R;
-import com.malaz.app.ReportActivity;
-import com.malaz.app.YearlyReportActivity;
 
 import android.app.TabActivity;
 import android.content.Intent;
@@ -16,7 +13,7 @@ public class ReportsMainActivity extends TabActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
+		setContentView(R.layout.activity_tab_reports);
 		
 		TabHost tabHost = getTabHost();
 
@@ -24,7 +21,7 @@ public class ReportsMainActivity extends TabActivity {
 				.newTabSpec("tab1")
 				.setIndicator("Weekly",
 						getResources().getDrawable(R.drawable.home))
-				.setContent(new Intent(this, ReportActivity.class)));
+				.setContent(new Intent(this, WeeklyReportActivity.class)));
 
 		tabHost.addTab(tabHost
 				.newTabSpec("tab2")

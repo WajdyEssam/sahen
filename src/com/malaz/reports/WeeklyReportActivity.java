@@ -1,4 +1,4 @@
-package com.malaz.app;
+package com.malaz.reports;
 
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -9,6 +9,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import com.malaz.app.R;
+import com.malaz.app.R.id;
+import com.malaz.app.R.layout;
 import com.malaz.database.HistoryDB;
 import com.malaz.model.History;
 import com.malaz.util.Constants;
@@ -29,7 +32,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ReportActivity extends Activity {
+public class WeeklyReportActivity extends Activity {
 	
 	private LinearLayout lay;
 	HorizontalListView listview;
@@ -54,7 +57,7 @@ public class ReportActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         LangUtil.setLocale(this);		
-        setContentView(R.layout.activity_report);
+        setContentView(R.layout.activity_weekly_report);
 		//this.initializingActionBar();
    
         fillChartLables();
@@ -134,7 +137,7 @@ public class ReportActivity extends Activity {
     }
 
     private void addRow(String cell1, String cell2, String cell3) {
-    	TableLayout table = (TableLayout) findViewById(R.id.table);
+    	TableLayout table = (TableLayout) findViewById(R.id.weekly_table);
     	TableRow row = (TableRow) getLayoutInflater().inflate(R.layout.partial_table_row, null);
 
     	TextView view1 = (TextView) getLayoutInflater().inflate(R.layout.partial_text_view, null);
@@ -155,8 +158,8 @@ public class ReportActivity extends Activity {
     
     
     private void initData() {
-    	lay = (LinearLayout)findViewById(R.id.linearlay);
-		listview = (HorizontalListView) findViewById(R.id.listview);
+    	lay = (LinearLayout)findViewById(R.id.weeklylinearlayout);
+		listview = (HorizontalListView) findViewById(R.id.weekly_listview);
         
 		// get the highest value
 		List<Double> elements = new ArrayList<Double>();
@@ -192,15 +195,15 @@ public class ReportActivity extends Activity {
         public View getView(final int position, View convertView, ViewGroup parent) {
             View row=null;
             LayoutInflater inflater=context.getLayoutInflater();
-            row=inflater.inflate(R.layout.simplerow, null);
+            row=inflater.inflate(R.layout.weekly_simplerow, null);
             
             DecimalFormat df = new DecimalFormat("#.#");
-            final TextView title	=	(TextView)row.findViewById(R.id.title);
-            TextView tvcol1	=	(TextView)row.findViewById(R.id.colortext01);
-            TextView tvcol2	=	(TextView)row.findViewById(R.id.colortext02);
+            final TextView title	=	(TextView)row.findViewById(R.id.weekly_title);
+            TextView tvcol1	=	(TextView)row.findViewById(R.id.weekly_colortext01);
+            TextView tvcol2	=	(TextView)row.findViewById(R.id.weekly_colortext02);
             
-            TextView gt		=	(TextView)row.findViewById(R.id.text01);
-            TextView nt		=	(TextView)row.findViewById(R.id.text02);
+            TextView gt		=	(TextView)row.findViewById(R.id.weekly_text01);
+            TextView nt		=	(TextView)row.findViewById(R.id.weekly_text02);
             
             tvcol1.setHeight(chargingHight[position]);
             tvcol2.setHeight(transfereHight[position]);
@@ -211,13 +214,13 @@ public class ReportActivity extends Activity {
             
             tvcol1.setOnClickListener(new OnClickListener() {				
 				public void onClick(View v) {
-					Toast.makeText(ReportActivity.this, "Day: "+ title.getText().toString()+"\nCharing: "+chargeAmounts[position], Toast.LENGTH_SHORT).show();
+					Toast.makeText(WeeklyReportActivity.this, "Day: "+ title.getText().toString()+"\nCharing: "+chargeAmounts[position], Toast.LENGTH_SHORT).show();
 				}
 			});
             
             tvcol2.setOnClickListener(new OnClickListener() {				
 				public void onClick(View v) {
-					Toast.makeText(ReportActivity.this, "Day: "+ title.getText().toString()+"\nTransfere: "+transfereAmounts[position], Toast.LENGTH_SHORT).show();
+					Toast.makeText(WeeklyReportActivity.this, "Day: "+ title.getText().toString()+"\nTransfere: "+transfereAmounts[position], Toast.LENGTH_SHORT).show();
 				}
 			});
             
