@@ -97,8 +97,7 @@ public class WeeklyReportActivity extends Activity {
 				boolean happenOnSameDay = dayIndex == historyDay-1;
 				
 				if ( chargingOperation &&  happenOnSameDay) {
-					charging = history.getAmount();
-					break;
+					charging += history.getAmount();					
 				}
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
@@ -123,8 +122,7 @@ public class WeeklyReportActivity extends Activity {
 				boolean happenOnSameDay = dayIndex == historyDay-1;
 				
 				if ( transfereOperation &&  happenOnSameDay) {
-					transfere = history.getAmount();
-					break;
+					transfere += history.getAmount();					
 				}
 				
 			} catch (ParseException e) {
