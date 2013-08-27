@@ -52,12 +52,14 @@ public class WeeklyReportActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
+        System.out.println("CREATING WeeklyReportActivity");
         LangUtil.setLocale(this);		
         setContentView(R.layout.activity_weekly_report);
 		//this.initializingActionBar();
    
         fillChartLables();
         initData();
+        updateSizeInfo();
     }
     
     private void fillChartLables() {
@@ -220,13 +222,7 @@ public class WeeklyReportActivity extends Activity {
         return row;
         }
     }
-	
-	@Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        updateSizeInfo();
-    }
-	
+
 	private void updateSizeInfo() {
 		int h;
 		
