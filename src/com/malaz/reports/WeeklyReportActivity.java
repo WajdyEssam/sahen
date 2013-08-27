@@ -69,8 +69,7 @@ public class WeeklyReportActivity extends Activity {
     	String fromDate = weekRange.getFirstDate();
     	String lastDate = weekRange.getLastDate();
     	
-    	List<History> histories = db.getAllHistories();
-    	//List<History> histories = db.getHistoriesBetween(fromDate, lastDate);
+    	List<History> histories = db.getHistoriesBetween(fromDate, lastDate);
     	for(History history: histories) {
     		addRow(String.valueOf(history.getAmount()), history.getOperation().getEnglishDescription(), history.getTime());
     	}
