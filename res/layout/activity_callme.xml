@@ -1,41 +1,39 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CallmeActivity"
-    android:background="@drawable/background" 
-    android:orientation="vertical" >
+    android:background="@drawable/empty_background"
+    android:padding="20dp"
+    tools:context=".CallmeActivity" >
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/callmeLabel"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:gravity="center"
-        android:paddingBottom="5dp"
-        android:paddingTop="50dp"
+        android:padding="16dp"
         android:text="@string/callmeNumberLbl"
         android:textColor="#000"
         android:textSize="18sp" />
 
     <EditText
         android:id="@+id/otherNumberEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"        
-        android:inputType="number" 
-        android:ems="10" />
-
-    <LinearLayout
+        android:layout_below="@id/callmeLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/header"
-        android:gravity="center_horizontal" >
+        android:layout_marginBottom="20dp"
+        android:inputType="number" />
 
-        <Button
-            android:id="@+id/convertBalanceButton"
-            android:layout_width="116dp"
-            android:layout_height="wrap_content"
-            android:onClick="sendCallmeButtonClicked"
-            android:text="@string/sendCallmeLbl" />
-    </LinearLayout>
-    
-</LinearLayout>
+    <Button
+        android:id="@+id/convertBalanceButton"
+        android:layout_below="@id/otherNumberEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:onClick="sendCallmeButtonClicked"
+        android:text="@string/sendCallmeLbl" />
+
+</RelativeLayout>
