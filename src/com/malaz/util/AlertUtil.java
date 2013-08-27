@@ -5,8 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
-public class AlertUtil {
-	private static CharSequence[] items = { "MTN", "Sudani", "Zain", "Nothing" };
+public class AlertUtil {	
 	private static int selectedItem;
 
 	public static void selectSIMTypeDialog(final Context context) {
@@ -31,7 +30,7 @@ public class AlertUtil {
 								// Toast.LENGTH_SHORT).show();
 							}
 						})
-				.setSingleChoiceItems(items, selectedItem,
+				.setSingleChoiceItems(AppUtil.items, selectedItem,
 						new DialogInterface.OnClickListener() {
 
 							@Override

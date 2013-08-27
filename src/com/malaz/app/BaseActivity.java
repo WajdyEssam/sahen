@@ -1,5 +1,6 @@
 package com.malaz.app;
 
+import com.malaz.util.AppUtil;
 import com.malaz.util.Constants;
 import com.malaz.util.Preferences;
 
@@ -50,7 +51,8 @@ public class BaseActivity extends Activity{
 		actionBar.setDisplayUseLogoEnabled(false);
 		actionBar.setHomeButtonEnabled(true);
 		actionBar.setTitle(this.getResources().getString(R.string.app_name));
-		actionBar.setSubtitle(this.getResources().getString(R.string.sim_name) + " : " + Preferences.getValue(this, Constants.COMPANY_NAME, ""));
+		actionBar.setSubtitle(this.getResources().getString(R.string.sim_name) + 
+				" : " +  AppUtil.getSIMName(Preferences.getValue(this, Constants.COMPANY_NAME, "")));
 		
 	}
 

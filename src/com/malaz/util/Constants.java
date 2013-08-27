@@ -19,7 +19,4 @@ public class Constants {
 	public final static String COMPANY_NAME = "companyName";
 	public final static String SIM_NUMBER = "simNo";
 	public final static String APPLICATION_LANGUAGE = "applicationlanguage";
-	
-	
-	
 }
