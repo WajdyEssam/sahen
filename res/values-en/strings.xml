@@ -22,7 +22,8 @@
     <string name="otherNumberLbl">Number</string>
     <string name="balanceLbl">Balance</string>
     <string name="balanceEditTextHint">Enter the SD price</string>
-
+    <string name="convertEditTextHint">Enter the number you want to transfere balance to it</string>
+    
     <!-- Charge Activity -->
     <string name="ocrButtonLbl">Charge By Camera</string>
     <string name="chargeButtonLbl">Charge Now</string>

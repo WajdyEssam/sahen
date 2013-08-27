@@ -1,16 +1,16 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/LinearLayout2"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background" 
-    android:orientation="vertical" >
+    android:background="@drawable/empty_background"
+    android:padding="20dp" >
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/convertNumberLabel"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingBottom="5dp"
+        android:gravity="center"        
         android:text="@string/otherNumberLbl"
         android:textColor="#000"
         android:textSize="18sp" />
@@ -18,15 +18,18 @@
     <EditText
         android:id="@+id/otherNumberEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"        
-        android:inputType="number" 
-        android:ems="10" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/convertNumberLabel"
+        android:hint="@string/convertEditTextHint"
+        android:inputType="number" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/convertBalanceLabel"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingBottom="5dp"
+        android:layout_below="@id/otherNumberEditText"
+        android:gravity="center" 
+        android:layout_marginTop="30dp"
         android:text="@string/balanceLbl"
         android:textColor="#000"
         android:textSize="18sp" />
@@ -35,22 +38,19 @@
         android:id="@+id/balanceEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/convertBalanceLabel"
         android:hint="@string/balanceEditTextHint"
-        android:inputType="number"
-        android:ems="10" />
+        android:inputType="number" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/convertBalanceButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/header"
-        android:gravity="center_horizontal" >
+        android:layout_below="@+id/balanceEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:onClick="convertBalanceButtonClicked"
+        android:text="@string/convertBalanceLbl" />
 
-        <Button
-            android:id="@+id/convertBalanceButton"
-            android:layout_width="116dp"
-            android:layout_height="wrap_content"
-            android:onClick="convertBalanceButtonClicked"
-            android:text="@string/convertBalanceLbl" />
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

@@ -22,6 +22,7 @@
     <string name="otherNumberLbl">أدخل الرقم</string>
     <string name="balanceLbl">أدخل المبلغ</string>
     <string name="balanceEditTextHint">ادخل عدد الجنيهات المراد تحويلها</string>
+    <string name="convertEditTextHint">ادخل الرقم الذي تود التحويل اليه</string>
 
     <!-- Charge Activity -->
     <string name="ocrButtonLbl">اشحن بالكاميرا</string>
