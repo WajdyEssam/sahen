@@ -12,26 +12,32 @@
         android:layout_centerHorizontal="true"
         android:padding="16dp"
         android:text="@string/chargeLabel" 
-        android:gravity="center"
-        />
+        android:gravity="center" />
     
+    <LinearLayout 
+        android:id="@+id/chargelinearlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/charge_description"
+        android:orientation="horizontal">
+                
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/charge_description"
-        android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@+id/voice_button" 
+        android:layout_height="wrap_content"  
+        android:layout_weight="1"     
         android:text="@string/ocrButtonLbl" />
 
      <Button
-        android:id="@id/voice_button"
+        android:id="@+id/voice_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/charge_description"
-        android:layout_alignParentRight="true"     
-        android:text="@string/voice_label" />        
-
+        android:layout_weight="1"   
+        android:text="@string/voice_label" />  
+        
+    </LinearLayout>
+        
+          
     <ImageView 
 	    android:id="@+id/picture"
 	    android:layout_width="fill_parent"
@@ -39,7 +45,7 @@
 	    android:contentDescription="@string/picture"
 	    android:padding="16dp"
 	    android:layout_marginTop="15dp"
-	    android:layout_below="@id/voice_button"
+	    android:layout_below="@id/chargelinearlayout"
 	    android:background="@drawable/pic_border" />
     
     <EditText
