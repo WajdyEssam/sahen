@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
@@ -17,6 +18,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,13 +28,11 @@ import android.widget.NumberPicker;
 import android.widget.Toast;
 
 import com.malaz.database.Database;
-import com.malaz.image.ImageUtil;
 import com.malaz.services.SIMService;
 import com.malaz.services.ServiceFactory;
 import com.malaz.util.AlertUtil;
 import com.malaz.util.CallUtil;
 import com.malaz.util.LangUtil;
-//import com.googlecode.tesseract.android.TessBaseAPI;
 
 public class ChargeActivity extends BaseActivity {
 
@@ -42,6 +42,7 @@ public class ChargeActivity extends BaseActivity {
 
 	private static final int CAMERA_CAPTURE = 1;
 	private static final int PIC_CROP = 2;
+	private static final int EVENT_VOICE_CAPTURE = 3;
 	
 	protected Button ocrButton;
 	protected EditText numberEditText;
@@ -62,9 +63,17 @@ public class ChargeActivity extends BaseActivity {
 		createImageAndInstallEngineFile();
 		
 		numberEditText = (EditText) findViewById(R.id.field);
-		ocrButton = (Button) findViewById(R.id.button);
-		
+		ocrButton = (Button) findViewById(R.id.button);		
 		ocrButton.setOnClickListener(new ButtonClickHandler());
+				
+		Button voiceButton = (Button) findViewById(R.id.voice_button);
+		voiceButton.setOnClickListener(new View.OnClickListener() {			
+			@Override
+			public void onClick(View v) {
+				captureVoice();
+			}
+		});
+		
 		//_path = DATA_PATH + "/ocr.jpg";
 	}
 	
@@ -143,17 +152,41 @@ public class ChargeActivity extends BaseActivity {
 
 	private void captureAndCrop() {
 		try {
-        	//use standard intent to capture an image
         	Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        	//we will handle the returned data in onActivityResult
             startActivityForResult(captureIntent, CAMERA_CAPTURE);
     	}
         catch(ActivityNotFoundException anfe){
-    		//display an error message
     		String errorMessage = "Whoops - your device doesn't support capturing images!";
     		Toast toast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
     		toast.show();
     	}
+	}
+	
+	private void captureVoice() {
+		Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+		intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+		intent.putExtra(RecognizerIntent.EXTRA_PROMPT, this.getString(R.string.voice_ask));
+		
+		try {
+			startActivityForResult(intent, EVENT_VOICE_CAPTURE);
+		} catch (ActivityNotFoundException e) {
+			// If no recognizer exists, download one from Google Play
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("Not Available");
+			builder.setMessage("There is no recognition application installed."
+					+ " Would you like to download one?");
+			builder.setPositiveButton("Yes",
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							// Download, for example, Google Voice Search
+							Intent marketIntent = new Intent(Intent.ACTION_VIEW);
+							marketIntent.setData(Uri.parse("market://details?id=com.google.android.voicesearch"));
+						}
+					});
+			builder.setNegativeButton("No", null);
+			builder.create().show();
+		}
 	}
 
 	@Override
@@ -195,7 +228,18 @@ public class ChargeActivity extends BaseActivity {
     				e.printStackTrace();
     			}	
     		}
+    		else if ( requestCode == EVENT_VOICE_CAPTURE) {
+    			List<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+    			StringBuilder sb = new StringBuilder();
+    			for (String piece : matches) {
+    				sb.append(piece);
+    				sb.append('\n');
+    			}
+    		}
     	}
+    	else {
+			Toast.makeText(this, "Operation Canceled", Toast.LENGTH_SHORT).show();
+		}
 	}
 
 //	private String runTessract(Bitmap bitmap) throws IOException {

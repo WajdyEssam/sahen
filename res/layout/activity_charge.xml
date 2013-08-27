@@ -2,53 +2,63 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/empty_background"
     android:padding="16dp">
 
     <TextView
-        android:id="+id/charge_description"
+        android:id="@+id/charge_description"
         android:layout_width="fill_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:padding="16dp"
-        android:text="Chargeing Your Mobile" 
+        android:text="@string/chargeLabel" 
+        android:gravity="center"
         />
     
     <Button
         android:id="@+id/button"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/charge_description"
         android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@+id/voice_button"     
+        android:layout_toLeftOf="@+id/voice_button" 
         android:text="@string/ocrButtonLbl" />
 
      <Button
         android:id="@id/voice_button"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/charge_description"
         android:layout_alignParentRight="true"     
-        android:text="Voice Charging" />        
+        android:text="@string/voice_label" />        
 
     <ImageView 
 	    android:id="@+id/picture"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:contentDescription="@string/picture"
-	    android:layout_margin="5dp"
+	    android:padding="16dp"
+	    android:layout_marginTop="15dp"
+	    android:layout_below="@id/voice_button"
 	    android:background="@drawable/pic_border" />
     
     <EditText
         android:id="@+id/field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/picture"
+        android:layout_marginTop="50dp"
         android:hint="@string/numberEditTextLbl" />
         
     <Button
         android:id="@+id/chargeButton"
-        android:layout_width="match_parent"
-        android:onClick="chargeButtonClicked"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/field"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:onClick="chargeButtonClicked"
         android:text="@string/chargeButtonLbl" />
     
-</LinearLayout>
+</RelativeLayout>

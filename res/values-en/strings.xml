@@ -24,12 +24,14 @@
     <string name="balanceEditTextHint">Enter the SD price</string>
 
     <!-- Charge Activity -->
-    <string name="ocrButtonLbl">Scan Number</string>
+    <string name="ocrButtonLbl">Charge By Camera</string>
     <string name="chargeButtonLbl">Charge Now</string>
     <string name="numberEditTextLbl">Card Number Here</string>
     <string name="picture">Scanned Image</string>
     <string name="title_charge_dialog">Charing Amount?</string>
     <string name="body_charge_dialog">Please Specify the amount of charing so the application will record it for later statistics about how much you spend on charging per period</string>
+    <string name="chargeLabel">You can write card number by hand or using camera or by using your voice and read the numbers</string>
+    <string name="voice_label">Charge by Voice</string>
     
     <!--  Callme Activity -->
     <string name="callmeNumberLbl">Number</string>

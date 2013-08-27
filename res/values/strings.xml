@@ -24,13 +24,15 @@
     <string name="balanceEditTextHint">ادخل عدد الجنيهات المراد تحويلها</string>
 
     <!-- Charge Activity -->
-    <string name="ocrButtonLbl">قرائه الأرقام</string>
+    <string name="ocrButtonLbl">اشحن بالكاميرا</string>
     <string name="chargeButtonLbl">شحن الرصيد</string>
     <string name="numberEditTextLbl">الأرقام التي تم التعرف عليها سيتم كتابتها هنا</string>
     <string name="picture">الصورة الملتقطة</string>
     <string name="title_charge_dialog">كم مقدار الشحن</string>
     <string name="body_charge_dialog">من فضلك أدخل مقدار الشحن حتى يتم اخراج تقارير لك فيما بعد عن عمليات الشحن ومقدارها في كل فترة</string>
-
+    <string name="chargeLabel">يمكنك كتابه ارقام البطاقة أو تصويرها بالكاميرا أو من خلال قرائتها بصوتك</string>
+    <string name="voice_label">اشحن بالصوت</string>
+    
     <!-- Callme Activity -->
     <string name="callmeNumberLbl">أدخل الرقم</string>
     <string name="sendCallmeLbl">ارسل كول مي</string>
