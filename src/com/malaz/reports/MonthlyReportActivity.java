@@ -1,11 +1,9 @@
 package com.malaz.reports;
 
 import java.text.DecimalFormat;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import android.app.Activity;
@@ -29,7 +27,6 @@ import com.malaz.util.Constants;
 import com.malaz.util.DateUtil;
 import com.malaz.util.DateUtil.DateRange;
 import com.malaz.util.DateUtil.MonthlyRangeGenerator;
-import com.malaz.util.DateUtil.WeekRangeGenerator;
 import com.malaz.util.LangUtil;
 
 public class MonthlyReportActivity extends Activity {
@@ -73,17 +70,16 @@ public class MonthlyReportActivity extends Activity {
     	
     	int i=0;
     	for(DateRange range: ranges) {
-    		System.out.println("Get Monthly: " + DateUtil.formatDate(range.firstDate) + " AND " + DateUtil.formatDate(range.endDate));
     		
-    		List<History> histories = db.getHistoriesBetween(DateUtil.formatDate(range.firstDate), DateUtil.formatDate(range.endDate));
+    		List<History> histories = db.getHistoriesBetween(DateUtil.formatDate(range.firstDate), DateUtil.formatDate(range.endDate));    		
     		
     		double countOfCharge = 0;
     		double countOfTransfere = 0;
         	for(History history: histories) {        		
-        		if ( history.getOperation().getId() == Constants.CHARGING_OPERATION ) {
+        		if ( history.getOperation().getId().equals(Constants.CHARGING_OPERATION ) ) {
         			countOfCharge += history.getAmount();
         		}
-        		else if ( history.getOperation().getId() == Constants.SENDING_BALANCE_OPERATION ) {
+        		else if ( history.getOperation().getId().equals(Constants.SENDING_BALANCE_OPERATION ) ){
         			countOfTransfere += history.getAmount();
         		}
         	}

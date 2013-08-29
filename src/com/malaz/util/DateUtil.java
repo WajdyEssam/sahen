@@ -1,13 +1,10 @@
 package com.malaz.util;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -155,29 +152,6 @@ public class DateUtil {
 		}
 	}
 	
-	public static class WeekRangeGenerator {
-		private String firstDate;
-		private String lastDate;
-		
-		public static WeekRangeGenerator generate() {
-			return new WeekRangeGenerator();
-		}
-		
-		private WeekRangeGenerator() {
-			List<Date> dates = Arrays.asList(genearteSevenDays(new Date()));
-			this.firstDate = sqliteFormat.format(dates.get(0)) + " 00:00:00";
-			this.lastDate = sqliteFormat.format(dates.get(dates.size()-1)) + " 23:59:59";
-		}
-		
-		public String getFirstDate() {
-			return this.firstDate;
-		}
-		
-		public String getLastDate() {
-			return this.lastDate;
-		}
-	}
-	
 	public static Date formatStringDate(String stringDate) throws ParseException {
         Date formattedDate = sqliteFormat.parse(stringDate);        
         return formattedDate;
@@ -185,7 +159,6 @@ public class DateUtil {
 	
 	public static String formatDate(Date date) {
 		return sqliteFormat.format(date);
-		//return String.format("'%s'", sqliteFormat.format(date));
 	}
 	
 	public static String dayFormat(Date date) {
@@ -200,23 +173,5 @@ public class DateUtil {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);		
 		return calendar.get(Calendar.DAY_OF_WEEK);
-	}
-	
-	private static Date[] genearteSevenDays(Date currentDate) {
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(currentDate);
-		
-		// get the first day in this week
-		int delta = -calendar.get(GregorianCalendar.DAY_OF_WEEK) + START_OF_WEEK;
-		calendar.add(Calendar.DAY_OF_MONTH, delta );
-		
-		// Generate the dates
-		Date[] dates = new Date[7];
-		for (int i=0; i<7; i++) {
-			dates[i] = calendar.getTime();
-			calendar.add(Calendar.DAY_OF_MONTH, 1);
-		}
-		
-		return dates;
 	}
 }

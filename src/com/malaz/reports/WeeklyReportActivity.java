@@ -1,23 +1,10 @@
 package com.malaz.reports;
 
 import java.text.DecimalFormat;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
-
-import com.malaz.app.R;
-import com.malaz.app.R.id;
-import com.malaz.app.R.layout;
-import com.malaz.database.HistoryDB;
-import com.malaz.model.History;
-import com.malaz.util.Constants;
-import com.malaz.util.DateUtil;
-import com.malaz.util.LangUtil;
-import com.malaz.util.DateUtil.WeekRangeGenerator;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -31,6 +18,15 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.malaz.app.R;
+import com.malaz.database.HistoryDB;
+import com.malaz.model.History;
+import com.malaz.util.Constants;
+import com.malaz.util.DateUtil;
+import com.malaz.util.DateUtil.DateRange;
+import com.malaz.util.DateUtil.DayRangeGenerator;
+import com.malaz.util.LangUtil;
 
 public class WeeklyReportActivity extends Activity {
 	
@@ -64,74 +60,39 @@ public class WeeklyReportActivity extends Activity {
     
     private void fillChartLables() {
     	HistoryDB db = HistoryDB.getInstance(this);
-    	WeekRangeGenerator weekRange = DateUtil.WeekRangeGenerator.generate();
+    	DayRangeGenerator daysGen = DayRangeGenerator.getInstance();    	
+    	List<DateRange> ranges= daysGen.getRanges();
     	
-    	String fromDate = weekRange.getFirstDate();
-    	String lastDate = weekRange.getLastDate();
-    	
-    	System.out.println("Get Yearly: " + fromDate + " AND " + lastDate);
-    	
-    	List<History> histories = db.getHistoriesBetween(fromDate, lastDate);
-    	for(History history: histories) {
-    		addRow(String.valueOf(history.getAmount()), history.getOperation().getEnglishDescription(), history.getTime());
-    	}
-    	
-    	for(int i=0; i<datelabel.length; i++) {
-        	chargeAmounts[i] = getChargeForDay(i, histories);
-        	transfereAmounts[i] = getTransfereForDay(i, histories);
-        }    	
-    }
-    
-    private double getChargeForDay(int dayIndex, List<History> histories) {
-    	if ( histories.isEmpty() )
-    		return 0;
-    	
-    	double charging = 0;
-    	for(History history: histories) {
-    		try {
-				Date time = DateUtil.formatStringDate(history.getTime());
-				int historyDay = DateUtil.getDayIndex(time);
-				
-				boolean chargingOperation = history.getOperation().getId().equals(Constants.CHARGING_OPERATION);
-				boolean happenOnSameDay = dayIndex == historyDay-1;
-				
-				if ( chargingOperation &&  happenOnSameDay) {
-					charging += history.getAmount();					
-				}
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-    	}
-    	
-    	return charging;
-    }
-    
-    private double getTransfereForDay(int dayIndex, List<History> histories) {
-    	if ( histories.isEmpty() )
-    		return 0;
-    	
-    	double transfere = 0;
-    	for(History history: histories) {
-    		try {
-				Date time = DateUtil.formatStringDate(history.getTime());
-				int historyDay = DateUtil.getDayIndex(time);
-
-				boolean transfereOperation = history.getOperation().getId().equals(Constants.SENDING_BALANCE_OPERATION);
-				boolean happenOnSameDay = dayIndex == historyDay-1;
-				
-				if ( transfereOperation &&  happenOnSameDay) {
-					transfere += history.getAmount();					
-				}
-				
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-    	}
-    	
-    	return transfere;
-    }
+    	int i=0;
+    	for(DateRange range: ranges) {
+    		List<History> histories = db.getHistoriesBetween(DateUtil.formatDate(range.firstDate), DateUtil.formatDate(range.endDate));
+    		
+    		double countOfCharge = 0;
+    		double countOfTransfere = 0;
+        	for(History history: histories) {        		
+        		if ( history.getOperation().getId().equals(Constants.CHARGING_OPERATION) ) {
+        			countOfCharge += history.getAmount();
+        		}
+        		else if ( history.getOperation().getId().equals(Constants.SENDING_BALANCE_OPERATION) ) {
+        			countOfTransfere += history.getAmount();
+        		}
+        	}
+        	
+        	if ( countOfCharge != 0 ) {
+        		String message = Constants.CHARGING_OPERATION_ENGLISH_MSG;
+        		addRow(String.valueOf(countOfCharge), message, DateUtil.yearFormat(range.firstDate));
+        	}
+        	
+        	if ( countOfTransfere != 0 ) {
+        		String message = Constants.SENDING_BALANCE_OPERATION_ENGLISH_MSG;
+        		addRow(String.valueOf(countOfTransfere), message, DateUtil.yearFormat(range.firstDate));        		
+        	}
+    		
+        	chargeAmounts[i] = countOfCharge;
+        	transfereAmounts[i] = countOfTransfere;
+        	i++;
+    	}           
+    } 
 
     private void addRow(String cell1, String cell2, String cell3) {
     	TableLayout table = (TableLayout) findViewById(R.id.weekly_table);
