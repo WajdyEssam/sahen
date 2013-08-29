@@ -38,7 +38,7 @@
     <!--  Callme Activity -->
     <string name="callmeNumberLbl">Number</string>
     <string name="sendCallmeLbl">Send CallMe</string>
-    <string name="callmeLabel">To send call me message you should write the recipient number (note: some companies dosn't support this service)</string>
+    <string name="callmeLabel">To send call me message you should write the recipient number (note: some companies dosn\'t support this service)</string>
     
     <!-- Preference Activity -->
     <string name="settings">Settings</string>

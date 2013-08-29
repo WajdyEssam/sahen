@@ -229,12 +229,30 @@ public class ChargeActivity extends BaseActivity {
     			}	
     		}
     		else if ( requestCode == EVENT_VOICE_CAPTURE) {
-    			List<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-    			StringBuilder sb = new StringBuilder();
-    			for (String piece : matches) {
-    				sb.append(piece);
-    				sb.append('\n');
-    			}
+    			final List<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+				final CharSequence[] cs = matches.toArray(new CharSequence[matches.size()]);
+
+				int selectedItem = 0;
+				new AlertDialog.Builder(this)
+				.setTitle("Please Select the text that match your voice")
+				.setNegativeButton("Cancel",
+						new DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {;
+							}
+						})
+				.setSingleChoiceItems(cs, selectedItem,
+						new DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								numberEditText.setText(matches.get(which));
+
+							}
+						}).show();
     		}
     	}
     	else {
