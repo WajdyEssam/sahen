@@ -22,6 +22,10 @@
             android:key="simNo"
             android:summary="@string/simNoSummary"
             android:title="@string/simNoLbl" />
+         
+         <Preference android:title="@string/clearDb"
+                android:key="clearButton"
+                android:summary="@string/clearDbDescription"/>
     </PreferenceCategory>
 
 </PreferenceScreen>

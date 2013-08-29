@@ -6,8 +6,19 @@
     android:background="@drawable/empty_background"
     android:padding="20dp" >
 
+     <TextView
+        android:id="@+id/transfere_description"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:padding="16dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/transfereLabel" 
+        android:gravity="center" />
+        
     <TextView
         android:id="@+id/convertNumberLabel"
+        android:layout_below="@id/transfere_description"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"        

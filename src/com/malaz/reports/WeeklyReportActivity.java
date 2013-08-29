@@ -208,8 +208,6 @@ public class WeeklyReportActivity extends Activity {
 		for(int i=0;i<transfereAmounts.length;i++)  {
 			transfereHight[i] = (int)((h*transfereAmounts[i])/highest);
     		chargingHight[i] = (int)((h*chargeAmounts[i])/highest);
-    		
-    		System.out.println("Transfere Value [i] "+ transfereHight[i] +  "Charging Value[i] " + chargingHight[i]);
     	}		
 		
     	listview.setAdapter(new WeeklyBaseAdapter(this,datelabel));

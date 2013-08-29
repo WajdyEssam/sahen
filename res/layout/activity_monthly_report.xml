@@ -9,7 +9,6 @@
         android:id="@+id/monthlylinearlayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#fff"
         android:orientation="vertical" >
 
         <RelativeLayout
@@ -74,8 +73,7 @@
         <com.malaz.reports.HorizontalListView
             android:id="@+id/monthly_listview"
             android:layout_width="wrap_content"
-            android:layout_height="180dp"
-            android:background="#ddd" />
+            android:layout_height="200dp" />
     </LinearLayout>
 
     <TableLayout
@@ -120,9 +118,9 @@
         </TableRow>
     </TableLayout>
 
-    <ScrollView
+    <ScrollView        
         android:layout_width="match_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="200dp" >
 
         <TableLayout
             android:id="@+id/monthly_table"

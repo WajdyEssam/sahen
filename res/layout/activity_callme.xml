@@ -8,7 +8,18 @@
     tools:context=".CallmeActivity" >
 
     <TextView
+        android:id="@+id/callme_description"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:padding="16dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/callmeLabel" 
+        android:gravity="center" />
+         
+    <TextView
         android:id="@+id/callmeLabel"
+        android:layout_below="@id/callme_description"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"

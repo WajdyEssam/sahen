@@ -1,5 +1,8 @@
 package com.malaz.app;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -10,7 +13,9 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
+import android.widget.Toast;
 
+import com.malaz.database.HistoryDB;
 import com.malaz.util.Constants;
 import com.malaz.util.LangUtil;
 
@@ -31,8 +36,54 @@ public class ApplicationPreferenceActivity extends PreferenceActivity implements
 		for (int i = 0; i < getPreferenceScreen().getPreferenceCount(); i++) {
 			initSummary(getPreferenceScreen().getPreference(i));
 		}
+		
+		Preference button = (Preference)findPreference("clearButton");
+		button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference arg0) { 
+
+            	DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            	    @Override
+            	    public void onClick(DialogInterface dialog, int which) {
+            	        switch (which){
+            	        case DialogInterface.BUTTON_POSITIVE:            	        	            	        
+            	        	clearDB();
+            	            break;
+
+            	        case DialogInterface.BUTTON_NEGATIVE:
+            	            break;
+            	        }
+            	    }
+            	};
+
+            	AlertDialog.Builder builder = new AlertDialog.Builder(ApplicationPreferenceActivity.this);
+            	builder.setMessage(getString(R.string.sure_message)).setPositiveButton(getString(R.string.yes_message), dialogClickListener)
+            	    .setNegativeButton(getString(R.string.no_message), dialogClickListener).show();
+
+                return true;
+            }
+        });
 	}
 
+	private void clearDB() {
+		final ProgressDialog dialog = ProgressDialog.show(this, getString(R.string.clearDb), getString(R.string.wait_message));
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				HistoryDB.getInstance(ApplicationPreferenceActivity.this).clearHistories();	
+				dialog.dismiss();	
+				
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						Toast.makeText(ApplicationPreferenceActivity.this, 
+								getString(R.string.operation_done_sucesffully),Toast.LENGTH_SHORT).show();
+					}
+				});
+			}
+		}).start();		
+	}
+	
 	@Override
 	protected void onResume() {
 		super.onResume();

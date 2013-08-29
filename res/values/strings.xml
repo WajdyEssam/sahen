@@ -23,7 +23,8 @@
     <string name="balanceLbl">أدخل المبلغ</string>
     <string name="balanceEditTextHint">ادخل عدد الجنيهات المراد تحويلها</string>
     <string name="convertEditTextHint">ادخل الرقم الذي تود التحويل اليه</string>
-
+	<string name="transfereLabel">لتحويل الرصيد قم بادخال الرقم الذي تود التحويل اليه والمبلغ المراد تحويله</string>
+	
     <!-- Charge Activity -->
     <string name="ocrButtonLbl">اشحن بالكاميرا</string>
     <string name="chargeButtonLbl">شحن الرصيد</string>
@@ -37,7 +38,8 @@
     <!-- Callme Activity -->
     <string name="callmeNumberLbl">أدخل الرقم</string>
     <string name="sendCallmeLbl">ارسل كول مي</string>
-
+	<string name="callmeLabel">لارسال كلمني قم بادخال الرقم الذي تود الارسال اليه، مع العلم أن بعض الشبكات لا تدعم هذه الخدمة</string>
+	
     <!-- Preference Activity -->
     <string name="settings">اعدادات البرنامج</string>
     <string name="languageSettingLbl">اللغه</string>
@@ -46,16 +48,26 @@
     <string name="simTypeSummary">من فضلك اختر  الشركة</string>
     <string name="simNoLbl">رقم الشريحة</string>
     <string name="simNoSummary">ادخل رقم الشريحة اذا كنت تود ذلك</string>
-
+    <string name="clearDb">تفريغ قاعدة البيانات</string>
+    <string name="clearDbDescription">اضغط هنا لتصفير استخدام البرنامج</string>
+    
     <!-- History Activity -->
     <string name="application_logs">أخر العمليات</string>
     <string name="clear_logs">تم مسح اخر العمليات بنجاح</string>
     
-    <string name="hello_world">Hello world!</string>
+    <!-- Reports Activities -->
     <string name="title_activity_monthly_report">MonthlyReportActivity</string>
     <string name="title_activity_yearly_report">YearlyReportActivity</string>
     <string name="title_activity_speach_recognition">SpeachRecognitionActivity</string>
 
     <!-- Speach Recognition Activity -->
     <string name="voice_ask">من فضلك أدخل رقم البطاقة</string>
+    
+     <!-- Application Gerenal Message -->
+    <string name="yes_message">نعم</string>
+    <string name="no_message">لا</string>
+    <string name="sure_message">هل أنت متأكد؟</string>
+    <string name="operation_done_sucesffully">تمت العملية بنجاح</string>
+    <string name="operation_not_done">حدث خطأ في العملية</string>
+    <string name="wait_message">يرجى الانتظار من فضلك ...</string>
 </resources>
