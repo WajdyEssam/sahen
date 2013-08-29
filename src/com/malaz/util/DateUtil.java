@@ -9,12 +9,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
 public class DateUtil {
 	private final static int START_OF_WEEK = Calendar.SUNDAY;
-	private final static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	private final static SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy/MM");
-	private final static SimpleDateFormat dayFormat = new SimpleDateFormat("MM/dd");
+	private final static SimpleDateFormat sqliteFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);	
+	private final static SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy/MM", Locale.US);
+	private final static SimpleDateFormat dayFormat = new SimpleDateFormat("MM/dd", Locale.US);
 	
 	private static void setMinTime(Calendar calendar) {
 		calendar.set(Calendar.HOUR_OF_DAY, calendar.getActualMinimum(Calendar.HOUR_OF_DAY));
@@ -36,6 +37,45 @@ public class DateUtil {
 		public Date endDate;
 	}
 		
+	public static class DayRangeGenerator {
+		private List<DateRange> ranges;
+		
+		public static DayRangeGenerator getInstance() {
+			return new DayRangeGenerator();
+		}
+		
+		private DayRangeGenerator() {
+			this.ranges = new ArrayList<DateRange>();
+			generate();
+		}
+		
+		private void generate() {
+			Calendar calendar = Calendar.getInstance();
+			
+			int delta = -calendar.get(Calendar.DAY_OF_WEEK) + START_OF_WEEK;
+			calendar.add(Calendar.DAY_OF_MONTH, delta );
+			
+			for (int i=0; i<7; i++) {
+				setMinTime(calendar);
+				Date start = calendar.getTime();
+				setMaxTime(calendar);
+				Date end = calendar.getTime();
+				
+				calendar.add(Calendar.DAY_OF_MONTH, 1);
+				
+				DateRange range = new DateRange();
+				range.firstDate = start;
+				range.endDate = end;
+				
+				this.ranges.add(range);
+			}
+		}
+		
+		public List<DateRange> getRanges() {
+			return this.ranges;
+		}
+	}
+	
 	public static class YearRangeGenerator {
 		private List<DateRange> ranges;
 		
@@ -125,8 +165,8 @@ public class DateUtil {
 		
 		private WeekRangeGenerator() {
 			List<Date> dates = Arrays.asList(genearteSevenDays(new Date()));
-			this.firstDate = format.format(dates.get(0)) + " 00:00:00";
-			this.lastDate = format.format(dates.get(dates.size()-1)) + " 23:59:59";
+			this.firstDate = sqliteFormat.format(dates.get(0)) + " 00:00:00";
+			this.lastDate = sqliteFormat.format(dates.get(dates.size()-1)) + " 23:59:59";
 		}
 		
 		public String getFirstDate() {
@@ -139,12 +179,13 @@ public class DateUtil {
 	}
 	
 	public static Date formatStringDate(String stringDate) throws ParseException {
-        Date formattedDate = format.parse(stringDate);        
+        Date formattedDate = sqliteFormat.parse(stringDate);        
         return formattedDate;
 	}
 	
 	public static String formatDate(Date date) {
-		return format.format(date);
+		return sqliteFormat.format(date);
+		//return String.format("'%s'", sqliteFormat.format(date));
 	}
 	
 	public static String dayFormat(Date date) {
