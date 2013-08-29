@@ -23,7 +23,7 @@
     <string name="balanceLbl">Balance</string>
     <string name="balanceEditTextHint">Enter the SD price</string>
     <string name="convertEditTextHint">Enter the number you want to transfere balance to it</string>
-    <string name="transfereLabel"></string>
+    <string name="transfereLabel">Enter the recipient number and the balance that you want to transfere</string>
     
     <!-- Charge Activity -->
     <string name="ocrButtonLbl">Charge By Camera</string>
@@ -38,7 +38,7 @@
     <!--  Callme Activity -->
     <string name="callmeNumberLbl">Number</string>
     <string name="sendCallmeLbl">Send CallMe</string>
-    <string name="callmeLabel">To send call me message you should write the recipient number (note: some company is not support this service)</string>
+    <string name="callmeLabel">To send call me message you should write the recipient number (note: some companies dosn't support this service)</string>
     
     <!-- Preference Activity -->
     <string name="settings">Settings</string>
