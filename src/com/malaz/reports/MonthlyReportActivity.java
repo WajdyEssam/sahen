@@ -39,7 +39,7 @@ public class MonthlyReportActivity extends Activity {
 	private int[] chargingHight; 
 	private int[] transfereHight;
 	
-	private String[] datelabel = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};	
+	private String[] datelabel = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};	
 	private Double[] chargeAmounts = new Double[datelabel.length];
 	private Double[] transfereAmounts  = new Double[datelabel.length];
 	
