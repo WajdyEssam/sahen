@@ -3,6 +3,7 @@ package com.malaz.util;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -12,6 +13,90 @@ import java.util.List;
 public class DateUtil {
 	private final static int START_OF_WEEK = Calendar.SUNDAY;
 	private final static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	private final static SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy/MM");
+	private final static SimpleDateFormat dayFormat = new SimpleDateFormat("MM/dd");
+	
+	public static class DateRange {
+		public Date firstDate;
+		public Date endDate;
+	}
+		
+	public static class YearRangeGenerator {
+		private List<DateRange> ranges;
+		
+		public static YearRangeGenerator getInstance() {
+			return new YearRangeGenerator();
+		}
+		
+		private YearRangeGenerator() {
+			this.ranges = new ArrayList<DateRange>();
+			generate();
+		}
+		
+		private void generate() {
+			int applicationStartingDate = 2013;
+			int yearUntil = applicationStartingDate + 5;
+			
+			Calendar calendar = Calendar.getInstance();
+		
+			for(int i=applicationStartingDate; i<yearUntil; i++) {
+				calendar.set(i, 0, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
+				// set time to zeor
+				Date start = calendar.getTime();				
+				
+				calendar.set(i, 11, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+				// set time to zero
+				Date end = calendar.getTime();
+				
+				DateRange range = new DateRange();
+				range.firstDate = start;
+				range.endDate = end;
+				
+				this.ranges.add(range);
+			}
+		}
+		
+		public List<DateRange> getRanges() {
+			return this.ranges;
+		}
+	}
+
+	public static class MonthlyRangeGenerator {
+		private List<DateRange> ranges;
+		
+		public static MonthlyRangeGenerator getInstance() {
+			return new MonthlyRangeGenerator();
+		}
+		
+		private MonthlyRangeGenerator() {
+			this.ranges = new ArrayList<DateRange>();
+			generate();
+		}
+		
+		private void generate() {
+			Calendar calendar = Calendar.getInstance();
+			
+			for(int i=0; i<12; i++) {
+				calendar.set(Calendar.MONTH, i);
+				
+				calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
+				Date start = calendar.getTime();
+				
+				calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+				Date end = calendar.getTime();		
+				
+				DateRange range = new DateRange();
+				range.firstDate = start;
+				range.endDate = end;
+				
+				this.ranges.add(range);
+			}
+		}
+		
+		public List<DateRange> getRanges() {
+			return this.ranges;
+		}
+	}
 	
 	public static class WeekRangeGenerator {
 		private String firstDate;
@@ -43,6 +128,14 @@ public class DateUtil {
 	
 	public static String formatDate(Date date) {
 		return format.format(date);
+	}
+	
+	public static String dayFormat(Date date) {
+		return dayFormat.format(date);
+	}
+	
+	public static String yearFormat(Date date) {
+		return yearFormat.format(date);
 	}
 	
 	public static int getDayIndex(Date date) {
