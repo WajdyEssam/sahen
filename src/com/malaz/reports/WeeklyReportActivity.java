@@ -69,6 +69,8 @@ public class WeeklyReportActivity extends Activity {
     	String fromDate = weekRange.getFirstDate();
     	String lastDate = weekRange.getLastDate();
     	
+    	System.out.println("Get Yearly: " + fromDate + " AND " + lastDate);
+    	
     	List<History> histories = db.getHistoriesBetween(fromDate, lastDate);
     	for(History history: histories) {
     		addRow(String.valueOf(history.getAmount()), history.getOperation().getEnglishDescription(), history.getTime());

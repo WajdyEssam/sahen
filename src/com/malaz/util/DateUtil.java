@@ -16,6 +16,21 @@ public class DateUtil {
 	private final static SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy/MM");
 	private final static SimpleDateFormat dayFormat = new SimpleDateFormat("MM/dd");
 	
+	private static void setMinTime(Calendar calendar) {
+		calendar.set(Calendar.HOUR_OF_DAY, calendar.getActualMinimum(Calendar.HOUR_OF_DAY));
+		calendar.set(Calendar.MINUTE, calendar.getActualMinimum(Calendar.MINUTE));
+		calendar.set(Calendar.SECOND, calendar.getActualMinimum(Calendar.SECOND));
+		calendar.set(Calendar.MILLISECOND, calendar.getActualMinimum(Calendar.MILLISECOND));
+	}
+	
+	private static void setMaxTime(Calendar calendar) {
+		calendar.set(Calendar.HOUR_OF_DAY, calendar.getActualMaximum(Calendar.HOUR_OF_DAY));
+		calendar.set(Calendar.MINUTE, calendar.getActualMaximum(Calendar.MINUTE));
+		calendar.set(Calendar.SECOND, calendar.getActualMaximum(Calendar.SECOND));
+		calendar.set(Calendar.MILLISECOND, calendar.getActualMaximum(Calendar.MILLISECOND));
+	}
+	
+	
 	public static class DateRange {
 		public Date firstDate;
 		public Date endDate;
@@ -41,11 +56,11 @@ public class DateUtil {
 		
 			for(int i=applicationStartingDate; i<yearUntil; i++) {
 				calendar.set(i, 0, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
-				// set time to zeor
+				setMinTime(calendar);
 				Date start = calendar.getTime();				
 				
 				calendar.set(i, 11, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
-				// set time to zero
+				setMaxTime(calendar);
 				Date end = calendar.getTime();
 				
 				DateRange range = new DateRange();
@@ -80,9 +95,11 @@ public class DateUtil {
 				calendar.set(Calendar.MONTH, i);
 				
 				calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
+				setMinTime(calendar);
 				Date start = calendar.getTime();
 				
 				calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+				setMaxTime(calendar);
 				Date end = calendar.getTime();		
 				
 				DateRange range = new DateRange();
@@ -152,7 +169,7 @@ public class DateUtil {
 		int delta = -calendar.get(GregorianCalendar.DAY_OF_WEEK) + START_OF_WEEK;
 		calendar.add(Calendar.DAY_OF_MONTH, delta );
 		
-		// genearate the dates
+		// Generate the dates
 		Date[] dates = new Date[7];
 		for (int i=0; i<7; i++) {
 			dates[i] = calendar.getTime();

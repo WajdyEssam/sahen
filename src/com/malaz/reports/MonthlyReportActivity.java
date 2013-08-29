@@ -73,6 +73,8 @@ public class MonthlyReportActivity extends Activity {
     	
     	int i=0;
     	for(DateRange range: ranges) {
+    		System.out.println("Get Monthly: " + DateUtil.formatDate(range.firstDate) + " AND " + DateUtil.formatDate(range.endDate));
+    		
     		List<History> histories = db.getHistoriesBetween(DateUtil.formatDate(range.firstDate), DateUtil.formatDate(range.endDate));
     		
     		double countOfCharge = 0;
