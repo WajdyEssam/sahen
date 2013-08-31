@@ -80,12 +80,12 @@ public class WeeklyReportActivity extends Activity {
         	
         	if ( countOfCharge != 0 ) {
         		String message = Constants.CHARGING_OPERATION_ENGLISH_MSG;
-        		addRow(String.valueOf(countOfCharge), message, DateUtil.yearFormat(range.firstDate));
+        		addRow(String.valueOf(countOfCharge), message, DateUtil.dayFormat(range.firstDate));
         	}
         	
         	if ( countOfTransfere != 0 ) {
         		String message = Constants.SENDING_BALANCE_OPERATION_ENGLISH_MSG;
-        		addRow(String.valueOf(countOfTransfere), message, DateUtil.yearFormat(range.firstDate));        		
+        		addRow(String.valueOf(countOfTransfere), message, DateUtil.dayFormat(range.firstDate));        		
         	}
     		
         	chargeAmounts[i] = countOfCharge;
