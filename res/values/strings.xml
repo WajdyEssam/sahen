@@ -77,6 +77,9 @@
 	<string name="table_row_time_hidden">2013-08-26 08:55:00</string>
 	<string name="chart_charging_label">شحن</string>
 	<string name="chart_transfere_label">تحويل</string>
+	<string name="tab_weekly">اسبوعي</string>
+	<string name="tab_monlty">شهري</string>
+	<string name="tab_yearly">سنوي</string>
 	
     <!-- Speach Recognition Activity -->
     <string name="voice_ask">من فضلك أدخل رقم البطاقة</string>

@@ -84,14 +84,16 @@ public class YearlyReportActivity extends Activity {
         	}
         	
         	if ( countOfCharge != 0 ) {
-        		String message = Constants.CHARGING_OPERATION_ENGLISH_MSG;
+        		String message = LangUtil.getCurrentLanguage(this) == LangUtil.Languages.Arabic ?
+        				Constants.CHARGING_OPERATION_ARABIC_MSG : Constants.CHARGING_OPERATION_ENGLISH_MSG;
         		addRow(String.valueOf(countOfCharge), message, DateUtil.yearFormat(range.firstDate));
         	}
         	
         	if ( countOfTransfere != 0 ) {
-        		String message = Constants.SENDING_BALANCE_OPERATION_ENGLISH_MSG;
-        		addRow(String.valueOf(countOfTransfere), message, DateUtil.yearFormat(range.firstDate));        		
-        	}
+         		String message = LangUtil.getCurrentLanguage(this) == LangUtil.Languages.Arabic ?
+        				Constants.SENDING_BALANCE_OPERATION_ARABIC_MSG : Constants.SENDING_BALANCE_OPERATION_ENGLISH_MSG;
+         		addRow(String.valueOf(countOfTransfere), message, DateUtil.yearFormat(range.firstDate));    		
+        	}        	        
     		
         	chargeAmounts[i] = countOfCharge;
         	transfereAmounts[i] = countOfTransfere;

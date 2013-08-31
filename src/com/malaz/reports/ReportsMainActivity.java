@@ -19,19 +19,19 @@ public class ReportsMainActivity extends TabActivity {
 
 		tabHost.addTab(tabHost
 				.newTabSpec("tab1")
-				.setIndicator("Weekly",
+				.setIndicator(getString(R.string.tab_weekly),
 						getResources().getDrawable(R.drawable.home))
 				.setContent(new Intent(this, WeeklyReportActivity.class)));
 
 		tabHost.addTab(tabHost
 				.newTabSpec("tab2")
-				.setIndicator("Monthly",
+				.setIndicator(getString(R.string.tab_monlty),
 						getResources().getDrawable(R.drawable.invoice))
 				.setContent(new Intent(this, MonthlyReportActivity.class)));
 
 		tabHost.addTab(tabHost
 				.newTabSpec("tab2")
-				.setIndicator("Yearly",
+				.setIndicator(getString(R.string.tab_yearly),
 						getResources().getDrawable(R.drawable.products))
 				.setContent(new Intent(this, YearlyReportActivity.class)));
 		

@@ -85,14 +85,16 @@ public class MonthlyReportActivity extends Activity {
         	}
         	
         	if ( countOfCharge != 0 ) {
-        		String message = Constants.CHARGING_OPERATION_ENGLISH_MSG;
-        		addRow(String.valueOf(countOfCharge), message, DateUtil.dayFormat(range.firstDate));
+        		String message = LangUtil.getCurrentLanguage(this) == LangUtil.Languages.Arabic ?
+        				Constants.CHARGING_OPERATION_ARABIC_MSG : Constants.CHARGING_OPERATION_ENGLISH_MSG;
+        		addRow(String.valueOf(countOfCharge), message, DateUtil.monthFormat(range.firstDate));
         	}
         	
         	if ( countOfTransfere != 0 ) {
-        		String message = Constants.SENDING_BALANCE_OPERATION_ENGLISH_MSG;
-        		addRow(String.valueOf(countOfTransfere), message, DateUtil.dayFormat(range.firstDate));        		
-        	}
+         		String message = LangUtil.getCurrentLanguage(this) == LangUtil.Languages.Arabic ?
+        				Constants.SENDING_BALANCE_OPERATION_ARABIC_MSG : Constants.SENDING_BALANCE_OPERATION_ENGLISH_MSG;
+         		addRow(String.valueOf(countOfTransfere), message, DateUtil.monthFormat(range.firstDate));      		
+        	}        	
     		
         	chargeAmounts[i] = countOfCharge;
         	transfereAmounts[i] = countOfTransfere;

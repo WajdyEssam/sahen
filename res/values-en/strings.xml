@@ -76,7 +76,10 @@
 	<string name="table_row_time_hidden">2013-08-26 08:55:00</string>
 	<string name="chart_charging_label">Charging</string>
 	<string name="chart_transfere_label">Transfere</string>
-
+	<string name="tab_weekly">Weekly</string>
+	<string name="tab_monlty">Monthly</string>
+	<string name="tab_yearly">Yearly</string>
+	
     <!-- Speach Recognition Activity -->
     <string name="voice_ask">Enter the Card Number</string>
     

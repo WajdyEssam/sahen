@@ -11,8 +11,10 @@ import java.util.Locale;
 public class DateUtil {
 	private final static int START_OF_WEEK = Calendar.SUNDAY;
 	private final static SimpleDateFormat sqliteFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);	
-	private final static SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy/MM", Locale.US);
-	private final static SimpleDateFormat dayFormat = new SimpleDateFormat("MM/dd", Locale.US);
+		
+	private final static SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.US);
+	private final static SimpleDateFormat monthFormat = new SimpleDateFormat("MMM yyyy", Locale.US);	
+	private final static SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy", Locale.US);
 	
 	private static void setMinTime(Calendar calendar) {
 		calendar.set(Calendar.HOUR_OF_DAY, calendar.getActualMinimum(Calendar.HOUR_OF_DAY));
@@ -167,6 +169,10 @@ public class DateUtil {
 	
 	public static String yearFormat(Date date) {
 		return yearFormat.format(date);
+	}
+	
+	public static String monthFormat(Date date) {
+		return monthFormat.format(date);
 	}
 	
 	public static int getDayIndex(Date date) {

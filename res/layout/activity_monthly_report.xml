@@ -1,14 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/empty_background"
-    android:orientation="vertical" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/empty_background" >
 
+    <LinearLayout
+        android:id="@+id/monthly_table_layout"
+        android:layout_width="fill_parent"
+        android:background="#fff"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"     
+        android:orientation="vertical" >
+     
+         <TableLayout
+        android:id="@+id/monthly_hidden_table"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+         <TableRow style="@style/HeaderRow" >
+
+                <TextView
+                    style="@style/HeaderText"
+                    android:text="@string/table_header_blanace" >
+                </TextView>
+
+                <TextView
+                    style="@style/HeaderText"
+                    android:layout_weight="1"
+                    android:text="@string/table_header_operation" >
+                </TextView>
+
+                <TextView
+                    style="@style/HeaderText"
+                    android:text="@string/table_header_time" >
+                </TextView>
+            </TableRow>
+
+            <TableRow style="@style/BodyRow" >
+
+                <TextView
+                    style="@style/BodyText"
+                    android:layout_height="0dp"
+                    android:text="@string/table_row_blanace_hidden" />
+
+                <TextView
+                    style="@style/BodyText"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/table_row_operation_hidden" />
+
+                <TextView
+                    style="@style/BodyText"
+                    android:layout_height="0dp"
+                    android:text="@string/table_row_time_hidden" />
+            </TableRow>
+    </TableLayout>
+
+    <ScrollView        
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <TableLayout
+            android:id="@+id/monthly_table"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TableRow style="@style/BodyRow" >
+
+                    <TextView
+                        style="@style/BodyText"
+                        android:layout_height="0dp"
+                        android:text="@string/table_row_blanace_hidden" />
+
+                    <TextView
+                        style="@style/BodyText"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/table_row_operation_hidden" />
+
+                    <TextView
+                        style="@style/BodyText"
+                        android:layout_height="0dp"                        
+                        android:text="@string/table_row_time_hidden" />
+                </TableRow>
+        </TableLayout>
+    </ScrollView>
+    
+    </LinearLayout>
+    
     <LinearLayout
         android:id="@+id/monthlylinearlayout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
+        android:background="#fff"
+        android:layout_above="@id/monthly_table_layout"
         android:orientation="vertical" >
 
         <RelativeLayout
@@ -39,7 +124,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/monthly_a1"
                 android:gravity="center_horizontal"
-                android:text="Charging"
+                android:text="@string/chart_charging_label"
                 android:textColor="#000"
                 android:textSize="16sp" />
 
@@ -65,86 +150,16 @@
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/monthly_a3"
                 android:gravity="center_horizontal"
-                android:text="Transfere"
+                android:text="@string/chart_transfere_label"
                 android:textColor="#000"
                 android:textSize="16sp" />
         </RelativeLayout>
 
         <com.malaz.reports.HorizontalListView
             android:id="@+id/monthly_listview"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp" />
-    </LinearLayout>
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#ddd" />
+    </LinearLayout>  
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TableRow style="@style/HeaderRow" >
-
-            <TextView
-                style="@style/HeaderText"
-                android:text="المبلغ" >
-            </TextView>
-
-            <TextView
-                style="@style/HeaderText"
-                android:layout_weight="1"
-                android:text="العملية" >
-            </TextView>
-
-            <TextView
-                style="@style/HeaderText"
-                android:text="التاريخ" >
-            </TextView>
-        </TableRow>
-
-        <TableRow style="@style/BodyRow" >
-
-            <TextView
-                style="@style/BodyText"
-                android:layout_height="0dp"
-                android:text="10000" />
-
-            <TextView
-                style="@style/BodyText"
-                android:layout_height="0dp"
-                android:text="Transfere Opration" />
-
-            <TextView
-                style="@style/BodyText"
-                android:layout_height="0dp"
-                android:text="2013-08-26 08:55:00 " />
-        </TableRow>
-    </TableLayout>
-
-    <ScrollView        
-        android:layout_width="match_parent"
-        android:layout_height="200dp" >
-
-        <TableLayout
-            android:id="@+id/monthly_table"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <TableRow style="@style/BodyRow" >
-
-                <TextView
-                    style="@style/BodyText"
-                    android:layout_height="0dp"
-                    android:text="10000" />
-
-                <TextView
-                    style="@style/BodyText"
-                    android:layout_height="0dp"
-                    android:text="Transfere Opration" />
-
-                <TextView
-                    style="@style/BodyText"
-                    android:layout_height="0dp"
-                    android:text="2013-08-26 08:55:00 " />
-            </TableRow>
-        </TableLayout>
-    </ScrollView>
-
-</LinearLayout>
+</RelativeLayout>
