@@ -11,9 +11,9 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="50dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:orientation="horizontal" >
 
         <Button
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
-            android:paddingRight="20dp"
+            android:layout_marginRight="10dp"
             android:gravity="center_horizontal"
             android:onClick="chargeButtonClicked"
             android:background="@drawable/charge_button"/>
@@ -32,6 +32,7 @@
 			android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical"
             android:gravity="center_horizontal"
             android:onClick="convertButtonClicked"
@@ -41,9 +42,9 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:orientation="horizontal" >
 
         <Button
@@ -51,8 +52,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginRight="10dp"
             android:layout_gravity="center_vertical"
-            android:paddingRight="10dp"
             android:gravity="center_horizontal"
             android:onClick="currentButtonClicked"
             android:background="@drawable/balance_button"/>
@@ -62,6 +63,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical"
             android:gravity="center_horizontal"
             android:onClick="callMeButtonClicked"
@@ -71,9 +73,9 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:orientation="horizontal" >
 
         <Button
@@ -81,9 +83,9 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginRight="10dp"
             android:layout_gravity="center_vertical"
             android:gravity="center_horizontal"
-            android:paddingRight="10dp"
             android:onClick="settingsButtonClicked"
             android:background="@drawable/type_button"/>
 
@@ -92,6 +94,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical"
             android:gravity="center_horizontal"
             android:onClick="aboutButtonClicked"

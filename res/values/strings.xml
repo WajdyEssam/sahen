@@ -58,7 +58,7 @@
 	<string name="pref_emaildialog_message">هل تريد ارسال رسالة لابداء الملاحظات؟</string>
 	<string name="pref_emaildialog_summary">ارسل الملاحظات بالبريد</string>
 	<string name="pref_aboutdialog_title">عن البرنامج</string>
-	<string name="pref_aboutdialog_summary">عن</string>
+	<string name="pref_aboutdialog_summary">عن البرنامج</string>
     
 	
     <!-- History Activity -->

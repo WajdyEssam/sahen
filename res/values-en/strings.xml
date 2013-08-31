@@ -58,7 +58,7 @@
 	<string name="pref_emaildialog_message">Do you want to send an email with feedback?</string>
 	<string name="pref_emaildialog_summary">Send your feedback by e-mail</string>
 	<string name="pref_aboutdialog_title">About Application</string>
-	<string name="pref_aboutdialog_summary">About</string>
+	<string name="pref_aboutdialog_summary">About Application</string>
 
     <!-- History Activity -->
     <string name="application_logs">Application Logs</string>
