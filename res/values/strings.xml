@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Splash Screen Activity -->
-    <string name="splashLabel">وجدي عصام عبدالرحيم</string>
+    <string name="splashLabel"></string>
 
     <!-- Main Activity -->
     <string name="app_name">الشاحن الذكي</string>
@@ -41,7 +41,8 @@
 	<string name="callmeLabel">لارسال كلمني قم بادخال الرقم الذي تود الارسال اليه، مع العلم أن بعض الشبكات لا تدعم هذه الخدمة</string>
 	
     <!-- Preference Activity -->
-    <string name="settings">اعدادات البرنامج</string>
+    <string name="user_settings">اعدادات المستخدم</string>
+    <string name="app_settings">اعدادات البرنامج</string>
     <string name="languageSettingLbl">اللغه</string>
     <string name="languageSettingSummary">لغه البرنامج</string>
     <string name="simTypeLbl">اختر الشركة</string>
@@ -50,7 +51,16 @@
     <string name="simNoSummary">ادخل رقم الشريحة اذا كنت تود ذلك</string>
     <string name="clearDb">تفريغ قاعدة البيانات</string>
     <string name="clearDbDescription">اضغط هنا لتصفير استخدام البرنامج</string>
+	<string name="pref_share_summary">شارك البرنامج مع اصدقائك</string>
+	<string name="pref_share_title">انشر البرنامج</string>
+	<string name="pref_rate_summary">قيم البرنامج في معرض البرامج</string>
+	<string name="pref_rate_title">قيم البرنامج</string>
+	<string name="pref_emaildialog_message">هل تريد ارسال رسالة لابداء الملاحظات؟</string>
+	<string name="pref_emaildialog_summary">ارسل الملاحظات بالبريد</string>
+	<string name="pref_aboutdialog_title">عن البرنامج</string>
+	<string name="pref_aboutdialog_summary">عن</string>
     
+	
     <!-- History Activity -->
     <string name="application_logs">أخر العمليات</string>
     <string name="clear_logs">تم مسح اخر العمليات بنجاح</string>

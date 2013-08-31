@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <PreferenceCategory android:title="@string/settings" > 
+    <PreferenceCategory android:title="@string/user_settings" > 
          <ListPreference
             android:key="applicationlanguage"
             android:title="@string/languageSettingLbl" 
@@ -28,4 +28,32 @@
                 android:summary="@string/clearDbDescription"/>
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="@string/app_settings" >
+          <Preference
+            android:key="pref_rate"
+            android:summary="@string/pref_rate_summary"
+            android:title="@string/pref_rate_title"/>
+
+        <Preference
+            android:key="pref_share"
+            android:summary="@string/pref_share_summary"
+            android:title="@string/pref_share_title"/>
+
+        <com.malaz.dialogs.EmailDialog
+            android:dialogIcon="@drawable/ic_launcher"
+            android:dialogTitle="@string/pref_sendemail_title"
+            android:dialogMessage="@string/pref_emaildialog_message"
+            android:key="pref_sendemail_key"
+            android:negativeButtonText="@string/no_message"
+            android:positiveButtonText="@string/yes_message"
+            android:summary="@string/pref_emaildialog_summary"
+            android:title="@string/pref_sendemail_title"/>
+
+        <com.malaz.dialogs.AboutDialog
+            android:dialogIcon="@drawable/ic_launcher"
+            android:dialogTitle="@string/pref_aboutdialog_title"
+            android:key="pref_about_key"
+            android:negativeButtonText="@null"
+            android:title="@string/pref_aboutdialog_summary"/>
+    </PreferenceCategory>
 </PreferenceScreen>

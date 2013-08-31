@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
@@ -25,81 +26,105 @@ public class ApplicationPreferenceActivity extends PreferenceActivity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		LangUtil.setLocale(this);
-		
+
 		// set file name
 		getPreferenceManager().setSharedPreferencesName(Constants.FILE_NAME);
 
 		// load preference from XML file
 		addPreferencesFromResource(R.xml.settingsui);
-		PreferenceManager.setDefaultValues(ApplicationPreferenceActivity.this,R.xml.settingsui, false);
+		PreferenceManager.setDefaultValues(ApplicationPreferenceActivity.this,
+				R.xml.settingsui, false);
 
 		for (int i = 0; i < getPreferenceScreen().getPreferenceCount(); i++) {
 			initSummary(getPreferenceScreen().getPreference(i));
 		}
-		
-		Preference button = (Preference)findPreference("clearButton");
+
+		Preference button = (Preference) findPreference("clearButton");
 		button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference arg0) { 
+			@Override
+			public boolean onPreferenceClick(Preference arg0) {
 
-            	DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-            	    @Override
-            	    public void onClick(DialogInterface dialog, int which) {
-            	        switch (which){
-            	        case DialogInterface.BUTTON_POSITIVE:            	        	            	        
-            	        	clearDB();
-            	            break;
+				DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						switch (which) {
+						case DialogInterface.BUTTON_POSITIVE:
+							clearDB();
+							break;
 
-            	        case DialogInterface.BUTTON_NEGATIVE:
-            	            break;
-            	        }
-            	    }
-            	};
+						case DialogInterface.BUTTON_NEGATIVE:
+							break;
+						}
+					}
+				};
 
-            	AlertDialog.Builder builder = new AlertDialog.Builder(ApplicationPreferenceActivity.this);
-            	builder.setMessage(getString(R.string.sure_message)).setPositiveButton(getString(R.string.yes_message), dialogClickListener)
-            	    .setNegativeButton(getString(R.string.no_message), dialogClickListener).show();
+				AlertDialog.Builder builder = new AlertDialog.Builder(
+						ApplicationPreferenceActivity.this);
+				builder.setMessage(getString(R.string.sure_message))
+						.setPositiveButton(getString(R.string.yes_message),
+								dialogClickListener)
+						.setNegativeButton(getString(R.string.no_message),
+								dialogClickListener).show();
 
-                return true;
-            }
-        });
+				return true;
+			}
+		});
+
+		Preference sharePref = findPreference("pref_share");
+		Intent shareIntent = new Intent();
+		shareIntent.setAction(Intent.ACTION_SEND);
+		shareIntent.setType("text/plain");
+		shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Check this app!");
+		shareIntent.putExtra(Intent.EXTRA_TEXT,"Check this awesome app at: ...");
+		sharePref.setIntent(shareIntent);
+
+		Preference ratePref = findPreference("pref_rate");
+		Uri uri = Uri.parse("market://details?id=" + getPackageName());
+		Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+		ratePref.setIntent(goToMarket);
 	}
 
 	private void clearDB() {
-		final ProgressDialog dialog = ProgressDialog.show(this, getString(R.string.clearDb), getString(R.string.wait_message));
+		final ProgressDialog dialog = ProgressDialog.show(this,
+				getString(R.string.clearDb), getString(R.string.wait_message));
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				HistoryDB.getInstance(ApplicationPreferenceActivity.this).clearHistories();	
-				dialog.dismiss();	
-				
+				HistoryDB.getInstance(ApplicationPreferenceActivity.this)
+						.clearHistories();
+				dialog.dismiss();
+
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						Toast.makeText(ApplicationPreferenceActivity.this, 
-								getString(R.string.operation_done_sucesffully),Toast.LENGTH_SHORT).show();
+						Toast.makeText(ApplicationPreferenceActivity.this,
+								getString(R.string.operation_done_sucesffully),
+								Toast.LENGTH_SHORT).show();
 					}
 				});
 			}
-		}).start();		
+		}).start();
 	}
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
-		getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+		getPreferenceScreen().getSharedPreferences()
+				.registerOnSharedPreferenceChangeListener(this);
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
+		getPreferenceScreen().getSharedPreferences()
+				.unregisterOnSharedPreferenceChangeListener(this);
 	}
 
-	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
+			String key) {
 		updatePrefSummary(findPreference(key));
-		
-		if ( key.equals(Constants.APPLICATION_LANGUAGE) ) {
+
+		if (key.equals(Constants.APPLICATION_LANGUAGE)) {
 			Intent intent = new Intent(this, MainActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);

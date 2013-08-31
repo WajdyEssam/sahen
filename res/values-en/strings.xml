@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Splash Screen Activity -->
-    <string name="splashLabel">Wajdy Essam Ahmed</string>
+    <string name="splashLabel"></string>
     
     <!-- Main Activity -->
     <string name="app_name">SahenZaki</string>
@@ -37,11 +37,12 @@
     
     <!--  Callme Activity -->
     <string name="callmeNumberLbl">Number</string>
-    <string name="sendCallmeLbl">Send CallMe</string>
-    <string name="callmeLabel">To send call me message you should write the recipient number (note: some companies dosn\'t support this service)</string>
+    <string name="sendCallmeLbl">Send Callme</string>
+    <string name="callmeLabel">To send callme message you should write the recipient number (note: some companies dosn\'t support this service)</string>
     
     <!-- Preference Activity -->
-    <string name="settings">Settings</string>
+    <string name="user_settings">User Settings</string>
+    <string name="app_settings">Application Settings</string>
     <string name="languageSettingLbl">Language</string>
     <string name="simTypeLbl">Choose the company</string>
     <string name="simNoLbl">SIM No</string>
@@ -50,7 +51,15 @@
     <string name="simNoSummary">Enter your SIM No. if you wish</string>
     <string name="clearDb">Clear application database</string>
     <string name="clearDbDescription">Click here to return to starting point</string>
-    
+    <string name="pref_share_summary">Share the app with your friends</string>
+	<string name="pref_share_title">Share it</string>
+	<string name="pref_rate_summary">Rate the app in the store!</string>
+	<string name="pref_rate_title">Rate the app</string>
+	<string name="pref_emaildialog_message">Do you want to send an email with feedback?</string>
+	<string name="pref_emaildialog_summary">Send your feedback by e-mail</string>
+	<string name="pref_aboutdialog_title">About Application</string>
+	<string name="pref_aboutdialog_summary">About</string>
+
     <!-- History Activity -->
     <string name="application_logs">Application Logs</string>
     <string name="clear_logs">Clear all logs done succesffully</string>
@@ -74,6 +83,6 @@
     <!--  Lunch Email  -->
     <string name="mail_support_feedback_to">wajdyessam@hotmail.com</string>
     <string name="mail_support_feedback_subject">[AlSahen AlZaki App]</string>
-    <string name="pref_sendemail_title">Send feedback!</string>
+    <string name="pref_sendemail_title">Send feedback</string>
     
 </resources>
