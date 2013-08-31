@@ -90,7 +90,11 @@ public class ChargeActivity extends BaseActivity {
 		boolean state = CallUtil.charge(this, service);
 		
 		if ( state ) {
-			askForCharingAmount(number, this);			
+			askForCharingAmount(number, this);	
+			
+			ImageView picView = (ImageView)findViewById(R.id.picture);
+			picView.setVisibility(View.INVISIBLE);
+			
 		}
 		else {
 			Toast.makeText(this, "Error in Charging Balance", Toast.LENGTH_LONG).show();
@@ -207,6 +211,8 @@ public class ChargeActivity extends BaseActivity {
     			Bitmap thePic = extras.getParcelable("data");
     			//retrieve a reference to the ImageView
     			ImageView picView = (ImageView)findViewById(R.id.picture);
+    			picView.setVisibility(View.VISIBLE);
+    			
     			//display the returned cropped image
     			picView.setImageBitmap(thePic);
     			
