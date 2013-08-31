@@ -70,4 +70,9 @@
     <string name="operation_done_sucesffully">تمت العملية بنجاح</string>
     <string name="operation_not_done">حدث خطأ في العملية</string>
     <string name="wait_message">يرجى الانتظار من فضلك ...</string>
+    
+    <!--  Lunch Email  -->
+    <string name="mail_support_feedback_to">wajdyessam@hotmail.com</string>
+    <string name="mail_support_feedback_subject">[برنامج الشاحن الذكي]</string>
+    <string name="pref_sendemail_title">ارسال الملاحظات</string>
 </resources>

@@ -71,4 +71,9 @@
     <string name="operation_not_done">Operation Failued!</string>
     <string name="wait_message">Please Wait...</string>
      
+    <!--  Lunch Email  -->
+    <string name="mail_support_feedback_to">wajdyessam@hotmail.com</string>
+    <string name="mail_support_feedback_subject">[AlSahen AlZaki App]</string>
+    <string name="pref_sendemail_title">Send feedback!</string>
+    
 </resources>
