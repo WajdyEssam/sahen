@@ -36,7 +36,7 @@
             android:layout_gravity="center_vertical"
             android:gravity="center_horizontal"
             android:onClick="convertButtonClicked"
-            android:background="@drawable/send_balance_button"/>
+            android:background="@drawable/transfere_button"/>
     </LinearLayout>
 
     <LinearLayout
@@ -87,7 +87,7 @@
             android:layout_gravity="center_vertical"
             android:gravity="center_horizontal"
             android:onClick="settingsButtonClicked"
-            android:background="@drawable/type_button"/>
+            android:background="@drawable/settings_button"/>
 
         <Button
             android:id="@+id/aboutButton"
@@ -98,7 +98,7 @@
             android:layout_gravity="center_vertical"
             android:gravity="center_horizontal"
             android:onClick="aboutButtonClicked"
-            android:background="@drawable/about_button"/>
+            android:background="@drawable/reports_button"/>
     </LinearLayout>
 
 </LinearLayout>
