@@ -89,7 +89,7 @@ public class ReportsMainActivity extends TabActivity {
 		actionBar.setHomeButtonEnabled(true);
 		actionBar.setTitle(this.getResources().getString(R.string.app_name));
 		actionBar.setSubtitle(this.getResources().getString(R.string.sim_name) + 
-				" : " +  AppUtil.getSIMName(Preferences.getValue(this, Constants.COMPANY_NAME, "")));
+				" : " +  AppUtil.getSIMName(Preferences.getValue(this, Constants.COMPANY_NAME, ""), this));
 		
 	}
 }

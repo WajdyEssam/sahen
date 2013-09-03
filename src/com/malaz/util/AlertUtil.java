@@ -30,7 +30,7 @@ public class AlertUtil {
 								// Toast.LENGTH_SHORT).show();
 							}
 						})
-				.setSingleChoiceItems(AppUtil.items, selectedItem,
+				.setSingleChoiceItems(AppUtil.englishItems, selectedItem,
 						new DialogInterface.OnClickListener() {
 
 							@Override

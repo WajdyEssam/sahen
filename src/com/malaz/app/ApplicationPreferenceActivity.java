@@ -124,7 +124,8 @@ public class ApplicationPreferenceActivity extends PreferenceActivity implements
 			String key) {
 		updatePrefSummary(findPreference(key));
 
-		if (key.equals(Constants.APPLICATION_LANGUAGE)) {
+		if (key.equals(Constants.APPLICATION_LANGUAGE) ||
+			key.equals(Constants.COMPANY_NAME)) {
 			Intent intent = new Intent(this, MainActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
