@@ -61,6 +61,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:gravity="center"
+        android:textColor="@drawable/button_text_color"
+        android:background="@drawable/button_background"        
         android:onClick="convertBalanceButtonClicked"
         android:text="@string/convertBalanceLbl" />
 

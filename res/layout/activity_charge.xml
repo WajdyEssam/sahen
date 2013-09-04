@@ -10,40 +10,45 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:padding="16dp"
+        android:layout_margin="16dp"
         android:text="@string/chargeLabel" 
         android:gravity="center" />
     
-    <LinearLayout 
+    <LinearLayout
         android:id="@+id/chargelinearlayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/charge_description"
-        android:orientation="horizontal">
+        android:layout_margin="10dp"
+        android:orientation="horizontal" >
                 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"  
-        android:layout_weight="1"     
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"      
+        android:layout_weight="1"
+        android:textColor="@drawable/button_text_color"
+        android:background="@drawable/button_background"
+        android:layout_marginRight="15dp"
         android:text="@string/ocrButtonLbl" />
 
      <Button
         android:id="@+id/voice_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"   
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"  
+        android:layout_weight="1"
+        android:layout_marginLeft="15dp"
+        android:textColor="@drawable/button_text_color"
+        android:background="@drawable/button_background"
         android:text="@string/voice_label" />  
         
-    </LinearLayout>
-        
+    </LinearLayout>        
           
     <ImageView 
 	    android:id="@+id/picture"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:contentDescription="@string/picture"
-	    android:padding="16dp"
 	    android:layout_marginTop="15dp"
 	    android:layout_below="@id/chargelinearlayout"
 	    android:background="@drawable/pic_border" 
@@ -54,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/picture"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:hint="@string/numberEditTextLbl" />
         
     <Button
@@ -64,6 +69,8 @@
         android:layout_below="@id/field"
         android:layout_marginTop="5dp"
         android:gravity="center"
+        android:textColor="@drawable/button_text_color"
+        android:background="@drawable/button_background"        
         android:layout_centerHorizontal="true"
         android:onClick="chargeButtonClicked"
         android:text="@string/chargeButtonLbl" />

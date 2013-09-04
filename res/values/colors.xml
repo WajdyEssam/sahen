@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <color name="backgroundNormal">#5ca2c0</color>
+     <color name="backgroundPressed">#c7c7c7</color>
+     <color name="colorNormal">#ffffff</color>
+     <color name="colorPressed">#67a6c2</color>
+</resources>
