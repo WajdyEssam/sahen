@@ -97,7 +97,6 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="#D7E3F7"
             android:orientation="horizontal"
             android:padding="15dp" >
 
