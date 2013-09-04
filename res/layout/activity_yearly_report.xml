@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@drawable/empty_background" >
+    android:layout_height="fill_parent" >
 
     <LinearLayout
         android:id="@+id/yearly_table_layout"
         android:layout_width="fill_parent"
-        android:background="#ddd"
+		android:background="#D7E3F7" 
         android:layout_height="150dp"
         android:layout_alignParentBottom="true"     
         android:orientation="vertical" >
@@ -91,15 +90,14 @@
         android:id="@+id/yearlylinearlayout"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:background="#fff"
         android:layout_above="@id/yearly_table_layout"
         android:orientation="vertical" >
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="#ddd"
             android:orientation="horizontal"
+            android:background="#D7E3F7" 
             android:padding="15dp" >
 
             <TextView
@@ -157,8 +155,7 @@
         <com.malaz.reports.HorizontalListView
             android:id="@+id/yearly_listview"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="#ddd" />
+            android:layout_height="fill_parent" />
     </LinearLayout>
 
     

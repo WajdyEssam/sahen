@@ -18,13 +18,13 @@
     </style>
     
     <style name="HeaderRow">
-		<item name="android:background">#7FAF7F</item>
+		<item name="android:background">#5ca2c0</item>
 		<item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">wrap_content</item>
 	</style>
 	<style name="HeaderText">
-		<item name="android:textColor">#0F7F0F</item>
-		<item name="android:shadowColor">#AFFFFFFF</item>
+		<item name="android:textColor">#ffffff</item>
+		<item name="android:shadowColor">#0257E8</item>
 		<item name="android:shadowDx">1</item>
 		<item name="android:shadowDy">1</item>
 		<item name="android:shadowRadius">1.0</item>
@@ -33,17 +33,17 @@
 		<item name="android:textSize">14sp</item>
 		<item name="android:textStyle">bold</item>
 		<item name="android:background">@drawable/border</item>
-		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">wrap_content</item>
 	</style>
 	<style name="BodyRow">
-		<item name="android:background">#DFDFDF</item>
+		<item name="android:background">#D7E3F7</item>
 		<item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">wrap_content</item>
 	</style>
 	<style name="BodyText">
-		<item name="android:textColor">#7F7F7F</item>
-		<item name="android:shadowColor">#AFFFFFFF</item>
+		<item name="android:textColor">#000000</item>
+		<item name="android:shadowColor">#5ca2c0</item>
 		<item name="android:shadowDx">1</item>
 		<item name="android:shadowDy">1</item>
 		<item name="android:shadowRadius">1.0</item>
@@ -52,7 +52,7 @@
 		<item name="android:textSize">14sp</item>
 		<item name="android:textStyle">bold</item>
 		<item name="android:background">@drawable/border</item>
-		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">wrap_content</item>
 	</style>
 
