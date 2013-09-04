@@ -28,7 +28,12 @@ public class CallmeActivity extends BaseActivity {
 	}
 
 	public void sendCallmeButtonClicked(View view) {
-		String number = numberEditText.getText().toString();
+		String number = numberEditText.getText().toString().trim().replaceAll(" ", "");
+		
+		if ( number.isEmpty() ) {
+			Toast.makeText(this, "Please Write Card Number Before Sending CallMe", Toast.LENGTH_LONG).show();
+			return;
+		}
 		
 		SIMService service = new ServiceFactory(this).getCallMeService(number);
 		
@@ -37,14 +42,19 @@ public class CallmeActivity extends BaseActivity {
 			return;
 		}
 		
+		if ( service.getCallMeFormat().isEmpty() ) {
+			Toast.makeText(this, "This Company Doesn't Support CallMe Service!", Toast.LENGTH_LONG).show();
+			return;
+		}
+		
 		boolean state = CallUtil.callme(this, service);
 
 		if ( state ) {
 			Database.saveSendingCallMe(this, number);
-			Toast.makeText(this, "Callme is sending successfully!", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "CallMe to " + number + " is sending successfully!", Toast.LENGTH_LONG).show();
 		}
 		else {
-			Toast.makeText(this, "Error in sending call me message", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "Error in sending call me message to" + number, Toast.LENGTH_LONG).show();
 		}
 	}
 }

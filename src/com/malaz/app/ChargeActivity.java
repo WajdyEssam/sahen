@@ -78,10 +78,15 @@ public class ChargeActivity extends BaseActivity {
 	}
 	
 	public void chargeButtonClicked(View view) {
-		final String number = numberEditText.getText().toString();	
+		final String number = numberEditText.getText().toString().trim().replaceAll(" ", "");
+		
+		if ( number.isEmpty() ) {
+			Toast.makeText(this, "Please Write Card Number Before Charging", Toast.LENGTH_LONG).show();
+			return;
+		}
 		
 		SIMService service = new ServiceFactory(this).getChargeService(number);
-		
+
 		if ( service == null ) {
 			AlertUtil.selectSIMTypeDialog(ChargeActivity.this);
 			return;
@@ -97,7 +102,7 @@ public class ChargeActivity extends BaseActivity {
 			
 		}
 		else {
-			Toast.makeText(this, "Error in Charging Balance", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "Error in Charging with Number " + number, Toast.LENGTH_LONG).show();
 		}
 	}
 	
@@ -132,14 +137,14 @@ public class ChargeActivity extends BaseActivity {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				int amount = np.getValue();
 				saveCharging(number, amount);	
-				Toast.makeText(ChargeActivity.this, "Charging Balance Done!", Toast.LENGTH_LONG).show();
+				Toast.makeText(ChargeActivity.this, "Charging " + amount + " to " + number + " is Done!", Toast.LENGTH_LONG).show();
 			}
 		});
 
 		alert.setNegativeButton("Cancel",
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int whichButton) {
-						Toast.makeText(ChargeActivity.this, "Charging Balance Done!", Toast.LENGTH_LONG).show();
+						Toast.makeText(ChargeActivity.this, "Charging Balance to " +  number + " is Done!", Toast.LENGTH_LONG).show();
 						dialog.dismiss();
 					}
 				});

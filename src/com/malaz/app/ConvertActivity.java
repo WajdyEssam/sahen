@@ -30,8 +30,13 @@ public class ConvertActivity extends BaseActivity {
 	}
 	
 	public void convertBalanceButtonClicked(View view) {
-		String number = numberEditText.getText().toString();
-		String balance = balanceEditText.getText().toString();
+		String number = numberEditText.getText().toString().trim().replaceAll(" ", "");
+		String balance = balanceEditText.getText().toString().trim().replaceAll(" ", "");
+		
+		if ( number.isEmpty() || balance.isEmpty() ) {
+			Toast.makeText(this, "Please Write All Nesseccary Information Before Transfering", Toast.LENGTH_LONG).show();
+			return;
+		}
 		
 		SIMService service = new ServiceFactory(this).getSendBalanceService(balance, number);
 		
@@ -44,10 +49,10 @@ public class ConvertActivity extends BaseActivity {
 		
 		if ( state ) {
 			Database.saveSendingBalance(this, number, balance);			
-			Toast.makeText(this, "Convert Balance Done!", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "Transfering " + balance + " To " + number + " is Done!", Toast.LENGTH_LONG).show();
 		}
 		else {
-			Toast.makeText(this, "Error in Balance Converting", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "Transfering Error in Balance "  + balance + " To " + number, Toast.LENGTH_LONG).show();
 		}
 	}
 
