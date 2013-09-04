@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
+import android.widget.TableLayout.LayoutParams;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -104,8 +105,8 @@ public class WeeklyReportActivity extends Activity {
     	view1.setText(cell1);
 
     	TextView view2 = (TextView) getLayoutInflater().inflate(R.layout.partial_text_view, null);
-    	view2.setText(cell2);    	
-    	
+    	view2.setText(cell2);    
+
     	TextView view3 = (TextView) getLayoutInflater().inflate(R.layout.partial_text_view, null);
     	view3.setText(cell3);
     	

@@ -11,12 +11,17 @@
         android:layout_alignParentBottom="true"     
         android:orientation="vertical" >
      
-        <TableLayout
-        android:id="@+id/yearly_hidden_table"
+    <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="fill_parent" >
 
-         <TableRow style="@style/HeaderRow" >
+        <TableLayout
+            android:id="@+id/yearly_table"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*" >
+
+              <TableRow style="@style/HeaderRow" >
 
                 <TextView
                     style="@style/HeaderText"
@@ -33,55 +38,7 @@
                     style="@style/HeaderText"
                     android:text="@string/table_header_time" >
                 </TextView>
-            </TableRow>
-
-            <TableRow style="@style/BodyRow" >
-
-                <TextView
-                    style="@style/BodyText"
-                    android:layout_height="0dp"
-                    android:text="@string/table_row_blanace_hidden" />
-
-                <TextView
-                    style="@style/BodyText"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text="@string/table_row_operation_hidden" />
-
-                <TextView
-                    style="@style/BodyText"
-                    android:layout_height="0dp"
-                    android:text="@string/table_row_time_hidden" />
-            </TableRow>
-    </TableLayout>
-
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
-
-        <TableLayout
-            android:id="@+id/yearly_table"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
-
-           <TableRow style="@style/BodyRow" >
-
-                    <TextView
-                        style="@style/BodyText"
-                        android:layout_height="0dp"
-                        android:text="@string/table_row_blanace_hidden" />
-
-                    <TextView
-                        style="@style/BodyText"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="@string/table_row_operation_hidden" />
-
-                    <TextView
-                        style="@style/BodyText"
-                        android:layout_height="0dp"                        
-                        android:text="@string/table_row_time_hidden" />
-                </TableRow>
+            </TableRow>                                
         </TableLayout>
     </ScrollView>
     </LinearLayout>
