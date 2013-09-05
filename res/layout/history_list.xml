@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="10dp" >
+    android:background="#D7E3F7"
+    >
 
     <TextView
         android:id="@+id/type"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:gravity="left"
+        android:layout_alignParentLeft="true"
         android:textSize="28sp" />
 
+     <TextView
+        android:id="@+id/time"
+        android:layout_alignParentRight="true"
+		android:textColor="#FFFFFF"        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp" />
+        
     <TextView
         android:id="@+id/desc"
-        android:layout_marginTop="2dp"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:layout_below="@id/time"
+        android:layout_toRightOf="@id/type"        
+        android:layout_marginLeft="75dip"
+        android:layout_centerVertical="true"        
+        android:textColor="#FFFFFF"
         android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/time"
-        android:layout_marginTop="5dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:textColor="#DDD"
-        android:textSize="14sp" />
-
-</LinearLayout>
+    
+</RelativeLayout>
