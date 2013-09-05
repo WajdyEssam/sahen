@@ -1,5 +1,6 @@
 package com.malaz.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -16,6 +17,8 @@ public class ConvertActivity extends BaseActivity {
 
 	private EditText numberEditText;
 	private EditText balanceEditText;
+	
+	private final static int TRANSFERE_BALANCE = 1;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +48,20 @@ public class ConvertActivity extends BaseActivity {
 			return;
 		}
 		
-		boolean state = CallUtil.convert(this, service);
+		CallUtil.convert(this, service, TRANSFERE_BALANCE);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode,Intent data) {
+		String number = numberEditText.getText().toString().trim().replaceAll(" ", "");
+		String balance = balanceEditText.getText().toString().trim().replaceAll(" ", "");
 		
-		if ( state ) {
+		if (  resultCode == RESULT_OK ) {
 			Database.saveSendingBalance(this, number, balance);			
 			Toast.makeText(this, "Transfering " + balance + " To " + number + " is Done!", Toast.LENGTH_LONG).show();
 		}
 		else {
 			Toast.makeText(this, "Transfering Error in Balance "  + balance + " To " + number, Toast.LENGTH_LONG).show();
-		}
+		}			
 	}
-
 }

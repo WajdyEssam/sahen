@@ -16,6 +16,8 @@ import com.malaz.util.Preferences;
 
 public class MainActivity extends BaseActivity {
 
+	private final static int CHECKING_BALANCE = 1;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -43,24 +45,12 @@ public class MainActivity extends BaseActivity {
 			return;
 		}
 		
-		boolean state = CallUtil.current(this, service);
-		
-		if ( state ) {
-			Toast.makeText(this, "Checking Balance Done!", Toast.LENGTH_LONG).show();
-		}
-		else {
-			Toast.makeText(this, "Error in Checking Balance", Toast.LENGTH_LONG).show();
-		}
+		CallUtil.current(this, service, CHECKING_BALANCE);
 	}
 	
 	public void aboutButtonClicked(View view) {
 		Intent intent = new Intent(this, ReportsMainActivity.class);
 		startActivity(intent);
-		
-//		Toast.makeText(this, "Malaz Mustafa, Android Developer (malazwajdy@hotmail.com)", Toast.LENGTH_LONG).show();
-//		
-//		DisplayText(Preferences.getValue(this, Constants.COMPANY_NAME, ""));
-//		DisplayText(Preferences.getValue(this, Constants.SIM_NUMBER, ""));
 	}
 	
 	public void callMeButtonClicked(View view) {
@@ -73,7 +63,13 @@ public class MainActivity extends BaseActivity {
 		startActivity(i);
 	}
 	
-	private void DisplayText(String string) {
-		Toast.makeText(getBaseContext(), string, Toast.LENGTH_LONG).show();
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode,Intent data) {
+		if (  resultCode == RESULT_OK ) {
+			Toast.makeText(this, "Checking Balance Done!", Toast.LENGTH_LONG).show();
+		}
+		else {
+			Toast.makeText(this, "Error in Checking Balance", Toast.LENGTH_LONG).show();
+		}		
 	}
 }

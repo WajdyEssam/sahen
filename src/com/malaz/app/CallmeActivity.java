@@ -1,5 +1,6 @@
 package com.malaz.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -14,7 +15,8 @@ import com.malaz.util.LangUtil;
 
 public class CallmeActivity extends BaseActivity {
 
-	private EditText numberEditText;
+	private EditText numberEditText;	
+	private final static int CALLME = 1;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +49,19 @@ public class CallmeActivity extends BaseActivity {
 			return;
 		}
 		
-		boolean state = CallUtil.callme(this, service);
-
-		if ( state ) {
+		CallUtil.callme(this, service, CALLME);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode,Intent data) {
+		String number = numberEditText.getText().toString().trim().replaceAll(" ", "");
+		
+		if (  resultCode == RESULT_OK ) {
 			Database.saveSendingCallMe(this, number);
-			Toast.makeText(this, "CallMe to " + number + " is sending successfully!", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "Call Me to " + number + " is sending successfully!", Toast.LENGTH_LONG).show();
 		}
 		else {
-			Toast.makeText(this, "Error in sending call me message to" + number, Toast.LENGTH_LONG).show();
-		}
+			Toast.makeText(this, "Error in sending CallMe message to" + number, Toast.LENGTH_LONG).show();
+		}		
 	}
 }

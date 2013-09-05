@@ -44,6 +44,7 @@ public class ChargeActivity extends BaseActivity {
 	private static final int CAMERA_CAPTURE = 1;
 	private static final int PIC_CROP = 2;
 	private static final int EVENT_VOICE_CAPTURE = 3;
+	private final static int CHARGING_BALANCE = 4;
 	
 	protected Button ocrButton;
 	protected EditText numberEditText;
@@ -93,20 +94,7 @@ public class ChargeActivity extends BaseActivity {
 			return;
 		}
 		
-		boolean state = CallUtil.charge(this, service);
-		
-		Logger.show("Charging Now: ", state);
-		
-		if ( state ) {
-			askForCharingAmount(number, this);	
-			
-			ImageView picView = (ImageView)findViewById(R.id.picture);
-			picView.setVisibility(View.INVISIBLE);
-			
-		}
-		else {
-			Toast.makeText(this, "Error in Charging with Number " + number, Toast.LENGTH_LONG).show();
-		}
+		CallUtil.charge(this, service, CHARGING_BALANCE);
 	}
 	
 	private void saveCharging(String number, int amount) {
@@ -267,9 +255,21 @@ public class ChargeActivity extends BaseActivity {
 							}
 						}).show();
     		}
+    		else if ( requestCode == CHARGING_BALANCE ) {
+    			final String number = numberEditText.getText().toString().trim().replaceAll(" ", "");
+    			askForCharingAmount(number, this);					
+				ImageView picView = (ImageView)findViewById(R.id.picture);
+				picView.setVisibility(View.INVISIBLE);
+    		}
     	}
     	else {
-			Toast.makeText(this, "Operation Canceled", Toast.LENGTH_SHORT).show();
+    		if ( requestCode == CHARGING_BALANCE ) {
+    			final String number = numberEditText.getText().toString().trim().replaceAll(" ", "");
+    			Toast.makeText(this, "Error in Charging with Number " + number, Toast.LENGTH_LONG).show();
+    		}
+    		else {
+    			Toast.makeText(this, "Operation Canceled", Toast.LENGTH_SHORT).show();
+    		}
 		}
 	}
 

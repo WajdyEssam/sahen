@@ -8,33 +8,33 @@ import android.net.Uri;
 
 public class CallUtil {
 
-	public static boolean charge(Activity ac, SIMService service) {
-		boolean state = call(ac, service.getChargeFormat());
+	public static boolean charge(Activity ac, SIMService service, int requestCode) {
+		boolean state = call(ac, service.getChargeFormat(), requestCode);
 		return state;
 	}
 	
-	public static boolean convert(Activity ac, SIMService service ) {
-		boolean state = call(ac, service.getSendBalance());
+	public static boolean convert(Activity ac, SIMService service, int requestCode) {
+		boolean state = call(ac, service.getSendBalance(), requestCode);
 		return state;
 	}
 	
-	public static boolean callme(Activity ac,  SIMService service) {
-		boolean state = call(ac, service.getCallMeFormat());
+	public static boolean callme(Activity ac,  SIMService service, int requestCode) {
+		boolean state = call(ac, service.getCallMeFormat(), requestCode);
 		return state;
 	}
 	
-	public static boolean current(Activity ac, SIMService service) {
-		boolean state = call(ac, service.getBalance());
+	public static boolean current(Activity ac, SIMService service, int requestCode) {
+		boolean state = call(ac, service.getBalance(),requestCode);
 		return state;	
 	}
 	
-	private static boolean call(Activity ac, String number) {
+	private static boolean call(Activity ac, String number, int requestCode) {
 		boolean state = true;
 		
 		try {
-			Intent intent = new Intent(Intent.ACTION_DIAL);
+			Intent intent = new Intent(Intent.ACTION_CALL);
 			intent.setData(Uri.parse("tel:" + number));
-			ac.startActivity(intent);
+			ac.startActivityForResult(intent, requestCode);
 		}
 		catch(Exception e) {
 			state = false;
