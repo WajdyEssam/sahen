@@ -104,13 +104,10 @@ public class ChargeActivity extends BaseActivity {
 	public void askForCharingAmount(final String number, final Context context) {
 		final NumberPicker np = new NumberPicker(this);
 		
-		String[] nums = new String[] {"1", "2", "4", "5", "10", "15", "20", "40", "50",
-				"100", "150", "200"};
-
         np.setMinValue(1);
         np.setMaxValue(200);
         np.setWrapSelectorWheel(false);
-        //np.setDisplayedValues(nums);
+ 
         np.setValue(5);
         
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -236,6 +233,14 @@ public class ChargeActivity extends BaseActivity {
 				int selectedItem = 0;
 				new AlertDialog.Builder(this)
 				.setTitle("Please Select the text that match your voice")
+				.setNegativeButton("OK",
+						new DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {;
+							}
+						})
 				.setNegativeButton("Cancel",
 						new DialogInterface.OnClickListener() {
 

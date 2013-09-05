@@ -7,8 +7,6 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp"
         android:orientation="vertical" >
 
         <FrameLayout
