@@ -96,4 +96,10 @@
     <string name="mail_support_feedback_to">wajdyessam@hotmail.com</string>
     <string name="mail_support_feedback_subject">[برنامج الشاحن الذكي]</string>
     <string name="pref_sendemail_title">ارسال الملاحظات</string>
+    
+    <!--  Menu -->
+    <string name="menu_about">عن البرنامح</string>
+    <string name="menu_home">الرئيسية</string>
+    <string name="menu_setting">اعدادات</string>
+    <string name="menu_clear">مسح العمليات</string>
 </resources>

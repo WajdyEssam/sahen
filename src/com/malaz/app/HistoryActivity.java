@@ -2,10 +2,13 @@ package com.malaz.app;
 
 import java.util.List;
 
+import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +22,7 @@ import com.malaz.adapters.HistoryAdapter;
 import com.malaz.database.HistoryDB;
 import com.malaz.model.History;
 import com.malaz.util.LangUtil;
+import com.malaz.util.Preferences;
 
 public class HistoryActivity extends Activity {
 
@@ -26,6 +30,7 @@ public class HistoryActivity extends Activity {
 	private List<History> histories;
 	
 	@Override
+	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		LangUtil.setLocale(this);
@@ -79,8 +84,11 @@ public class HistoryActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case (android.R.id.home):
+		case android.R.id.home:
 			this.finish();
+			Intent intent = new Intent(this, MainActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
 			return true;
 			
 		case R.id.remove:
@@ -89,6 +97,19 @@ public class HistoryActivity extends Activity {
 			refreshList();
 			setTheTitle(getActionBar(), (int)this.database.getNumberOfHistories());
 			return true;
+			
+		
+		case R.id.menu_home:
+			Intent intent2 = new Intent(this, MainActivity.class);
+			intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent2);
+			break;
+					
+
+		case R.id.menu_settings:
+			Intent preferecneIntent = new Intent(this, ApplicationPreferenceActivity.class);
+			startActivity(preferecneIntent);
+			break;
 		}
 		
 		return super.onOptionsItemSelected(item);

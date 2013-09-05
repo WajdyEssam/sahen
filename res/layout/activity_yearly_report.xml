@@ -47,13 +47,14 @@
         android:id="@+id/yearlylinearlayout"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:layout_above="@id/yearly_table_layout"
+        android:layout_above="@id/yearly_table_layout"        
         android:orientation="vertical" >
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="#000000"
             android:padding="15dp" >
 
             <TextView
@@ -78,7 +79,7 @@
                 android:layout_toRightOf="@+id/yearly_a1"
                 android:gravity="center_horizontal"
                 android:text="@string/chart_charging_label"
-                android:textColor="#000"
+                android:textColor="#FFFFFF"
                 android:textSize="16sp" />
 
             <TextView
@@ -104,11 +105,12 @@
                 android:layout_toRightOf="@+id/yearly_a3"
                 android:gravity="center_horizontal"
                 android:text="@string/chart_transfere_label"
-                android:textColor="#000"
+                android:textColor="#FFFFFF"
                 android:textSize="16sp" />
         </RelativeLayout>
 
         <com.malaz.reports.HorizontalListView
+            android:background="#000000"
             android:id="@+id/yearly_listview"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />

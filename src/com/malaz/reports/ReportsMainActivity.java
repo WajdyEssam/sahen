@@ -1,5 +1,6 @@
 package com.malaz.reports;
 
+import com.malaz.app.ApplicationPreferenceActivity;
 import com.malaz.app.BaseActivity;
 import com.malaz.app.HistoryActivity;
 import com.malaz.app.MainActivity;
@@ -8,11 +9,13 @@ import com.malaz.util.AppUtil;
 import com.malaz.util.Constants;
 import com.malaz.util.Preferences;
 
+import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -62,9 +65,10 @@ public class ReportsMainActivity extends TabActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case (android.R.id.home):
+		case android.R.id.home:
+		case R.id.menu_home:
 			Intent intent = new Intent(this, MainActivity.class);
-			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.addFlags(Intent. FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			break;
 			
@@ -72,11 +76,18 @@ public class ReportsMainActivity extends TabActivity {
 			Intent intent2 = new Intent(this, HistoryActivity.class);
 			startActivity(intent2);
 			break;			
+			
+		
+		case R.id.menu_settings:
+			Intent preferecneIntent = new Intent(this, ApplicationPreferenceActivity.class);
+			startActivity(preferecneIntent);
+			break;
 		}
 		
 		return super.onOptionsItemSelected(item);
-	} 
+	}
 	
+	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 	protected void initializingActionBar() {
 		ActionBar actionBar = getActionBar();
 		actionBar.show();

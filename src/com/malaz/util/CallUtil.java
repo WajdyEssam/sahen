@@ -32,7 +32,7 @@ public class CallUtil {
 		boolean state = true;
 		
 		try {
-			Intent intent = new Intent(Intent.ACTION_CALL);
+			Intent intent = new Intent(Intent.ACTION_DIAL);
 			intent.setData(Uri.parse("tel:" + number));
 			ac.startActivity(intent);
 		}

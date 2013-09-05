@@ -33,6 +33,7 @@ import com.malaz.services.ServiceFactory;
 import com.malaz.util.AlertUtil;
 import com.malaz.util.CallUtil;
 import com.malaz.util.LangUtil;
+import com.malaz.util.Logger;
 
 public class ChargeActivity extends BaseActivity {
 
@@ -94,6 +95,8 @@ public class ChargeActivity extends BaseActivity {
 		
 		boolean state = CallUtil.charge(this, service);
 		
+		Logger.show("Charging Now: ", state);
+		
 		if ( state ) {
 			askForCharingAmount(number, this);	
 			
@@ -111,19 +114,18 @@ public class ChargeActivity extends BaseActivity {
 	}
 	
 	public void askForCharingAmount(final String number, final Context context) {
-		final NumberPicker np = new NumberPicker(ChargeActivity.this);
+		final NumberPicker np = new NumberPicker(this);
 		
-		String[] nums = new String[1001];
-        for(int i=0; i<nums.length; i++)
-        	nums[i] = Integer.toString(i);
+		String[] nums = new String[] {"1", "2", "4", "5", "10", "15", "20", "40", "50",
+				"100", "150", "200"};
 
         np.setMinValue(1);
-        np.setMaxValue(nums.length-1);
+        np.setMaxValue(200);
         np.setWrapSelectorWheel(false);
-        np.setDisplayedValues(nums);
+        //np.setDisplayedValues(nums);
         np.setValue(5);
         
-		AlertDialog.Builder alert = new AlertDialog.Builder(ChargeActivity.this);
+		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 		
 		String title = this.getString(R.string.title_charge_dialog);
 		String body = this.getString(R.string.body_charge_dialog);

@@ -1,17 +1,21 @@
 package com.malaz.app;
 
+import com.malaz.dialogs.AboutDialog;
 import com.malaz.util.AppUtil;
 import com.malaz.util.Constants;
 import com.malaz.util.Preferences;
 
+import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
 
 public class BaseActivity extends Activity{
 	
@@ -25,9 +29,10 @@ public class BaseActivity extends Activity{
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case (android.R.id.home):
+		case android.R.id.home:
+		case R.id.menu_home:
 			Intent intent = new Intent(this, MainActivity.class);
-			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.addFlags(Intent. FLAG_ACTIVITY_SINGLE_TOP);
 			startActivity(intent);
 			break;
 			
@@ -35,11 +40,18 @@ public class BaseActivity extends Activity{
 			Intent intent2 = new Intent(this, HistoryActivity.class);
 			startActivity(intent2);
 			break;			
+			
+		
+		case R.id.menu_settings:
+			Intent preferecneIntent = new Intent(this, ApplicationPreferenceActivity.class);
+			startActivity(preferecneIntent);
+			break;
 		}
 		
 		return super.onOptionsItemSelected(item);
 	} 
 	
+	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 	protected void initializingActionBar() {
 		ActionBar actionBar = getActionBar();
 		actionBar.show();
