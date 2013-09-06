@@ -1,10 +1,10 @@
 package com.malaz.util;
 
-import com.malaz.services.SIMService;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+
+import com.malaz.services.SIMService;
 
 public class CallUtil {
 
@@ -24,7 +24,7 @@ public class CallUtil {
 	}
 	
 	public static boolean current(Activity ac, SIMService service, int requestCode) {
-		boolean state = call(ac, service.getBalance(),requestCode);
+		boolean state = call(ac, service.getCurrentBalance(),requestCode);
 		return state;	
 	}
 	

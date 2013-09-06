@@ -11,9 +11,9 @@ public abstract class SIMService {
 		this.balance = balance;
 	}
 	
-	public String getCardNo() { return this.cardNo; }
-	public String getNumber() { return this.number; }
-	public String getBalance() { return this.balance; }
+	protected String getCardNo() { return this.cardNo; }
+	protected String getNumber() { return this.number; }
+	protected String getBalance() { return this.balance; }
 	
 	public abstract String getChargeFormat();
 	public abstract String getCallMeFormat();

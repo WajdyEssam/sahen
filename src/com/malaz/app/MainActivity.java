@@ -69,7 +69,7 @@ public class MainActivity extends BaseActivity {
 			Toast.makeText(this, "Checking Balance Done!", Toast.LENGTH_LONG).show();
 		}
 		else {
-			Toast.makeText(this, "Error in Checking Balance", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "Error in Checking Balance: " + resultCode, Toast.LENGTH_LONG).show();
 		}		
 	}
 }
