@@ -67,14 +67,14 @@ public class HistoryAdapter extends BaseAdapter {
 		holder.timeView.setText(history.getTime());
 		
 		if ( LangUtil.getCurrentLanguage(this.context) == LangUtil.Languages.Arabic ) {
-			if ( history.getOperation().getId() == "1" ) {
-				holder.operationView.setText(history.getOperation().getArabicDescription() + "  " + Integer.toString(history.getAmount()));
-				holder.descriptionView.setText("رقم البطاقة" + history.getDetials());
+			if ( history.getOperation().getId().equals("1") ) {
+				holder.operationView.setText(history.getOperation().getArabicDescription() );
+				holder.descriptionView.setText("رقم البطاقة " + history.getDetials());
 				
 			}
-			else if ( history.getOperation().getId() == "2") {
-				holder.operationView.setText(history.getOperation().getArabicDescription() + "  " + Integer.toString(history.getAmount()));
-				holder.descriptionView.setText("الى الرقم" + history.getDetials());
+			else if ( history.getOperation().getId().equals("2")) {
+				holder.operationView.setText(history.getOperation().getArabicDescription() );
+				holder.descriptionView.setText("الى الرقم " + history.getDetials());
 			}
 			else {
 				holder.operationView.setText(history.getOperation().getArabicDescription());
@@ -82,12 +82,12 @@ public class HistoryAdapter extends BaseAdapter {
 			}			
 		}
 		else {
-			if ( history.getOperation().getId() == "1" ) {
-				holder.operationView.setText(history.getOperation().getEnglishDescription() + " " +Integer.toString(history.getAmount()));
-				holder.descriptionView.setText("Card Number" + history.getDetials());
+			if ( history.getOperation().getId().equals("1") ) {
+				holder.operationView.setText(history.getOperation().getEnglishDescription());
+				holder.descriptionView.setText("Card Number " + history.getDetials());
 			}
-			else if ( history.getOperation().getId() == "2") {
-				holder.operationView.setText(history.getOperation().getEnglishDescription() + "  " + Integer.toString(history.getAmount()));
+			else if ( history.getOperation().getId().equals("2")) {
+				holder.operationView.setText(history.getOperation().getEnglishDescription() );
 				holder.descriptionView.setText("To Number " + history.getDetials());
 			}
 			else {

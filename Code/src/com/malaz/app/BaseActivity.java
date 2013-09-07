@@ -1,10 +1,5 @@
 package com.malaz.app;
 
-import com.malaz.dialogs.AboutDialog;
-import com.malaz.util.AppUtil;
-import com.malaz.util.Constants;
-import com.malaz.util.Preferences;
-
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Activity;
@@ -15,6 +10,10 @@ import android.os.Build;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import com.malaz.util.AppUtil;
+import com.malaz.util.Constants;
+import com.malaz.util.Preferences;
 
 
 public class BaseActivity extends Activity{

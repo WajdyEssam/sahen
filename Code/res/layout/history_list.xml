@@ -1,35 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:background="#D7E3F7"
-    >
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
+        android:textStyle="bold"        
+        android:textColor="#5ca2c0"
         android:layout_alignParentLeft="true"
-        android:textSize="28sp" />
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp" />
 
      <TextView
         android:id="@+id/time"
         android:layout_alignParentRight="true"
-		android:textColor="#FFFFFF"        
+		android:textColor="#B3A400"        
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp" />
+        android:padding="5dp"
+        android:textSize="10sp" />
         
     <TextView
         android:id="@+id/desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/time"
-        android:layout_toRightOf="@id/type"        
-        android:layout_marginLeft="75dip"
-        android:layout_centerVertical="true"        
-        android:textColor="#FFFFFF"
-        android:textSize="16sp" />
+        android:layout_below="@id/time"   
+        android:layout_alignParentRight="true"           
+        android:textColor="#000000"
+        android:paddingTop="3dp"
+        android:paddingRight="5dp"
+        android:textSize="13sp" />
     
 </RelativeLayout>

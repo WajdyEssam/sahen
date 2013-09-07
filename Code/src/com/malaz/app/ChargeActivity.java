@@ -221,7 +221,7 @@ public class ChargeActivity extends BaseActivity {
     					numberEditText.setSelection(numberEditText.getText().toString().length());
     				}
     				else {
-    					Toast.makeText(this, "Zero Characters", Toast.LENGTH_LONG).show();
+    					Toast.makeText(this, "No Recognized Digits in Image", Toast.LENGTH_LONG).show();
     				}
     			} catch (Exception e) {
     				Toast.makeText(this, "Error on OCR", Toast.LENGTH_LONG).show();
