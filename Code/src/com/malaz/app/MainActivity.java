@@ -10,9 +10,7 @@ import com.malaz.services.SIMService;
 import com.malaz.services.ServiceFactory;
 import com.malaz.util.AlertUtil;
 import com.malaz.util.CallUtil;
-import com.malaz.util.Constants;
 import com.malaz.util.LangUtil;
-import com.malaz.util.Preferences;
 
 public class MainActivity extends BaseActivity {
 
@@ -33,7 +31,7 @@ public class MainActivity extends BaseActivity {
 	}
 
 	public void convertButtonClicked(View view) {
-		Intent intent = new Intent(this, ConvertActivity.class);
+		Intent intent = new Intent(this, TransfereActivity.class);
 		startActivity(intent);
 	}
 	
@@ -66,10 +64,10 @@ public class MainActivity extends BaseActivity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode,Intent data) {
 		if (  resultCode == RESULT_OK ) {
-			Toast.makeText(this, "Checking Balance Done!", Toast.LENGTH_LONG).show();
+			Toast.makeText(this,  getString(R.string.toast_main_check_balance), Toast.LENGTH_LONG).show();
 		}
 		else {
-			Toast.makeText(this, "Error in Checking Balance: " + resultCode, Toast.LENGTH_LONG).show();
+			Toast.makeText(this, getString(R.string.toast_main_check_balance_error) + resultCode, Toast.LENGTH_LONG).show();
 		}		
 	}
 }

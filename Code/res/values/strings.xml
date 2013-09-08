@@ -105,17 +105,28 @@
     
         <!--  Toast Messages -->
     <string name="toast_amount">المبلغ</string>
-    <string name="toast_validate_callme_number">Please write card number before sending call me</string>
-    <string name="toast_callme_not_supported">This company does not support call me service!</string>
-    <string name="toast_callme_sending">Call me is sending successfully to: </string>
-    <string name="toast_callme_sending_error">Error in sending call me message to: </string>
-    <string name="toast_charge_validation_number">Please write card number before charging</string>
+    <string name="toast_validate_callme_number">من فضلك أدخل الرقم أولاً قبل ارسال رسالة كلمني</string>
+    <string name="toast_callme_not_supported">هذه الشركة لا تدعم ارساله رسالة كلمني</string>
+    <string name="toast_callme_sending">تم ارسال رسالة كلمني بنجاح الى هذا الرقم: </string>
+    <string name="toast_callme_sending_error">لم يتم ارسال رسالة كلمني لهذا الرقم: </string>
+    <string name="toast_charge_validation_number">من فضلك أدخل رقم البطاقة أولاً قبل الشحن</string>
     <string name="toast_chargeing">Charging %1$s to %2$s is done</string>
-    <string name="toast_chargeing_no_capture">"Whoops - your device doesn't support capturing images!"</string>
-    <string name="toast_chargeing_no_crop">"Whoops - your device doesn't support the crop action!"</string>
-    <string name="toast_no_digit_by_ocr">No recognized digits in image</string>
-    <string name="toast_ocr_error">OCR is not working probably</string>
-    <string name="toast_select_voice">Please Select the text that match your voice</string>
-    <string name="toast_charge_error">Error in charging with the number </string>    
-    <string name="dialog_no_voice_reg_app">There is no recognition application installed, Would you like to download one?</string>
+    <string name="toast_chargeing_no_capture">للأسف جوالك لا يدعم خاصية التقاط الصور</string>
+    <string name="toast_chargeing_no_crop">للأسف جوالك لا يدعم خاصية قص الصور</string>
+    <string name="toast_no_digit_by_ocr">لم يتم التعرف على أي رقم موجود في الصورة</string>
+    <string name="toast_ocr_error">عملية التعرف لم تتم بشكل جيد</string>
+    <string name="toast_select_voice">من فضلك أختر النص الأقرب لما قمت بادخاله بصوتك</string>
+    <string name="toast_charge_error">حدثت مشكلة في الشحن برقم البطاقة </string>
+    <string name="toast_main_check_balance">تمت عملية فحص الرصيد بنجاح </string>    
+    <string name="toast_main_check_balance_error">حدثت مشكلة في فحص الرصيد </string>    
+    <string name="toast_transfere_checking">من فضلك ادخل كل المعلومات المطلوبة قبل تحويل الرصيد</string>
+    <string name="toast_transfere_zain_checking">من فضلك قم بكتابه رقم الشريحة في شاشه الاعدادات قبل تحويل الرصيد</string>        
+    <string name="toast_transfere_transfer_done">"Transfere %1$s To  %2$s  is Done!"</string>
+    <string name="toast_transfere_transfer_error">"Error in transfere %1$s To  %2$s"</string>
+        
+	<!--  Logs Adapter -->
+    <string name="logs_card_number">رقم البطاقة </string>
+    <string name="logs_to_number">الى الرقم </string>
+    
+    <string name="dialog_no_voice_reg_app">لا يوجد برنامج يتعرف على الصوت ، هل تريد تحميله من الأنترنت؟</string>
 </resources>

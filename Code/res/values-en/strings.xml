@@ -115,6 +115,18 @@
     <string name="toast_no_digit_by_ocr">No recognized digits in image</string>
     <string name="toast_ocr_error">OCR is not working probably</string>
     <string name="toast_select_voice">Please Select the text that match your voice</string>
-    <string name="toast_charge_error">Error in charging with the number </string>    
+    <string name="toast_charge_error">Error in charging with the number </string>
+    <string name="toast_main_check_balance">Checking balance done</string>    
+    <string name="toast_main_check_balance_error">Error in checking balance </string>    
+    <string name="toast_transfere_checking">Please write all nesseccary information before transfere balance!</string>
+    <string name="toast_transfere_zain_checking">Please go to settings and write your SIM number before transfere balance!</string>        
+    <string name="toast_transfere_transfer_done">"Transfere %1$s To  %2$s  is Done!"</string>
+    <string name="toast_transfere_transfer_error">"Error in transfere %1$s To  %2$s"</string>
+    
+    <!--  Logs Adapter -->
+    <string name="logs_card_number">Card Number </string>
+    <string name="logs_to_number">To Number </string>
+    
     <string name="dialog_no_voice_reg_app">There is no recognition application installed, Would you like to download one?</string>
+    
 </resources>

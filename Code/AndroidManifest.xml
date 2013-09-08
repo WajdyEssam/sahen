@@ -44,7 +44,7 @@
             android:label="@string/title_activity_charge" >
         </activity>
         <activity
-            android:name="com.malaz.app.ConvertActivity"
+            android:name="com.malaz.app.TransfereActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_convert" >
         </activity>
