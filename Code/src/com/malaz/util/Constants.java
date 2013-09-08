@@ -1,5 +1,7 @@
 package com.malaz.util;
 
+import android.os.Environment;
+
 public class Constants {
 	public final static String CHARGING_OPERATION = "1";
 	public final static String SENDING_BALANCE_OPERATION = "2";
@@ -25,4 +27,10 @@ public class Constants {
 	
 	public final static String APPLICATION_LANGUAGE = "applicationlanguage";
 	public final static String DEFAULT_APPLICATION_LANGUAGE = "1"; // stored as id number
+		
+	// Application file paths
+	public final static String APPLICATION_FOLDER = Environment.getExternalStorageDirectory().toString() + "/SahenZakiOCR/";
+	public final static String DATASET_FOLDER = APPLICATION_FOLDER + "tessdata/";		
+	public final static String DATASET_DESTINATION_FILE = DATASET_FOLDER + "eng.traineddata";
+	public final static String DATASET_SOURCE_FILE = "tessdata/eng.traineddata";
 }

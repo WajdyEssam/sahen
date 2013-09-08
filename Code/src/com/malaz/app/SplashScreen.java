@@ -1,5 +1,7 @@
 package com.malaz.app;
 
+import com.malaz.util.Constants;
+import com.malaz.util.FileUtil;
 import com.malaz.util.LangUtil;
 
 import android.app.Activity;
@@ -17,6 +19,13 @@ public class SplashScreen extends Activity {
         
         setContentView(R.layout.activity_splashscreen);
  
+        new Thread(new Runnable() {			
+			@Override
+			public void run() {
+				createApplicationFolderAndCopyDataset();
+			}
+		}).start();
+                
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -26,4 +35,9 @@ public class SplashScreen extends Activity {
             }
         }, SPLASH_TIME_OUT);
     }
+    
+	private void createApplicationFolderAndCopyDataset() {			
+		FileUtil.createDirectoryIfNotExists(Constants.DATASET_FOLDER);		
+		FileUtil.copyFileIfNotExists(this, Constants.DATASET_DESTINATION_FILE, Constants.DATASET_SOURCE_FILE);
+	}
 }
