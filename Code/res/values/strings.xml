@@ -84,10 +84,13 @@
      <!-- Application Gerenal Message -->
     <string name="yes_message">نعم</string>
     <string name="no_message">لا</string>
+    <string name="ok_message">موافق</string>
+    <string name="cancel_message">الغاء</string>
     <string name="sure_message">هل أنت متأكد؟</string>
     <string name="operation_done_sucesffully">تمت العملية بنجاح</string>
     <string name="operation_not_done">حدث خطأ في العملية</string>
-    <string name="wait_message">يرجى الانتظار من فضلك ...</string>
+    <string name="wait_message">"يرجى الانتظار من فضلك ..."</string>
+    <string name="not_available">غير موجود</string>
     
     <!--  Lunch Email  -->
     <string name="mail_support_feedback_to">wajdyessam@hotmail.com</string>
@@ -99,4 +102,20 @@
     <string name="menu_home">الرئيسية</string>
     <string name="menu_setting">اعدادات</string>
     <string name="menu_clear">مسح العمليات</string>
+    
+        <!--  Toast Messages -->
+    <string name="toast_amount">المبلغ</string>
+    <string name="toast_validate_callme_number">Please write card number before sending call me</string>
+    <string name="toast_callme_not_supported">This company does not support call me service!</string>
+    <string name="toast_callme_sending">Call me is sending successfully to: </string>
+    <string name="toast_callme_sending_error">Error in sending call me message to: </string>
+    <string name="toast_charge_validation_number">Please write card number before charging</string>
+    <string name="toast_chargeing">Charging %1$s to %2$s is done</string>
+    <string name="toast_chargeing_no_capture">"Whoops - your device doesn't support capturing images!"</string>
+    <string name="toast_chargeing_no_crop">"Whoops - your device doesn't support the crop action!"</string>
+    <string name="toast_no_digit_by_ocr">No recognized digits in image</string>
+    <string name="toast_ocr_error">OCR is not working probably</string>
+    <string name="toast_select_voice">Please Select the text that match your voice</string>
+    <string name="toast_charge_error">Error in charging with the number </string>    
+    <string name="dialog_no_voice_reg_app">There is no recognition application installed, Would you like to download one?</string>
 </resources>

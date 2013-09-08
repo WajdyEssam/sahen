@@ -33,7 +33,7 @@ public class CallmeActivity extends BaseActivity {
 		String number = numberEditText.getText().toString().trim().replaceAll(" ", "");
 		
 		if ( number.isEmpty() ) {
-			Toast.makeText(this, "Please Write Card Number Before Sending CallMe", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, getString(R.string.toast_validate_callme_number), Toast.LENGTH_LONG).show();
 			return;
 		}
 		
@@ -45,7 +45,7 @@ public class CallmeActivity extends BaseActivity {
 		}
 		
 		if ( service.getCallMeFormat().isEmpty() ) {
-			Toast.makeText(this, "This Company Doesn't Support CallMe Service!", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, getString(R.string.toast_callme_not_supported), Toast.LENGTH_LONG).show();
 			return;
 		}
 		
@@ -58,10 +58,10 @@ public class CallmeActivity extends BaseActivity {
 		
 		if (  resultCode == RESULT_OK ) {
 			Database.saveSendingCallMe(this, number);
-			Toast.makeText(this, "Call Me to " + number + " is sending successfully!", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, getString(R.string.toast_callme_sending), Toast.LENGTH_LONG).show();
 		}
 		else {
-			Toast.makeText(this, "Error in sending CallMe message to" + number, Toast.LENGTH_LONG).show();
+			Toast.makeText(this, getString(R.string.toast_callme_sending_error) + number, Toast.LENGTH_LONG).show();
 		}		
 	}
 }
