@@ -34,5 +34,9 @@ public class ZainService extends SIMService {
 		String format = "*888" + Uri.encode("#");
 		return format;
 	}
+	
+	public String getSIMPassword() {
+		return this.currentSIMPassword;
+	}
 
 }

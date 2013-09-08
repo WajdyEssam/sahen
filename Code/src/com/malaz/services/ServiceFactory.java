@@ -1,19 +1,19 @@
 package com.malaz.services;
 
 import android.app.Activity;
-import android.content.SharedPreferences;
+
+import com.malaz.util.Constants;
+import com.malaz.util.Preferences;
 
 public class ServiceFactory {
-
 	private final String companyName ;
 	private final String simNo;
 	private final int companyId;
 	
 	public ServiceFactory(Activity activity) {
-		SharedPreferences appPrefs = activity.getSharedPreferences("sahen_sudani", Activity.MODE_PRIVATE);
-		companyName = appPrefs.getString("companyName", "3");
-		companyId = Integer.parseInt(companyName);		
-		simNo = appPrefs.getString("simNo", "");	
+		this.companyName = Preferences.getValue(activity, Constants.COMPANY_NAME, "3");
+		this.companyId = Integer.parseInt(companyName);		
+		this.simNo = Preferences.getValue(activity, Constants.SIM_NUMBER, "");	
 	}
 	
 	public SIMService getCurrentBalanceService() {
@@ -109,4 +109,5 @@ public class ServiceFactory {
 		
 		return service;
 	}
+	
 }

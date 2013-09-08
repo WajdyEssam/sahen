@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.malaz.database.Database;
 import com.malaz.services.SIMService;
 import com.malaz.services.ServiceFactory;
+import com.malaz.services.ZainService;
 import com.malaz.util.AlertUtil;
 import com.malaz.util.CallUtil;
 import com.malaz.util.LangUtil;
@@ -46,6 +47,14 @@ public class ConvertActivity extends BaseActivity {
 		if ( service == null ) {
 			AlertUtil.selectSIMTypeDialog(ConvertActivity.this);
 			return;
+		}
+		
+		if ( service instanceof ZainService) {			
+			String simNumber = ((ZainService) service).getSIMPassword();
+			if ( simNumber.trim().isEmpty() ) {
+				Toast.makeText(this, "Please go to settings and write your SIM number before transfering balance!", Toast.LENGTH_LONG).show();
+				return;
+			}
 		}
 		
 		CallUtil.convert(this, service, TRANSFERE_BALANCE);

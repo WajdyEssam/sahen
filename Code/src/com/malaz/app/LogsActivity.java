@@ -5,6 +5,7 @@ import java.util.List;
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -18,13 +19,12 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.malaz.adapters.HistoryAdapter;
+import com.malaz.adapters.LogsAdapter;
 import com.malaz.database.HistoryDB;
 import com.malaz.model.History;
 import com.malaz.util.LangUtil;
-import com.malaz.util.Preferences;
 
-public class HistoryActivity extends Activity {
+public class LogsActivity extends Activity {
 
 	private HistoryDB database;
 	private List<History> histories;
@@ -49,15 +49,15 @@ public class HistoryActivity extends Activity {
 		actionBar.setHomeButtonEnabled(true);
 		
 		this.database = HistoryDB.getInstance(this);
-		setTheTitle(actionBar, (int)this.database.getNumberOfHistories());
+		setTheTitle(actionBar, (int)this.database.getNumberOfLogs());
 		
 		displayListView();		
 	}
 
 	private void displayListView() {
-		histories = this.database.getAllHistories();
+		histories = this.database.getAllLogs();
 
-		HistoryAdapter adapter = new HistoryAdapter(this, histories);	
+		LogsAdapter adapter = new LogsAdapter(this, histories);	
 		
 		ListView listView = (ListView) findViewById(R.id.listView1);
 		listView.setAdapter(adapter);
@@ -66,7 +66,7 @@ public class HistoryActivity extends Activity {
 		   @Override
 		   public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
 			   History history = histories.get(position);
-			   Toast.makeText(getApplicationContext(), "Amount: " + Integer.toString(history.getAmount()), Toast.LENGTH_SHORT).show();		 
+			   Toast.makeText(getApplicationContext(), getString(R.string.toast_amount) + " " + Integer.toString(history.getAmount()), Toast.LENGTH_SHORT).show();		 
 		   }
 		});
 	}
@@ -89,10 +89,7 @@ public class HistoryActivity extends Activity {
 			return true;
 			
 		case R.id.remove:
-			this.database.clearHistories();				
-			Toast.makeText(this,  R.string.clear_logs , Toast.LENGTH_SHORT).show();
-			refreshList();
-			setTheTitle(getActionBar(), (int)this.database.getNumberOfHistories());
+			clearDB();
 			return true;
 			
 		
@@ -111,21 +108,32 @@ public class HistoryActivity extends Activity {
 		
 		return super.onOptionsItemSelected(item);
 	}
-	
-	private void refreshList() {
-		ListView listView = (ListView) findViewById(R.id.listView1);
-		final HistoryAdapter adapter = (HistoryAdapter) listView.getAdapter();
 
-		if ( this.histories == null ) 
-			return;
+	private void clearDB() {
+		final ProgressDialog dialog = ProgressDialog.show(this, getString(R.string.clear_logs), getString(R.string.wait_message));
+		ListView listView = (ListView) findViewById(R.id.listView1);
+		final LogsAdapter adapter = (LogsAdapter) listView.getAdapter();
 		
-		this.histories.clear();
-		
-		runOnUiThread(new Runnable() {
-	        @Override
-	        public void run() {
-	        	adapter.notifyDataSetChanged();
-	        }
-	    });
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				database.clearLogs();
+				
+				if ( histories == null ) 
+					return;
+				
+				histories.clear();				
+				dialog.dismiss();
+
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						adapter.notifyDataSetChanged();
+						Toast.makeText(LogsActivity.this, getString(R.string.operation_done_sucesffully),Toast.LENGTH_SHORT).show();
+						setTheTitle(getActionBar(), (int)database.getNumberOfLogs());
+					}
+				});
+			}
+		}).start();
 	}
 }

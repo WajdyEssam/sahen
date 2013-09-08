@@ -14,12 +14,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class HistoryAdapter extends BaseAdapter {
+public class LogsAdapter extends BaseAdapter {
 
 	private Context context;
 	private List<History> histories;
 	
-	public HistoryAdapter(Context context, List<History> histories) {
+	public LogsAdapter(Context context, List<History> histories) {
 		this.context = context;
 		this.histories = histories;
 	}

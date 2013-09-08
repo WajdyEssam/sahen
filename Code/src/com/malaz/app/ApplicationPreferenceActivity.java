@@ -36,8 +36,7 @@ public class ApplicationPreferenceActivity extends PreferenceActivity implements
 
 		// load preference from XML file
 		addPreferencesFromResource(R.xml.settingsui);
-		PreferenceManager.setDefaultValues(ApplicationPreferenceActivity.this,
-				R.xml.settingsui, false);
+		PreferenceManager.setDefaultValues(ApplicationPreferenceActivity.this, R.xml.settingsui, false);
 
 		for (int i = 0; i < getPreferenceScreen().getPreferenceCount(); i++) {
 			initSummary(getPreferenceScreen().getPreference(i));
@@ -62,14 +61,10 @@ public class ApplicationPreferenceActivity extends PreferenceActivity implements
 					}
 				};
 
-				AlertDialog.Builder builder = new AlertDialog.Builder(
-						ApplicationPreferenceActivity.this);
+				AlertDialog.Builder builder = new AlertDialog.Builder(ApplicationPreferenceActivity.this);
 				builder.setMessage(getString(R.string.sure_message))
-						.setPositiveButton(getString(R.string.yes_message),
-								dialogClickListener)
-						.setNegativeButton(getString(R.string.no_message),
-								dialogClickListener).show();
-
+						.setPositiveButton(getString(R.string.yes_message), dialogClickListener)
+						.setNegativeButton(getString(R.string.no_message), dialogClickListener).show();
 				return true;
 			}
 		});
@@ -89,13 +84,11 @@ public class ApplicationPreferenceActivity extends PreferenceActivity implements
 	}
 
 	private void clearDB() {
-		final ProgressDialog dialog = ProgressDialog.show(this,
-				getString(R.string.clearDb), getString(R.string.wait_message));
+		final ProgressDialog dialog = ProgressDialog.show(this, getString(R.string.clearDb), getString(R.string.wait_message));
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				HistoryDB.getInstance(ApplicationPreferenceActivity.this)
-						.clearHistories();
+				HistoryDB.getInstance(ApplicationPreferenceActivity.this).clearHistories();
 				dialog.dismiss();
 
 				runOnUiThread(new Runnable() {
@@ -176,7 +169,7 @@ public class ApplicationPreferenceActivity extends PreferenceActivity implements
 			break;
 			
 		case R.id.history:
-			Intent intent2 = new Intent(this, HistoryActivity.class);
+			Intent intent2 = new Intent(this, LogsActivity.class);
 			startActivity(intent2);
 			break;			
 			

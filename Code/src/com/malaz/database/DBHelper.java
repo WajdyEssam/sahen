@@ -9,7 +9,7 @@ final class DBHelper extends SQLiteOpenHelper {
 	
 	private final static String TAG = "DBAdapter";
 	private final static String DATABASE_NAME = "SahenDB";	
-	private final static int DATABASE_VERSION = 2;
+	private final static int DATABASE_VERSION = 3;
 	private static DBHelper instance = null;
 	
 	private Context context;
@@ -29,15 +29,18 @@ final class DBHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL(HistoryDB.DATABASE_CREATE);
-		db.execSQL(OperationDB.DATABASE_CREATE);		
+		db.execSQL(HistoryDB.CREATE_HISTORIES_TABLE);
+		db.execSQL(HistoryDB.CREATE_LOGS_TABLE);
+		db.execSQL(OperationDB.CREATE_OPERATION_TABLE);				
 		OperationDB.addInitialData(db);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		Log.w(TAG, "Upgrading database from version " + oldVersion + " to "+ newVersion + ", which will destroy all old data");			
-		db.execSQL("DROP TABLE IF EXISTS " +  HistoryDB.DATABASE_TABLE);
+		db.execSQL("DROP TABLE IF EXISTS " +  HistoryDB.HISTORIES_TABLE);
+		db.execSQL("DROP TABLE IF EXISTS " +  HistoryDB.LOGS_TABLE);
+		db.execSQL("DROP TABLE IF EXISTS " +  OperationDB.Operation_TABLE);
 		onCreate(db);			
 	}		
 }

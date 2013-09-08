@@ -62,7 +62,7 @@
 
     <!-- History Activity -->
     <string name="application_logs">Application Logs</string>
-    <string name="clear_logs">Clear all logs done succesffully</string>
+    <string name="clear_logs">Clear Logs</string>
     
     <!-- Reports Activities -->
     <string name="title_activity_monthly_report">MonthlyReportActivity</string>
@@ -98,4 +98,8 @@
     <string name="menu_home">Home</string>
     <string name="menu_setting">Settings</string>
     <string name="menu_clear">Clear All</string>
+    
+    <!--  Toast Messages -->
+    <string name="toast_amount">Amount</string>
+    
 </resources>

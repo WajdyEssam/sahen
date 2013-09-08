@@ -10,7 +10,7 @@ public class LangUtil {
     };
 
     public static void setLocale(Context context) {
-        int language = Integer.valueOf(Preferences.getValue(context, Constants.APPLICATION_LANGUAGE , "2"));
+        int language = Integer.valueOf(Preferences.getValue(context, Constants.APPLICATION_LANGUAGE ,  Constants.DEFAULT_APPLICATION_LANGUAGE));
         java.util.Locale locale = java.util.Locale.getDefault();
 
         switch (language) {

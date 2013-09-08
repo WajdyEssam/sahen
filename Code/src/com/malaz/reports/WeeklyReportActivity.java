@@ -48,12 +48,9 @@ public class WeeklyReportActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        System.out.println("CREATING WeeklyReportActivity");
         LangUtil.setLocale(this);		
         setContentView(R.layout.activity_weekly_report);
-		//this.initializingActionBar();
-   
+
         fillChartLables();
         initData();
         updateSizeInfo();
@@ -67,6 +64,8 @@ public class WeeklyReportActivity extends Activity {
     	int i=0;
     	for(DateRange range: ranges) {
     		List<History> histories = db.getHistoriesBetween(DateUtil.formatDate(range.firstDate), DateUtil.formatDate(range.endDate));
+    		
+    		System.out.println("Weekly Range: " + range.firstDate + " to: " + range.endDate + " Founds: " + histories.size());
     		
     		double countOfCharge = 0;
     		double countOfTransfere = 0;

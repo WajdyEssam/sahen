@@ -205,7 +205,7 @@ void Dict::go_deeper_dawg_fxn(
           STRING word_str;
           word->string_and_lengths(&word_str, NULL);
           word_str += " ";
-          fprintf(output_ambig_words_file_, word_str.string());
+          //fprintf(output_ambig_words_file_, word_str.string());
         }
         WERD_CHOICE *adjusted_word = word;
         WERD_CHOICE hyphen_tail_word(&getUnicharset());
