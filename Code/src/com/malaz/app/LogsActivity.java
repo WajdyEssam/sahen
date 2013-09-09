@@ -35,7 +35,7 @@ public class LogsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		LangUtil.setLocale(this);
 		
-		setContentView(R.layout.activity_history);
+		setContentView(R.layout.activity_logs);
 		
 		ActionBar actionBar = getActionBar();
 		actionBar.show();

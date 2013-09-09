@@ -24,6 +24,7 @@
         android:gravity="center"        
         android:text="@string/otherNumberLbl"
         android:textColor="#000"
+        android:layout_marginBottom="5dp"
         android:textSize="18sp" />
 
     <EditText
@@ -32,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/convertNumberLabel"
         android:hint="@string/convertEditTextHint"
+        style="@style/EditTextStyle"
         android:inputType="number" />
 
     <TextView
@@ -43,6 +45,7 @@
         android:layout_marginTop="30dp"
         android:text="@string/balanceLbl"
         android:textColor="#000"
+        android:layout_marginBottom="5dp"
         android:textSize="18sp" />
 
     <EditText
@@ -51,6 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/convertBalanceLabel"
         android:hint="@string/balanceEditTextHint"
+        style="@style/EditTextStyle"
         android:inputType="number" />
 
     <Button

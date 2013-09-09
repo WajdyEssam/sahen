@@ -11,6 +11,11 @@
             backward-compatibility can go here.
         -->
     </style>
+    
+    <style name="EditTextStyle" parent="android:style/Widget.EditText">
+	    <item name="android:background">@drawable/edittext_border</item>
+	    <item name="android:textColor">#5ca2c0</item>
+	</style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">

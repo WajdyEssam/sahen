@@ -26,7 +26,7 @@ public class TransfereActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		LangUtil.setLocale(this);
 		
-		setContentView(R.layout.activity_convert);
+		setContentView(R.layout.activity_transfere);
 		this.initializingActionBar();
 		
 		numberEditText = (EditText) findViewById(R.id.otherNumberEditText);

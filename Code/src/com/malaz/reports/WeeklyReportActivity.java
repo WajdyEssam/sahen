@@ -65,8 +65,6 @@ public class WeeklyReportActivity extends Activity {
     	for(DateRange range: ranges) {
     		List<History> histories = db.getHistoriesBetween(DateUtil.formatDate(range.firstDate), DateUtil.formatDate(range.endDate));
     		
-    		System.out.println("Weekly Range: " + range.firstDate + " to: " + range.endDate + " Founds: " + histories.size());
-    		
     		double countOfCharge = 0;
     		double countOfTransfere = 0;
         	for(History history: histories) {        		

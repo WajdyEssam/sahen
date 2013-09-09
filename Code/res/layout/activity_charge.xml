@@ -60,6 +60,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/picture"
         android:layout_marginTop="30dp"
+        style="@style/EditTextStyle"
+        android:layout_marginBottom="5dp"
         android:hint="@string/numberEditTextLbl" />
         
     <Button

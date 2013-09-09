@@ -51,7 +51,7 @@ public class LogsAdapter extends BaseAdapter {
 		
 		LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 		if (convertView == null ) {
-			convertView = inflater.inflate(R.layout.history_list, null);
+			convertView = inflater.inflate(R.layout.logs_list_item, null);
 			holder = new ViewHolder();
 			holder.operationView = (TextView) convertView.findViewById(R.id.type);
 			holder.descriptionView = (TextView) convertView.findViewById(R.id.desc);
