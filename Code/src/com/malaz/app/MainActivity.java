@@ -10,9 +10,7 @@ import com.malaz.services.SIMService;
 import com.malaz.services.ServiceFactory;
 import com.malaz.util.AlertUtil;
 import com.malaz.util.CallUtil;
-import com.malaz.util.Constants;
 import com.malaz.util.LangUtil;
-import com.malaz.util.Preferences;
 
 public class MainActivity extends BaseActivity {
 
@@ -69,7 +67,7 @@ public class MainActivity extends BaseActivity {
 			Toast.makeText(this, "Checking Balance Done!", Toast.LENGTH_LONG).show();
 		}
 		else {
-			Toast.makeText(this, "Error in Checking Balance: " + resultCode, Toast.LENGTH_LONG).show();
+			//Toast.makeText(this, "Error in Checking Balance: " + resultCode, Toast.LENGTH_LONG).show();
 		}		
 	}
 }

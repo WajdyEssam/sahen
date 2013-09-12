@@ -47,15 +47,15 @@ public class ServiceFactory {
 			
 			switch ( companyId ) {
 			case 0:
-				service =  new MTNService("", number, "");
+				service =  new MTNService(number, "", "");
 				break;
 				
 			case 1:
-				service = new SudaniService("", number, "");
+				service = new SudaniService(number, "", "");
 				break;
 				
 			case 2:
-				service = new ZainService("", number, "", "");
+				service = new ZainService(number, "", "", "");
 				break;
 			}
 		}
