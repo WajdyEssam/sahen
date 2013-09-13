@@ -44,7 +44,7 @@
             android:label="@string/title_activity_charge" >
         </activity>
         <activity
-            android:name="com.malaz.app.ConvertActivity"
+            android:name="com.malaz.app.TransfereActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_convert" >
         </activity>
@@ -54,7 +54,7 @@
             android:label="@string/title_activity_callme" >
         </activity>
         <activity
-            android:name="com.malaz.app.HistoryActivity"
+            android:name="com.malaz.app.LogsActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_history" >
         </activity>

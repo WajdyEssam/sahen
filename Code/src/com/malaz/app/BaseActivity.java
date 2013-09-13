@@ -36,7 +36,7 @@ public class BaseActivity extends Activity{
 			break;
 			
 		case R.id.history:
-			Intent intent2 = new Intent(this, HistoryActivity.class);
+			Intent intent2 = new Intent(this, LogsActivity.class);
 			startActivity(intent2);
 			break;			
 			
@@ -62,9 +62,7 @@ public class BaseActivity extends Activity{
 		actionBar.setDisplayUseLogoEnabled(false);
 		actionBar.setHomeButtonEnabled(true);
 		actionBar.setTitle(this.getResources().getString(R.string.app_name));
-		actionBar.setSubtitle(this.getResources().getString(R.string.sim_name) + 
-				" : " +  AppUtil.getSIMName(Preferences.getValue(this, Constants.COMPANY_NAME, ""), this));
-		
+		actionBar.setSubtitle(this.getResources().getString(R.string.sim_name) + " : " +  AppUtil.getSIMName(Preferences.getValue(this, Constants.COMPANY_NAME, Constants.DEFAULT_COMPANY_NAME), this));	
 	}
 
 }

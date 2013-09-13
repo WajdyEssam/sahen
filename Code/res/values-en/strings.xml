@@ -62,7 +62,7 @@
 
     <!-- History Activity -->
     <string name="application_logs">Application Logs</string>
-    <string name="clear_logs">Clear all logs done succesffully</string>
+    <string name="clear_logs">Clear Logs</string>
     
     <!-- Reports Activities -->
     <string name="title_activity_monthly_report">MonthlyReportActivity</string>
@@ -83,10 +83,13 @@
     <!-- Application Gerenal Message -->
     <string name="yes_message">Yes</string>
     <string name="no_message">No</string>
+    <string name="ok_message">OK</string>
+    <string name="cancel_message">Cancel</string>
     <string name="sure_message">Are You Sure?</string>
     <string name="operation_done_sucesffully">Operation Done Sucessffully</string>
     <string name="operation_not_done">Operation Failued!</string>
-    <string name="wait_message">Please Wait...</string>
+    <string name="wait_message">"Please Wait..."</string>
+    <string name="not_available">Not Available</string>
      
     <!--  Lunch Email  -->
     <string name="mail_support_feedback_to">wajdyessam@hotmail.com</string>
@@ -98,4 +101,32 @@
     <string name="menu_home">Home</string>
     <string name="menu_setting">Settings</string>
     <string name="menu_clear">Clear All</string>
+    
+    <!--  Toast Messages -->
+    <string name="toast_amount">Amount</string>
+    <string name="toast_validate_callme_number">Please write card number before sending call me</string>
+    <string name="toast_callme_not_supported">This company does not support call me service!</string>
+    <string name="toast_callme_sending">Call me is sending successfully to: </string>
+    <string name="toast_callme_sending_error">Error in sending call me message to: </string>
+    <string name="toast_charge_validation_number">Please write card number before charging</string>
+    <string name="toast_chargeing">Charging %1$s to %2$s is done</string>
+    <string name="toast_chargeing_no_capture">"Whoops - your device doesn't support capturing images!"</string>
+    <string name="toast_chargeing_no_crop">"Whoops - your device doesn't support the crop action!"</string>
+    <string name="toast_no_digit_by_ocr">No recognized digits in image</string>
+    <string name="toast_ocr_error">OCR is not working probably</string>
+    <string name="toast_select_voice">Please Select the text that match your voice</string>
+    <string name="toast_charge_error">Error in charging with the number </string>
+    <string name="toast_main_check_balance">Checking balance done</string>    
+    <string name="toast_main_check_balance_error">Error in checking balance </string>    
+    <string name="toast_transfere_checking">Please write all nesseccary information before transfere balance!</string>
+    <string name="toast_transfere_zain_checking">Please go to settings and write your SIM number before transfere balance!</string>        
+    <string name="toast_transfere_transfer_done">"Transfere %1$s To  %2$s  is Done!"</string>
+    <string name="toast_transfere_transfer_error">"Error in transfere %1$s To  %2$s"</string>
+    
+    <!--  Logs Adapter -->
+    <string name="logs_card_number">Card Number </string>
+    <string name="logs_to_number">To Number </string>
+    
+    <string name="dialog_no_voice_reg_app">There is no recognition application installed, Would you like to download one?</string>
+    
 </resources>

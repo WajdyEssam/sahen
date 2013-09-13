@@ -9,11 +9,12 @@ import android.widget.Toast;
 import com.malaz.database.Database;
 import com.malaz.services.SIMService;
 import com.malaz.services.ServiceFactory;
+import com.malaz.services.ZainService;
 import com.malaz.util.AlertUtil;
 import com.malaz.util.CallUtil;
 import com.malaz.util.LangUtil;
 
-public class ConvertActivity extends BaseActivity {
+public class TransfereActivity extends BaseActivity {
 
 	private EditText numberEditText;
 	private EditText balanceEditText;
@@ -25,7 +26,7 @@ public class ConvertActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		LangUtil.setLocale(this);
 		
-		setContentView(R.layout.activity_convert);
+		setContentView(R.layout.activity_transfere);
 		this.initializingActionBar();
 		
 		numberEditText = (EditText) findViewById(R.id.otherNumberEditText);
@@ -37,15 +38,23 @@ public class ConvertActivity extends BaseActivity {
 		String balance = balanceEditText.getText().toString().trim().replaceAll(" ", "");
 		
 		if ( number.isEmpty() || balance.isEmpty() ) {
-			Toast.makeText(this, "Please Write All Nesseccary Information Before Transfering", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, getString(R.string.toast_transfere_checking), Toast.LENGTH_LONG).show();
 			return;
 		}
 		
 		SIMService service = new ServiceFactory(this).getSendBalanceService(balance, number);
 		
 		if ( service == null ) {
-			AlertUtil.selectSIMTypeDialog(ConvertActivity.this);
+			AlertUtil.selectSIMTypeDialog(TransfereActivity.this);
 			return;
+		}
+		
+		if ( service instanceof ZainService) {			
+			String simNumber = ((ZainService) service).getSIMPassword();
+			if ( simNumber.trim().isEmpty() ) {
+				Toast.makeText(this, getString(R.string.toast_transfere_zain_checking), Toast.LENGTH_LONG).show();
+				return;
+			}
 		}
 		
 		CallUtil.convert(this, service, TRANSFERE_BALANCE);
@@ -58,10 +67,10 @@ public class ConvertActivity extends BaseActivity {
 		
 		if (  resultCode == RESULT_OK ) {
 			Database.saveSendingBalance(this, number, balance);			
-			Toast.makeText(this, "Transfering " + balance + " To " + number + " is Done!", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, String.format(getString(R.string.toast_transfere_transfer_done), balance, number), Toast.LENGTH_LONG).show();
 		}
 		else {
-			Toast.makeText(this, "Transfering Error in Balance "  + balance + " To " + number, Toast.LENGTH_LONG).show();
+			Toast.makeText(this, String.format(getString(R.string.toast_transfere_transfer_error), balance, number), Toast.LENGTH_LONG).show();
 		}			
 	}
 }

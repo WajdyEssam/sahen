@@ -14,12 +14,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class HistoryAdapter extends BaseAdapter {
+public class LogsAdapter extends BaseAdapter {
 
 	private Context context;
 	private List<History> histories;
 	
-	public HistoryAdapter(Context context, List<History> histories) {
+	public LogsAdapter(Context context, List<History> histories) {
 		this.context = context;
 		this.histories = histories;
 	}
@@ -51,7 +51,7 @@ public class HistoryAdapter extends BaseAdapter {
 		
 		LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 		if (convertView == null ) {
-			convertView = inflater.inflate(R.layout.history_list, null);
+			convertView = inflater.inflate(R.layout.logs_list_item, null);
 			holder = new ViewHolder();
 			holder.operationView = (TextView) convertView.findViewById(R.id.type);
 			holder.descriptionView = (TextView) convertView.findViewById(R.id.desc);

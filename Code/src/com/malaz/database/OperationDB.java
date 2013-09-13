@@ -21,9 +21,9 @@ public class OperationDB {
 		ID, ENGLISH_DESCRIPTION, ARABIC_DESCRIPTION
 	};
 	
-	public final static String DATABASE_TABLE = "Operations";
+	public final static String Operation_TABLE = "Operations";
 	
-	public final static String DATABASE_CREATE = "create table " + DATABASE_TABLE +
+	public final static String CREATE_OPERATION_TABLE = "create table " + Operation_TABLE +
 			" (" + ID + " TEXT primary key, "
 			+ ENGLISH_DESCRIPTION + " text not null, " 
 			+ ARABIC_DESCRIPTION + " text not null );";
@@ -49,12 +49,12 @@ public class OperationDB {
 		initialValues.put(ENGLISH_DESCRIPTION, operation.getEnglishDescription());
 		initialValues.put(ARABIC_DESCRIPTION, operation.getArabicDescription());
 		
-		return this.open().insert(DATABASE_TABLE, null, initialValues);				
+		return this.open().insert(Operation_TABLE, null, initialValues);				
 	}
 	
 	public List<Operation> getAllOperations() {
 		List<Operation> operatoins = new ArrayList<Operation>();
-		Cursor cursor =  this.open().query(DATABASE_TABLE, COLUMNS_NAMES,  null, null, null, null, null);
+		Cursor cursor =  this.open().query(Operation_TABLE, COLUMNS_NAMES,  null, null, null, null, null);
 		
 		if ( cursor.moveToFirst()) {
 			do {
@@ -68,7 +68,7 @@ public class OperationDB {
 	
 	public Operation getOperation(String rowId) throws SQLException {
 		String where = String.format("%s = %s", ID, rowId);
-		Cursor cursor = this.open().query(true, DATABASE_TABLE, COLUMNS_NAMES, where, null, null, null, null, null);
+		Cursor cursor = this.open().query(true, Operation_TABLE, COLUMNS_NAMES, where, null, null, null, null, null);
 		Operation operation = null;
 		
 		if ( cursor.moveToFirst() ) {
@@ -94,7 +94,7 @@ public class OperationDB {
 		args.put(ARABIC_DESCRIPTION, operation.getArabicDescription());
 		
 		String where = String.format("%s = %s", ID, rowId);
-		return this.open().update(DATABASE_TABLE, args,  where, null) > 0;
+		return this.open().update(Operation_TABLE, args,  where, null) > 0;
 	}
 	
 	// this is called when creating database from onCreate method
@@ -110,13 +110,13 @@ public class OperationDB {
 		initialValues.put(ENGLISH_DESCRIPTION, operation.getEnglishDescription());
 		initialValues.put(ARABIC_DESCRIPTION, operation.getArabicDescription());
 		
-		return db.insert(DATABASE_TABLE, null, initialValues);				
+		return db.insert(Operation_TABLE, null, initialValues);				
 	}
 	
 	// this called from HistoryDB when getting operation information 
 	public static Operation getOperation(SQLiteDatabase db, String rowId) throws SQLException {
 		String where = String.format("%s = %s", ID, rowId);
-		Cursor cursor = db.query(true, DATABASE_TABLE, COLUMNS_NAMES, where, null, null, null, null, null);
+		Cursor cursor = db.query(true, Operation_TABLE, COLUMNS_NAMES, where, null, null, null, null, null);
 		Operation operation = null;
 		
 		if ( cursor.moveToFirst() ) {

@@ -2,7 +2,7 @@ package com.malaz.reports;
 
 import com.malaz.app.ApplicationPreferenceActivity;
 import com.malaz.app.BaseActivity;
-import com.malaz.app.HistoryActivity;
+import com.malaz.app.LogsActivity;
 import com.malaz.app.MainActivity;
 import com.malaz.app.R;
 import com.malaz.util.AppUtil;
@@ -73,7 +73,7 @@ public class ReportsMainActivity extends TabActivity {
 			break;
 			
 		case R.id.history:
-			Intent intent2 = new Intent(this, HistoryActivity.class);
+			Intent intent2 = new Intent(this, LogsActivity.class);
 			startActivity(intent2);
 			break;			
 			

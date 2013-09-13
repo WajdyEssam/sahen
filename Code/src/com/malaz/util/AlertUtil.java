@@ -10,38 +10,24 @@ public class AlertUtil {
 
 	public static void selectSIMTypeDialog(final Context context) {
 		new AlertDialog.Builder(context)
-				.setIcon(R.drawable.ic_dialog_alert)
-				.setTitle("Please choose SIM company type")
-				.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-
+			.setIcon(R.drawable.ic_dialog_alert)
+			.setTitle("Please choose SIM company type")
+			.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+				}
+			})
+			.setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+				}
+					})
+			.setSingleChoiceItems(AppUtil.englishItems, selectedItem,
+				new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						// Toast.makeText(context, "OK clicked!",
-						// Toast.LENGTH_SHORT).show();
+						Preferences.setValue(context, Constants.COMPANY_NAME, String.valueOf(which));
 					}
-				})
-				.setNegativeButton("Cancel",
-						new DialogInterface.OnClickListener() {
-
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-								// Toast.makeText(context, "Cancel clicked!",
-								// Toast.LENGTH_SHORT).show();
-							}
-						})
-				.setSingleChoiceItems(AppUtil.englishItems, selectedItem,
-						new DialogInterface.OnClickListener() {
-
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-								Preferences.setValue(context,
-										Constants.COMPANY_NAME,
-										String.valueOf(which));
-
-							}
-						}).show();
+		}).show();
 	}
-
 }

@@ -48,12 +48,9 @@ public class WeeklyReportActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        System.out.println("CREATING WeeklyReportActivity");
         LangUtil.setLocale(this);		
         setContentView(R.layout.activity_weekly_report);
-		//this.initializingActionBar();
-   
+
         fillChartLables();
         initData();
         updateSizeInfo();

@@ -34,7 +34,7 @@ public class AboutDialog extends DialogPreference {
 		LinearLayout layout = new LinearLayout(mContext);
 		layout.setOrientation(LinearLayout.VERTICAL);
 		TextView splashText = new TextView(mContext);
-		String fmt = "Version %s<br /><br />" + "<a href=\"http://wajdyessam.com\">MoreInfo</a>";
+		String fmt = "All rights reserved - 2013 Moberella mobile software development company<br />Version %s<br /><br />" + "<a href=\"http://moberella.com\">MoreInfo</a>";
 		try {
 			String pkg = mContext.getPackageName();
 			mVersionNumber = mContext.getPackageManager().getPackageInfo(pkg, 0).versionName;
