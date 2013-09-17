@@ -15,7 +15,7 @@ body {
 }
 .page { width: 900px; margin: 0 auto; }
 div#top_bar {
-	background: #dddddd;
+	background: #FF6300;	
 	height: 7px;
 }	
 /*--------------------------------------------
@@ -45,10 +45,11 @@ div#top_content {
 	}
 		div#top_content div#app_description div.header h1,
 		div#top_content div#app_description div.header div.version{ float: right; }
-			div#top_content div#app_description div.header div.version {
+		
+		div#top_content div#app_description div.header div.version {
 				padding: 4px 8px 4px 8px;
 				/* background: #E8D48D	; */
-                background: rgb(210, 180, 180);
+                background: #FF6300;
 				color: #ffffff;
 				margin-left: 10px;
 				margin-top: 20px;
@@ -69,7 +70,7 @@ div#top_content {
 		div#top_content div#app_description div.actions { margin-top: 50px; }
 			div#top_content div#app_description div.actions a.app_store {
 				width: 251px;
-				height: 75px;
+				height: 120px;
 				background: url('../images/play_store.png') no-repeat top;
 				display: block;
 				text-indent: -999999px;
@@ -463,7 +464,7 @@ Typography
 ---------------------------------------------*/
 h1 {
 	width: 284px;
-	height: 73px;
+	height: 170px;
 	background: url('../images/logo.png') no-repeat top;
 	text-indent: -999999px;
 	margin-bottom: 15px;
