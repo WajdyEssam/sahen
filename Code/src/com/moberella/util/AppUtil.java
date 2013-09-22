@@ -6,7 +6,7 @@ import com.moberella.util.LangUtil.Languages;
 
 public class AppUtil {
 	public static CharSequence[] englishItems = { "MTN", "Sudani", "Zain", "Unknown" };
-	public static CharSequence[] arabicItems = { "ام تي ان", "سوداني", "زين", "غير معر�?" };
+	public static CharSequence[] arabicItems = { "ام تي ان", "سوداني", "زين", "غير معرف" };
 	
 	public static String getSIMName(String id, Context context) {
 		int index = 3;

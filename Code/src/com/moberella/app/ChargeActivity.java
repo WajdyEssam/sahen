@@ -261,7 +261,7 @@ public class ChargeActivity extends BaseActivity {
 		TessBaseAPI baseApi = new TessBaseAPI();		
 		//baseApi.setDebug(true);
 		baseApi.init(Constants.APPLICATION_FOLDER, lang);
-		baseApi.setPageSegMode(TessBaseAPI.PageSegMode.PSM_SINGLE_LINE );
+		baseApi.setPageSegMode(TessBaseAPI.PSM_SINGLE_LINE );
 		baseApi.setImage(bitmap);
 		
 		String recognizedText = baseApi.getUTF8Text();
