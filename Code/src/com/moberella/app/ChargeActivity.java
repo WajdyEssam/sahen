@@ -205,32 +205,29 @@ public class ChargeActivity extends BaseActivity {
     			final List<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 				final CharSequence[] cs = matches.toArray(new CharSequence[matches.size()]);
 
-				int selectedItem = 0;
+				int selectedItem = -1;
 				new AlertDialog.Builder(this)
 				.setTitle(getString(R.string.toast_select_voice))
 				.setPositiveButton(getString(R.string.ok_message),
 						new DialogInterface.OnClickListener() {
-
 							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {;
+							public void onClick(DialogInterface dialog, int which) {
+								dialog.cancel();
 							}
 						})
 				.setNegativeButton(getString(R.string.cancel_message),
 						new DialogInterface.OnClickListener() {
-
 							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {;
+							public void onClick(DialogInterface dialog, int which) {
+								dialog.cancel();
 							}
 						})
 				.setSingleChoiceItems(cs, selectedItem,
 						new DialogInterface.OnClickListener() {
-
 							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-								numberEditText.setText(matches.get(which));
+							public void onClick(DialogInterface dialog, int which) {
+								String selected = matches.get(which);
+								numberEditText.setText(selected.trim().replaceAll(" ", ""));
 
 							}
 						}).show();
