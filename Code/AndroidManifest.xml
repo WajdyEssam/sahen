@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.malaz.app"
+    package="com.moberella.app"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -23,7 +23,7 @@
         android:largeHeap="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.malaz.app.SplashScreen"
+            android:name="com.moberella.app.SplashScreen"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:screenOrientation="portrait" >
@@ -34,63 +34,63 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.malaz.app.MainActivity"
+            android:name="com.moberella.app.MainActivity"
             android:screenOrientation="portrait"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.malaz.app.ChargeActivity"
+            android:name="com.moberella.app.ChargeActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_charge" >
         </activity>
         <activity
-            android:name="com.malaz.app.TransfereActivity"
+            android:name="com.moberella.app.TransfereActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_convert" >
         </activity>
         <activity
-            android:name="com.malaz.app.CallmeActivity"
+            android:name="com.moberella.app.CallmeActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_callme" >
         </activity>
         <activity
-            android:name="com.malaz.app.LogsActivity"
+            android:name="com.moberella.app.LogsActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_history" >
         </activity>
         <activity
-            android:name="com.malaz.app.ApplicationPreferenceActivity"
+            android:name="com.moberella.app.ApplicationPreferenceActivity"
             android:screenOrientation="portrait"
             android:label="@string/app_name" >
             <intent-filter>
-                <action android:name="com.malaz.app.ApplicationPreferenceActivity" >
+                <action android:name="com.moberella.app.ApplicationPreferenceActivity" >
                 </action>
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.malaz.reports.WeeklyReportActivity"
+            android:name="com.moberella.reports.WeeklyReportActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_report" >
         </activity>
         <activity
-            android:name="com.malaz.reports.ReportsMainActivity"
+            android:name="com.moberella.reports.ReportsMainActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_report" >
         </activity>
         <activity
-            android:name="com.malaz.reports.MonthlyReportActivity"
+            android:name="com.moberella.reports.MonthlyReportActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_monthly_report" >
         </activity>
         <activity
-            android:name="com.malaz.reports.YearlyReportActivity"
+            android:name="com.moberella.reports.YearlyReportActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_yearly_report" >
         </activity>
         <activity
-            android:name="com.malaz.app.SpeachRecognitionActivity"
+            android:name="com.moberella.app.SpeachRecognitionActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_speach_recognition" >
         </activity>

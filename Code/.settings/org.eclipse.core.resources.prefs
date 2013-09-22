@@ -1,9 +1,9 @@
 eclipse.preferences.version=1
-encoding//src/com/malaz/adapters/LogsAdapter.java=UTF-8
-encoding//src/com/malaz/app/ChargeActivity.java=UTF-8
-encoding//src/com/malaz/app/TransfereActivity.java=UTF-8
-encoding//src/com/malaz/database/OperationDB.java=UTF-8
-encoding//src/com/malaz/reports/WeeklyReportActivity.java=UTF-8
-encoding//src/com/malaz/util/AlertUtil.java=UTF-8
-encoding//src/com/malaz/util/AppUtil.java=UTF-8
-encoding//src/com/malaz/util/Constants.java=UTF-8
+encoding//src/com/moberella/adapters/LogsAdapter.java=UTF-8
+encoding//src/com/moberella/app/ChargeActivity.java=UTF-8
+encoding//src/com/moberella/app/TransfereActivity.java=UTF-8
+encoding//src/com/moberella/database/OperationDB.java=UTF-8
+encoding//src/com/moberella/reports/WeeklyReportActivity.java=UTF-8
+encoding//src/com/moberella/util/AlertUtil.java=UTF-8
+encoding//src/com/moberella/util/AppUtil.java=UTF-8
+encoding//src/com/moberella/util/Constants.java=UTF-8

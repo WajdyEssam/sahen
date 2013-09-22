@@ -110,7 +110,7 @@
                 android:textSize="16sp" />
         </RelativeLayout>
 
-        <com.malaz.reports.HorizontalListView
+        <com.moberella.reports.HorizontalListView
             android:background="#000000"
             android:id="@+id/monthly_listview"
             android:layout_width="fill_parent"
