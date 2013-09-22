@@ -208,7 +208,7 @@ public class ChargeActivity extends BaseActivity {
 				int selectedItem = 0;
 				new AlertDialog.Builder(this)
 				.setTitle(getString(R.string.toast_select_voice))
-				.setNegativeButton(getString(R.string.ok_message),
+				.setPositiveButton(getString(R.string.ok_message),
 						new DialogInterface.OnClickListener() {
 
 							@Override
