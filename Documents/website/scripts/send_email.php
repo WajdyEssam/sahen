@@ -34,9 +34,9 @@
 
 		// EDIT THIS!!
 		
-		$mail->Mailer = "smtp";
+		$mail->IsSMTP();
 		$mail->Host = "smtp.gmail.com";
-		$mail->Port = 465;
+		$mail->SMTPSecure = 'tls'; 
 		
 		$mail->SMTPAuth = true; // turn on SMTP authentication
 		$mail->Username = "moberella@gmail.com"; // SMTP username
