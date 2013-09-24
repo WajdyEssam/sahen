@@ -38,7 +38,7 @@
             android:summary="@string/pref_share_summary"
             android:title="@string/pref_share_title"/>
 
-        <com.malaz.dialogs.EmailDialog
+        <com.moberella.dialogs.EmailDialog
             android:dialogIcon="@drawable/ic_launcher"
             android:dialogTitle="@string/pref_sendemail_title"
             android:dialogMessage="@string/pref_emaildialog_message"
@@ -48,7 +48,7 @@
             android:summary="@string/pref_emaildialog_summary"
             android:title="@string/pref_sendemail_title"/>
 
-        <com.malaz.dialogs.AboutDialog
+        <com.moberella.dialogs.AboutDialog
             android:dialogIcon="@drawable/ic_launcher"
             android:dialogTitle="@string/pref_aboutdialog_title"
             android:key="pref_about_key"
