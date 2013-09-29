@@ -8,12 +8,14 @@ import com.moberella.util.Preferences;
 public class ServiceFactory {
 	private final String companyName ;
 	private final String simNo;
+	private final String userIdentityNumber;
 	private final int companyId;
 	
 	public ServiceFactory(Activity activity) {
-		this.companyName = Preferences.getValue(activity, Constants.COMPANY_NAME, "3");
+		this.companyName = Preferences.getValue(activity, Constants.COMPANY_NAME, Constants.DEFAULT_COMPANY_NAME);
 		this.companyId = Integer.parseInt(companyName);		
-		this.simNo = Preferences.getValue(activity, Constants.SIM_NUMBER, "");	
+		this.simNo = Preferences.getValue(activity, Constants.SIM_NUMBER, Constants.DEFAULT_SIM_NUMBER);	
+		this.userIdentityNumber = Preferences.getValue(activity, Constants.USER_IDENTITY,  Constants.DEFAULT_USER_IDENTITY);
 	}
 	
 	public SIMService getCurrentBalanceService() {
@@ -22,17 +24,18 @@ public class ServiceFactory {
 		if ( !companyName.isEmpty() ) {
 			
 			switch ( companyId ) {
-			case 0:
+			case 1:
 				service =  new MTNService("", "", "");
 				break;
 				
-			case 1:
+			case 2:
 				service = new SudaniService("", "", "");
 				break;
 				
-			case 2:
+			case 3:
 				service = new ZainService("", "", "", "");
 				break;
+				
 			}
 		}
 		
@@ -46,15 +49,15 @@ public class ServiceFactory {
 		if ( !companyName.isEmpty() ) {
 			
 			switch ( companyId ) {
-			case 0:
+			case 1:
 				service =  new MTNService(number, "", "");
 				break;
 				
-			case 1:
+			case 2:
 				service = new SudaniService(number, "", "");
 				break;
 				
-			case 2:
+			case 3:
 				service = new ZainService(number, "", "", "");
 				break;
 			}
@@ -70,15 +73,15 @@ public class ServiceFactory {
 		if ( !companyName.isEmpty() ) {
 			
 			switch ( companyId ) {
-			case 0:
+			case 1:
 				service =  new MTNService("", number, "");
 				break;
 				
-			case 1:
+			case 2:
 				service = new SudaniService("", number, "");
 				break;
 				
-			case 2:
+			case 3:
 				service = new ZainService("", number, "", "");
 				break;
 			}
@@ -93,15 +96,15 @@ public class ServiceFactory {
 		if ( !companyName.isEmpty() ) {
 			
 			switch ( companyId ) {
-			case 0:
+			case 1:
 				service =  new MTNService("", number, balance);
 				break;
 				
-			case 1:
+			case 2:
 				service = new SudaniService("", number, balance);
 				break;
 				
-			case 2:
+			case 3:
 				service = new ZainService("", number, balance, simNo);
 				break;
 			}
