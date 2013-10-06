@@ -45,9 +45,13 @@
     <string name="app_settings">Application Settings</string>
     <string name="languageSettingLbl">Language</string>
     <string name="simTypeLbl">Choose the company</string>
-    <string name="simNoLbl">SIM No</string>
-    <string name="languageSettingSummary">Choose application language</string>
     <string name="simTypeSummary">Please select the company</string>
+    <string name="countriesLbl">Choose country</string>
+    <string name="countriesSummary">Please choose your country</string>
+    <string name="languageSettingSummary">Choose application language</string>
+    <string name="userIdentityLbl">User Identity No</string>
+    <string name="userIdentitySummary">Please enter your identity card number</string>
+    <string name="simNoLbl">SIM No</string>
     <string name="simNoSummary">Enter your SIM No. if you wish</string>
     <string name="clearDb">Clear application database</string>
     <string name="clearDbDescription">Click here to return to starting point</string>

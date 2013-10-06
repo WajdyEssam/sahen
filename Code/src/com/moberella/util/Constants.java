@@ -22,10 +22,13 @@ public class Constants {
 	public final static String COMPANY_NAME = "companyName";
 	public final static String DEFAULT_COMPANY_NAME = "0";	// stored as id number
 	
+	public final static String COUNTRY_NAME = "countryName";
+	public final static String DEFAULT_COUNTRY_NAME = "0";	// stored as id number
+	
 	public final static String SIM_NUMBER = "simNo";
 	public final static String DEFAULT_SIM_NUMBER = "";
 	
-	public final static String USER_IDENTITY = "identity";
+	public final static String USER_IDENTITY = "userIdentity";
 	public final static String DEFAULT_USER_IDENTITY = "";
 	
 	public final static String APPLICATION_LANGUAGE = "applicationlanguage";

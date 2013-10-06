@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- SIM Values -->
+     <!-- SIM Values -->
     <string-array name="companies">
-        <item name="0">MTN ام تي ان</item>
-        <item name="1">SUDANI سوداني</item>
-        <item name="2">ZAIN زين</item>
-        <item name="3">غير معرف</item>
+        <item>غير معرف</item>
+		<item>MTN ام تي ان</item>
+        <item>SUDANI سوداني</item>
+        <item>ZAIN زين</item>      
+        <item>Mobily موبايلي</item>
+        <item>STC اس تي سي</item>
+        <item>Zain زين</item>     
     </string-array>
     <string-array name="companiesValue">
-        <item name="0">0</item>
-        <item name="1">1</item>
-        <item name="2">2</item>
-        <item name="3">3</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
     </string-array>
-     
+    
     <!-- Language Values -->
        <string-array name="languages">
         <item>اللغه الافتراضية في الجهاز</item>
@@ -24,6 +30,18 @@
         <item>1</item>
         <item>2</item>
         <item>3</item>
+    </string-array>
+    
+    <!-- Countries Values -->       
+       <string-array name="countries">
+        <item>غير محددة</item>
+        <item>السعودية</item>
+        <item>السودان</item>
+    </string-array>
+    <string-array name="countriesValue">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
     </string-array>
     
 </resources>

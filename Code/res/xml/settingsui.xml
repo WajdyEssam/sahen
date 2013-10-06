@@ -16,6 +16,19 @@
             android:entryValues="@array/companiesValue"
             android:title="@string/simTypeLbl" />
          
+         <ListPreference
+            android:key="countryName"
+            android:entries="@array/countries"
+            android:summary="@string/countriesSummary"
+            android:entryValues="@array/countriesValue"
+            android:title="@string/countriesLbl" />
+         
+          <EditTextPreference
+            android:defaultValue=""
+            android:key="userIdentity"
+            android:summary="@string/userIdentitySummary"
+            android:title="@string/userIdentityLbl" />
+                  
          <EditTextPreference
             android:defaultValue=""
             android:key="simNo"

@@ -36,12 +36,22 @@ public class ServiceFactory {
 				service = new ZainService("", "", "", "");
 				break;
 				
+			case 4:
+				service =  new SaudiMobilyService("", "", "", this.userIdentityNumber);
+				break;
+				
+			case 5:
+				service = new SaudiStcService("", "", "", this.userIdentityNumber);
+				break;
+				
+			case 6:
+				service = new SaudiZainService("", "", "",  this.userIdentityNumber);
+				break;				
 			}
 		}
 		
 		return service;
-	}
-	
+	}	
 	
 	public SIMService getChargeService(String number) {
 		SIMService service = null;
@@ -60,12 +70,23 @@ public class ServiceFactory {
 			case 3:
 				service = new ZainService(number, "", "", "");
 				break;
+				
+			case 4:
+				service =  new SaudiMobilyService(number, "", "", this.userIdentityNumber);
+				break;
+				
+			case 5:
+				service = new SaudiStcService(number, "", "", this.userIdentityNumber);
+				break;
+				
+			case 6:
+				service = new SaudiZainService(number, "", "",  this.userIdentityNumber);
+				break;	
 			}
 		}
 		
 		return service;
-	}
-	
+	}	
 		
 	public SIMService getCallMeService(String number) {
 		SIMService service = null;
@@ -83,6 +104,18 @@ public class ServiceFactory {
 				
 			case 3:
 				service = new ZainService("", number, "", "");
+				break;
+				
+			case 4:
+				service =  new SaudiMobilyService("", number, "", this.userIdentityNumber);
+				break;
+				
+			case 5:
+				service = new SaudiStcService("", number, "", this.userIdentityNumber);
+				break;
+				
+			case 6:
+				service = new SaudiZainService("", number, "",  this.userIdentityNumber);
 				break;
 			}
 		}
@@ -107,6 +140,18 @@ public class ServiceFactory {
 			case 3:
 				service = new ZainService("", number, balance, simNo);
 				break;
+				
+			case 4:
+				service =  new SaudiMobilyService("", number, balance, this.userIdentityNumber);
+				break;
+				
+			case 5:
+				service = new SaudiStcService("", number, balance, this.userIdentityNumber);
+				break;
+				
+			case 6:
+				service = new SaudiZainService("", number, balance,  this.userIdentityNumber);
+				break;	
 			}
 		}
 		

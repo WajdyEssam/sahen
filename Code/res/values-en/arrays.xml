@@ -2,10 +2,21 @@
 <resources>
     <!-- SIM Values -->
     <string-array name="companies">
-        <item name="0">MTN</item>
-        <item name="1">SUDANI</item>
-        <item name="2">ZAIN</item>
-        <item name="3">Nothing</item>
+        <item>Unknown</item>
+        <item>MTN</item>
+        <item>SUDANI</item>
+        <item>ZAIN</item>       
+        <item>Mobily</item>
+        <item>STC</item>
+        <item>Zain</item>     
+    </string-array>
+    <string-array name="companiesValue">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
     </string-array>
     
     <!-- Language Values -->
@@ -18,5 +29,17 @@
         <item>1</item>
         <item>2</item>
         <item>3</item>
+    </string-array>
+    
+    <!-- Countries Values -->       
+    <string-array name="countries">
+        <item>UnKnown</item>
+        <item>Suadi Arabia</item>
+        <item>Sudan</item>
+    </string-array>
+    <string-array name="countriesValue">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
     </string-array>
 </resources>
