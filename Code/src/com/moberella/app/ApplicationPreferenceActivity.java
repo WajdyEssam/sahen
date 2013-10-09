@@ -6,11 +6,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
@@ -43,6 +45,31 @@ public class ApplicationPreferenceActivity extends PreferenceActivity implements
 			initSummary(getPreferenceScreen().getPreference(i));
 		}
 
+		// set Companies
+//		ListPreference companyList = (ListPreference) findPreference("companyName"); 
+//	    Resources resources = getResources();
+//	    CharSequence[] entries = resources.getStringArray(R.array.saudiesCompanies);
+//	    CharSequence[] entryValues = resources.getStringArray(R.array.saudiesCompaniesValue);
+//	    companyList.setEntries(entries);
+//	    companyList.setEntryValues(entryValues);
+//	    companyList.setPersistent(true);
+		
+		final ListPreference countryLsit = (ListPreference) findPreference("countryName");		
+		countryLsit.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {			
+			@Override
+			public boolean onPreferenceChange(Preference preference, Object newValue) {
+				int index = countryLsit.findIndexOfValue(newValue.toString());
+				if ( index == 2 ) {
+					Preference p = findPreference( "companyName" );
+					getPreferenceScreen().removePreference( p );
+				}
+				else if ( index == 1 ) {
+					
+				}
+				return false;
+			}
+		});
+	    
 		Preference button = (Preference) findPreference("clearButton");
 		button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
 			@Override

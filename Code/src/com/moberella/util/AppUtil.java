@@ -5,11 +5,11 @@ import android.content.Context;
 import com.moberella.util.LangUtil.Languages;
 
 public class AppUtil {
-	public static CharSequence[] englishItems = { "MTN", "Sudani", "Zain", "Unknown" };
-	public static CharSequence[] arabicItems = { "ام تي ان", "سوداني", "زين", "غير معرف" };
+	public static CharSequence[] englishItems = {  "Unknown", "MTN", "Sudani", "Zain", };
+	public static CharSequence[] arabicItems = { "غير معرف", "ام تي ان", "سوداني", "زين",  };
 	
 	public static String getSIMName(String id, Context context) {
-		int index = 3;
+		int index = 0;
 		
 		try {
 			index = Integer.parseInt(id);
@@ -18,7 +18,7 @@ public class AppUtil {
 		}
 		
 		if ( index > englishItems.length - 1) 
-			index = 3;
+			index = 0;
 		
 		String name = "";
 		

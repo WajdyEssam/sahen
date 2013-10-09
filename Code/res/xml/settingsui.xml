@@ -7,21 +7,22 @@
             android:title="@string/languageSettingLbl" 
             android:summary="@string/languageSettingSummary"
             android:entries="@array/languages"
-            android:entryValues="@array/languagesValue"/>
+            android:entryValues="@array/languagesValue"
+            android:defaultValue="1"/>
                        
          <ListPreference
             android:key="companyName"
-            android:entries="@array/companies"
             android:summary="@string/simTypeSummary"
-            android:entryValues="@array/companiesValue"
-            android:title="@string/simTypeLbl" />
+            android:title="@string/simTypeLbl"
+            android:defaultValue="0" />
          
          <ListPreference
             android:key="countryName"
             android:entries="@array/countries"
             android:summary="@string/countriesSummary"
             android:entryValues="@array/countriesValue"
-            android:title="@string/countriesLbl" />
+            android:title="@string/countriesLbl" 
+            android:defaultValue="0"/>
          
           <EditTextPreference
             android:defaultValue=""

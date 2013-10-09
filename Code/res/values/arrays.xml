@@ -1,20 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
      <!-- SIM Values -->
-    <string-array name="companies">
+      <string-array name="companies">
+        <item></item>       
+    </string-array>
+    <string-array name="companiesValue">
+        <item></item>
+    </string-array>
+    
+    <string-array name="sudaneseCompanies">
         <item>غير معرف</item>
 		<item>MTN ام تي ان</item>
         <item>SUDANI سوداني</item>
-        <item>ZAIN زين</item>      
-        <item>Mobily موبايلي</item>
-        <item>STC اس تي سي</item>
-        <item>Zain زين</item>     
+        <item>ZAIN زين</item>       
     </string-array>
-    <string-array name="companiesValue">
+    <string-array name="sudaneseCompaniesValue">
         <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
+    </string-array>
+    
+    <string-array name="saudiesCompanies">
+         <item>غير معرف</item>
+        <item>Mobily موبايلي</item>
+        <item>STC اس تي سي</item>
+        <item>Zain زين</item>     
+    </string-array>
+    <string-array name="saudiesCompaniesValue">
+        <item>0</item>
         <item>4</item>
         <item>5</item>
         <item>6</item>

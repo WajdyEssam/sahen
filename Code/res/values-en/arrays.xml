@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- SIM Values -->
+    <!-- SIM Values -->    
     <string-array name="companies">
+        <item></item>       
+    </string-array>
+    <string-array name="companiesValue">
+        <item></item>
+    </string-array>
+    
+    <string-array name="sudaneseCompanies">
         <item>Unknown</item>
-        <item>MTN</item>
+		<item>MTN</item>
         <item>SUDANI</item>
         <item>ZAIN</item>       
+    </string-array>
+    <string-array name="sudaneseCompaniesValue">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    
+    <string-array name="saudiesCompanies">
+         <item>Unknown</item>
         <item>Mobily</item>
         <item>STC</item>
         <item>Zain</item>     
     </string-array>
-    <string-array name="companiesValue">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
+    <string-array name="saudiesCompaniesValue">
+        <item>0</item>
         <item>4</item>
         <item>5</item>
         <item>6</item>
