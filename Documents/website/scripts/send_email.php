@@ -27,19 +27,17 @@
 		
 		$mail->From = $email;
 		$mail->FromName = $name;
-		//$mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for GMail
+		$mail->Mailer = 'smtp'; // secure transfer enabled REQUIRED for GMail
 		$mail->Subject = "[$topic] Website Contact Form";
 		$mail->AddAddress($site_owners_email, $site_owners_name);
 		$mail->Body = $message;
-
-		// EDIT THIS!!
-		
-		$mail->Mailer = "smtp";
-		$mail->Host = "smtp.gmail.com";
-		$mail->Port = 25;
-		
+		$mail->IsSMTP();
+		$mail->Host = "hs12.name.com";
+		$mail->SMTPSecure = 'ssl'; 
+		$mail->Port = 465 ;
+		$mail->CharSet = 'UTF-8';
 		$mail->SMTPAuth = true; // turn on SMTP authentication
-		$mail->Username = "moberella@gmail.com"; // SMTP username
+		$mail->Username = "admin@moberella.com"; // SMTP username
 		$mail->Password = "wajdy,[]d6587"; // SMTP password
 
 		$mail->Send();

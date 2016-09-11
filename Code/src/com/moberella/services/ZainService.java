@@ -38,5 +38,10 @@ public class ZainService extends SIMService {
 	public String getSIMPassword() {
 		return this.currentSIMPassword;
 	}
+	
+//	public abstract boolean isValidChargeFormat();
+//	public abstract boolean isValidTranfereFormat();
+//	public abstract boolean isValidBalanceCheckingFormat();
+//	public abstract boolean isValidCallMeFormat();
 
 }

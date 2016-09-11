@@ -19,4 +19,9 @@ public abstract class SIMService {
 	public abstract String getCallMeFormat();
 	public abstract String getSendBalance();
 	public abstract String getCurrentBalance();
+	
+//	public abstract boolean isValidChargeFormat();
+//	public abstract boolean isValidTranfereFormat();
+//	public abstract boolean isValidBalanceCheckingFormat();
+//	public abstract boolean isValidCallMeFormat();
 }
